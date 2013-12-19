@@ -3,6 +3,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/MT4j"/>
-	<classpathentry kind="lib" path="Contents/Java/core.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
