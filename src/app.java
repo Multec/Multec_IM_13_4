@@ -1,7 +1,5 @@
-package infopanel;
-
 import org.mt4j.MTApplication;
-import org.mt4j.components.MTComponent;
+
 import org.mt4j.components.visibleComponents.shapes.MTRectangle;
 import org.mt4j.components.visibleComponents.widgets.MTBackgroundImage;
 import org.mt4j.components.visibleComponents.widgets.buttons.MTImageButton;
@@ -10,9 +8,9 @@ import org.mt4j.util.math.Vector3D;
 
 import processing.core.*;
 
-public class Screensaver extends AbstractScene {
+public class app extends AbstractScene {
 
-	public Screensaver(MTApplication mtApplication, String name) {
+	public app(MTApplication mtApplication, String name) {
 		super(mtApplication, name);
 		// TODO Auto-generated constructor stub
 		
@@ -27,7 +25,8 @@ public class Screensaver extends AbstractScene {
 		// Create images needed
 		PImage multec = mtApplication.loadImage("multecButton.png");
 		MTRectangle multecRectangle = new MTRectangle(multec, mtApplication);
-		multecRectangle.setPositionGlobal(new Vector3D(425, mtApplication.height/2, 0));
+	
+		multecRectangle.setPositionGlobal(new Vector3D(mtApplication.width/3 + (mtApplication.width/35), mtApplication.height/2, 0));
 		
 		PImage digx = mtApplication.loadImage("digx.png");
 		MTRectangle digxRectangle = new MTRectangle(digx, mtApplication);
@@ -35,11 +34,11 @@ public class Screensaver extends AbstractScene {
 		
 		PImage stripeL = mtApplication.loadImage("stripeL.png");
 		MTRectangle stripeLRectangle = new MTRectangle(stripeL, mtApplication);
-		stripeLRectangle.setPositionGlobal(new Vector3D(75, (mtApplication.height/2)-100));
+		stripeLRectangle.setPositionGlobal(new Vector3D(175, (mtApplication.height/2)-100));
 		
 		PImage stripeR = mtApplication.loadImage("stripeR.png");
 		MTRectangle stripeRRectangle = new MTRectangle(stripeR, mtApplication);
-		stripeRRectangle.setPositionGlobal(new Vector3D(mtApplication.width-(mtApplication.width/3)+350 + (mtApplication.width/35), mtApplication.height/2 + 100));
+		stripeRRectangle.setPositionGlobal(new Vector3D(mtApplication.width-(mtApplication.width/3)+175 + (mtApplication.width/35), mtApplication.height/2 + 100));
 		
 		// put  image to scene
 		
@@ -62,27 +61,17 @@ public class Screensaver extends AbstractScene {
 		MTImageButton goToMultec = new MTImageButton(multec, mtApplication);
 		MTImageButton goToDigx = new MTImageButton(digx, mtApplication);
 		
-		// ClearAll gestures
+		// settings Button
 		
-		this.clearAllGestures(stripeRRectangle);
-		this.clearAllGestures(stripeLRectangle);
-		this.clearAllGestures(digxRectangle);
-		this.clearAllGestures(multecRectangle);
 		
+		
+		
+		
+	
+	
+	
+	
 	}
-		
-		
-		
-		
-		private void clearAllGestures(MTRectangle comp){
-			comp.unregisterAllInputProcessors();
-			comp.removeAllGestureEventListeners();
-		}
-		
-	
-	
-	
-	
 
 	@Override
 	public void init() {
