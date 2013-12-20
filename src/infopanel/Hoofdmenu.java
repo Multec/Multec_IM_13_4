@@ -114,7 +114,6 @@ public class Hoofdmenu extends AbstractScene {
 				this.clearAllGestures(contentRect);
 
 		//addButtons
-		
 		textArDes.registerInputProcessor(new TapProcessor(mtApp));
 		textArDes.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
