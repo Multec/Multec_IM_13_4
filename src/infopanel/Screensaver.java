@@ -5,16 +5,24 @@ import org.mt4j.components.MTComponent;
 import org.mt4j.components.visibleComponents.shapes.MTRectangle;
 import org.mt4j.components.visibleComponents.widgets.MTBackgroundImage;
 import org.mt4j.components.visibleComponents.widgets.buttons.MTImageButton;
+import org.mt4j.input.inputProcessors.IGestureEventListener;
+import org.mt4j.input.inputProcessors.MTGestureEvent;
+import org.mt4j.input.inputProcessors.componentProcessors.tapProcessor.TapEvent;
+import org.mt4j.input.inputProcessors.componentProcessors.tapProcessor.TapProcessor;
 import org.mt4j.sceneManagement.AbstractScene;
+import org.mt4j.util.MTColor;
 import org.mt4j.util.math.Vector3D;
 
 import processing.core.*;
 
 public class Screensaver extends AbstractScene {
+	
+	protected Hoofdmenu hoofdmenu;
 
-	public Screensaver(MTApplication mtApplication, String name) {
+	public Screensaver(final MTApplication mtApplication, String name) {
 		super(mtApplication, name);
 		// TODO Auto-generated constructor stub
+		
 		
 		
 		
@@ -56,18 +64,46 @@ public class Screensaver extends AbstractScene {
 		this.getCanvas().addChild(stripeRRectangle);
 		stripeRRectangle.setNoStroke(true);
 		
-		
+		this.clearAllGestures(stripeRRectangle);
+		this.clearAllGestures(stripeLRectangle);
+		this.clearAllGestures(digxRectangle);
+		this.clearAllGestures(multecRectangle);
 		// set images to button
 			
 		MTImageButton goToMultec = new MTImageButton(multec, mtApplication);
 		MTImageButton goToDigx = new MTImageButton(digx, mtApplication);
 		
+		multecRectangle.registerInputProcessor(new TapProcessor(mtApplication));
+		multecRectangle.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			public boolean processGestureEvent(MTGestureEvent ge) {
+				TapEvent te = (TapEvent)ge;
+				switch (te.getId()) {
+				case MTGestureEvent.GESTURE_DETECTED:
+					break;
+				case MTGestureEvent.GESTURE_UPDATED:
+					break;
+				case MTGestureEvent.GESTURE_ENDED:
+					if (te.isTapped()){
+						//Save the current scene on the scene stack before changing
+						mtApplication.pushScene();
+						if (hoofdmenu == null){
+							hoofdmenu = new Hoofdmenu(mtApplication, "Hoofdmenu");
+							mtApplication.addScene(hoofdmenu);
+						}
+						//Do the scene change
+						mtApplication.changeScene(hoofdmenu);
+						
+					break;
+				}
+				return false;
+			}
+				return false;
+		}
+		});
+		
 		// ClearAll gestures
 		
-		this.clearAllGestures(stripeRRectangle);
-		this.clearAllGestures(stripeLRectangle);
-		this.clearAllGestures(digxRectangle);
-		this.clearAllGestures(multecRectangle);
+
 		
 	}
 		
