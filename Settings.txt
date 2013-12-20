@@ -9,7 +9,11 @@ Fullscreen=true
 FullscreenExclusive=false
 #Resolution
 <<<<<<< HEAD
+<<<<<<< HEAD
 DisplayWidth=1920
+=======
+DisplayWidth=1920	
+>>>>>>> ad5a4306962a09132dfc2c1e84a8df6b2cc142fc
 =======
 DisplayWidth=1920	
 >>>>>>> ad5a4306962a09132dfc2c1e84a8df6b2cc142fc
@@ -24,7 +28,5 @@ Vertical_sync=false
 MultiMiceEnabled=false
 #Anti aliasing multisampling - '0' disables it - 2,4,8 determines the quality of the a.a.
 <<<<<<< HEAD
-OpenGLAntialiasing=0
-=======
+<<<<<<< HEAD
 OpenGLAntialiasing=8
->>>>>>> ad5a4306962a09132dfc2c1e84a8df6b2cc142fc
