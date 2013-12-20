@@ -1,3 +1,5 @@
+package infopanel;
+
 import org.mt4j.MTApplication;
 
 import org.mt4j.components.visibleComponents.shapes.MTRectangle;
@@ -8,9 +10,9 @@ import org.mt4j.util.math.Vector3D;
 
 import processing.core.*;
 
-public class app extends AbstractScene {
+public class Screensaver extends AbstractScene {
 
-	public app(MTApplication mtApplication, String name) {
+	public Screensaver(MTApplication mtApplication, String name) {
 		super(mtApplication, name);
 		// TODO Auto-generated constructor stub
 		
