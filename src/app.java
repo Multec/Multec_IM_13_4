@@ -23,7 +23,7 @@ public class app extends AbstractScene {
 		this.getCanvas().addChild(background);
 		
 		// Create images needed
-		PImage multec = mtApplication.loadImage("multec.png");
+		PImage multec = mtApplication.loadImage("multecButton.png");
 		MTRectangle multecRectangle = new MTRectangle(multec, mtApplication);
 	
 		multecRectangle.setPositionGlobal(new Vector3D(mtApplication.width/3 + (mtApplication.width/35), mtApplication.height/2, 0));
