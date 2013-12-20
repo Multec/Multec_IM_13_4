@@ -29,7 +29,7 @@ public class Hoofdmenu extends AbstractScene {
 		contentRect.setFillColor(new MTColor(209,209,209));
 		contentRect.setNoStroke(true);
 		//multecLogo
-		PImage multec = mtApplication.loadImage("multec.png");
+		PImage multec = mtApplication.loadImage("multec_logo.png");
 		MTRectangle multecHolder = new MTRectangle(multec, mtApp);
 		multecHolder.setPositionGlobal(new Vector3D(mtApp.width-100,mtApp.height-30,0));
 
