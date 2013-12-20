@@ -11,7 +11,7 @@ public class Main extends MTApplication {
 
 	@Override
 	public void startUp() {
-		addScene(new Screensaver(this, "Screensaver"));
+		addScene(new Hoofdmenu(this, "Hoofdmenu"));
 		
 	}
 
