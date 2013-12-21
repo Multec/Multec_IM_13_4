@@ -21,9 +21,6 @@ public class Screensaver extends AbstractScene {
 
 	public Screensaver(final MTApplication mtApplication, String name) {
 		super(mtApplication, name);
-		// TODO Auto-generated constructor stub
-		
-		
 		
 		
 		//Create background
@@ -49,11 +46,9 @@ public class Screensaver extends AbstractScene {
 		MTRectangle stripeRRectangle = new MTRectangle(stripeR, mtApplication);
 		stripeRRectangle.setPositionGlobal(new Vector3D(mtApplication.width-(mtApplication.width/3)+350 + (mtApplication.width/35), mtApplication.height/2 + 100));
 		
-		// put  image to scene
-		
+		// add  images to scene
 		this.getCanvas().addChild(multecRectangle);
 		multecRectangle.setNoStroke(true);
-		
 		
 		this.getCanvas().addChild(digxRectangle);
 		digxRectangle.setNoStroke(true);
@@ -64,12 +59,13 @@ public class Screensaver extends AbstractScene {
 		this.getCanvas().addChild(stripeRRectangle);
 		stripeRRectangle.setNoStroke(true);
 		
+		// ClearAll gestures
 		this.clearAllGestures(stripeRRectangle);
 		this.clearAllGestures(stripeLRectangle);
 		this.clearAllGestures(digxRectangle);
 		this.clearAllGestures(multecRectangle);
-		// set images to button
-			
+		
+		// set images to button	
 		MTImageButton goToMultec = new MTImageButton(multec, mtApplication);
 		MTImageButton goToDigx = new MTImageButton(digx, mtApplication);
 		
@@ -101,7 +97,7 @@ public class Screensaver extends AbstractScene {
 		}
 		});
 		
-		// ClearAll gestures
+		
 		
 
 		
