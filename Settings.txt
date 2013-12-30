@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Wed Jan 30 04:24:13 CET 2008	
 Frametitle=MT Application
 #Renderer: OpenGL: 1 P3D: 2
@@ -55,3 +56,37 @@ MultiMiceEnabled=false
 <<<<<<< HEAD
 OpenGLAntialiasing=8
 >>>>>>> 5cb2a57c88fe5463ee1cfeb19e640b44f8ded1dc
+=======
+#Wed Jan 30 04:24:13 CET 2008	
+Frametitle=MT Application
+#Renderer: OpenGL: 1 P3D: 2
+Renderer=1
+#Fullscreen:'true' or 'false'
+Fullscreen=true
+#Switch for using fullscreen exclusive mode 
+#(if not exclusive, mt4j just uses an undecorated window, other windows can overlap it)
+FullscreenExclusive=false
+#Resolution
+<<<<<<< HEAD
+<<<<<<< HEAD
+DisplayWidth=1920
+=======
+DisplayWidth=1920	
+>>>>>>> ad5a4306962a09132dfc2c1e84a8df6b2cc142fc
+=======
+DisplayWidth=1920	
+>>>>>>> ad5a4306962a09132dfc2c1e84a8df6b2cc142fc
+DisplayHeight=1080
+#Which display to use for fullscreen
+Display=1
+#Framerate maximum
+MaximumFrameRate=60
+#Vertical_sync:'true' or 'false'
+Vertical_sync=false
+#Enables multiple mice use (windows, some linux)
+MultiMiceEnabled=false
+#Anti aliasing multisampling - '0' disables it - 2,4,8 determines the quality of the a.a.
+<<<<<<< HEAD
+<<<<<<< HEAD
+OpenGLAntialiasing=8
+>>>>>>> 0b912f49881205208ff51acf5e63f346db640922
