@@ -1,4 +1,4 @@
-
+package infopanel;
 
 import org.mt4j.MTApplication;
 

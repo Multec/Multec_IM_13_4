@@ -1,3 +1,5 @@
+package infopanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -303,10 +305,16 @@ public class scene3 extends AbstractScene {
 								+ "COURSES:                                                                    "
 								+ "    AV AND IT PRINCIPLES, PHYSICAL INTERACTION DESIGN, VISUAL PERFORMANCE AND INSTALLATION TECHNOLOGY,    INTERACTIVE STORYTELLING.                                                                                                                                   "
 								+ "TEACHERS:                                                                    "
-								+ "   JAN DE COSTER, STIJN DE MIL                                                                                                        "
+								+ "   JAN DE COSTER, ROBBIE DELAERE                                                                                                        "
 					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
+			
+			PImage Image2 = app.loadImage("technology2.png"); 
+			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+			getCanvas().addChild(RectangleImage2);
+			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
+			RectangleImage2.setNoStroke(true);
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))

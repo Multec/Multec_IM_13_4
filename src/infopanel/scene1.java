@@ -1,3 +1,5 @@
+package infopanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -310,6 +312,18 @@ public class scene1 extends AbstractScene {
 					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
+			
+			PImage Image1 = app.loadImage("webdev1.png");
+			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(RectangleImage1);
+			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
+			RectangleImage1.setNoStroke(true);
+			
+			PImage Image2 = app.loadImage("webdev2.png");
+			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+			getCanvas().addChild(RectangleImage2);
+			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
+			RectangleImage2.setNoStroke(true);
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))

@@ -1,3 +1,5 @@
+package infopanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -313,7 +315,7 @@ public class scene5 extends AbstractScene {
 			PImage loadedImage = app.loadImage("buscom1.png");
 			MTRectangle loadedrectangle = new MTRectangle(loadedImage, app);
 			getCanvas().addChild(loadedrectangle);
-			loadedrectangle.setPositionGlobal(new Vector3D(1500,300,0));
+			loadedrectangle.setPositionGlobal(new Vector3D(1200,300,0));
 			loadedrectangle.setNoStroke(true);
 			this.clearAllGestures(loadedrectangle);
 			

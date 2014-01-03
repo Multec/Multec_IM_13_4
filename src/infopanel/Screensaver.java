@@ -21,13 +21,9 @@ public class Screensaver extends AbstractScene {
 
 	public Screensaver(final MTApplication mtApplication, String name) {
 		super(mtApplication, name);
-<<<<<<< HEAD
+
 		// TODO Auto-generated constructor stub
-		
-		
-=======
->>>>>>> 0b912f49881205208ff51acf5e63f346db640922
-		
+				
 		
 		//Create background
 		MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("bgscreensaver.png") , true);
@@ -52,19 +48,15 @@ public class Screensaver extends AbstractScene {
 		MTRectangle stripeRRectangle = new MTRectangle(stripeR, mtApplication);
 		stripeRRectangle.setPositionGlobal(new Vector3D(mtApplication.width-(mtApplication.width/3)+350 + (mtApplication.width/35), mtApplication.height/2 + 100));
 		
-<<<<<<< HEAD
 		// put  image to scene
 		
 		this.getCanvas().addChild(multecRectangle);
 		multecRectangle.setNoStroke(true);
-		
-		
-=======
+
 		// add  images to scene
 		this.getCanvas().addChild(multecRectangle);
 		multecRectangle.setNoStroke(true);
-		
->>>>>>> 0b912f49881205208ff51acf5e63f346db640922
+
 		this.getCanvas().addChild(digxRectangle);
 		digxRectangle.setNoStroke(true);
 		
@@ -73,22 +65,14 @@ public class Screensaver extends AbstractScene {
 		
 		this.getCanvas().addChild(stripeRRectangle);
 		stripeRRectangle.setNoStroke(true);
-		
-<<<<<<< HEAD
-=======
+
 		// ClearAll gestures
->>>>>>> 0b912f49881205208ff51acf5e63f346db640922
 		this.clearAllGestures(stripeRRectangle);
 		this.clearAllGestures(stripeLRectangle);
 		this.clearAllGestures(digxRectangle);
 		this.clearAllGestures(multecRectangle);
-<<<<<<< HEAD
-		// set images to button
-			
-=======
-		
+					
 		// set images to button	
->>>>>>> 0b912f49881205208ff51acf5e63f346db640922
 		MTImageButton goToMultec = new MTImageButton(multec, mtApplication);
 		MTImageButton goToDigx = new MTImageButton(digx, mtApplication);
 		
@@ -120,27 +104,15 @@ public class Screensaver extends AbstractScene {
 		}
 		});
 		
-<<<<<<< HEAD
-		// ClearAll gestures
-=======
-		
->>>>>>> 0b912f49881205208ff51acf5e63f346db640922
-		
-
-		
 	}
 		
 		
 		
-		
+	// ClearAll gestures
 		private void clearAllGestures(MTRectangle comp){
 			comp.unregisterAllInputProcessors();
 			comp.removeAllGestureEventListeners();
 		}
-		
-	
-	
-	
 	
 
 	@Override

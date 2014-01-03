@@ -11,11 +11,11 @@ public class Main extends MTApplication {
 
 	@Override
 	public void startUp() {
-<<<<<<< HEAD
+
 		addScene(new Hoofdmenu(this, "Hoofdmenu"));
-=======
+
 		addScene(new Screensaver(this, "screensaver"));
->>>>>>> 0b912f49881205208ff51acf5e63f346db640922
+
 		
 	}
 
