@@ -80,7 +80,26 @@ public class bussiness extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 17, black, black);
 
-			//Tap gesture
+			
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-100,app.height-30,0));
+			
+			//downNavigation menu
+			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
+			specBtn.setFillColor(white);
+			specBtn.setNoStroke(true);
+			this.clearAllGestures(specBtn);
+			getCanvas().addChild(specBtn);
+			
+			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 135, app.height-40), 25, 25);
+			facBtn.setFillColor(white);
+			facBtn.setNoStroke(true);
+			this.clearAllGestures(facBtn);
+			getCanvas().addChild(facBtn);
+			
+			//MENU ITEMS W GESTURES
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
 			circle.setNoStroke(true);
@@ -122,43 +141,7 @@ public class bussiness extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-			//Tap and Hold gesture
-			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
-			secondpage2.setFillColor(textAreaColor);
-			secondpage2.setStrokeColor(textAreaColor);
-			secondpage2.setText("NEXT");
-			this.clearAllGestures(secondpage2);
-			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {
-					TapAndHoldEvent th = (TapAndHoldEvent)ge;
-					switch (th.getId()) {
-					case TapAndHoldEvent.GESTURE_DETECTED:
-						break;
-					case TapAndHoldEvent.GESTURE_UPDATED:
-						break;
-					case TapAndHoldEvent.GESTURE_ENDED:
-						if (th.isHoldComplete()){
-							app.pushScene();
-							if (bussiness2 == null){
-								bussiness2 = new technology(app, "bussiness2");
-								//Add the scene to the mt application
-								app.addScene(bussiness2);
-							}
-							//Do the scene change
-							app.changeScene(bussiness2);
-							break;	
-						}
-					default: break;
-					}
-					return false;
-				}
-			});
-			this.getCanvas().addChild(secondpage2);
-			secondpage2.setAnchor(PositionAnchor.UPPER_LEFT);
-			secondpage2.setPositionGlobal(new Vector3D(500,500,0));
-			
+		
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
 			circle2.setNoStroke(true);
@@ -321,26 +304,66 @@ public class bussiness extends AbstractScene {
 			tap5.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap5.setPositionGlobal(new Vector3D((mtApplication.width/5)*4,30,0));
 			
-			//Textareas
+			//initFonts
 			IFont fontTitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
-					40, 	//Font size
-					new MTColor(255,255,255),  //Font fill color
-					new MTColor(255,255,255));	//Font outline color
-			IFont fontSubTitles = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
-					22, 	//Font size
-					new MTColor(255,255,255),  //Font fill color
-					new MTColor(255,255,255));	//Font outline color
-			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.ttf", 
-					64, 	//Font size
-					new MTColor(255,255,255),  //Font fill color
-					new MTColor(255,255,255));	//Font outline color
-			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, fontTitle, mtApplication); 
-			tekstinhoud.setNoFill(true);
-			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("BUSSINESS AND COMMUNICATION");
-					
-			this.clearAllGestures(tekstinhoud);
-			this.getCanvas().addChild(tekstinhoud);
+					30, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			IFont fontSubtitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
+					20, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTf", 
+					12, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			
+			//textAreas
+			final MTTextArea title = new MTTextArea(300, 150, 700, 300, fontTitle, app); 
+			final MTTextArea subtitle1 = new MTTextArea(300, 200, 700, 300, fontSubtitle, app); 
+			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
+			final MTTextArea subtitle2 = new MTTextArea(300, 250, 700, 300, fontSubtitle, app); 
+			final MTTextArea content2 = new MTTextArea(300, 270, 700, 300, fontContent, app); 
+			final MTTextArea subtitle3 = new MTTextArea(app, fontSubtitle); 
+			final MTTextArea content3 = new MTTextArea(app, fontContent);
+			title.setNoStroke(true);
+			title.setNoFill(true);
+			subtitle1.setNoStroke(true);
+			subtitle1.setNoFill(true);
+			subtitle2.setNoStroke(true);
+			subtitle2.setNoFill(true);
+			subtitle3.setNoStroke(true);
+			subtitle3.setNoFill(true);
+			content1.setNoStroke(true);
+			content1.setNoFill(true);
+			content2.setNoStroke(true);
+			content2.setNoFill(true);
+			content3.setNoStroke(true);
+			content3.setNoFill(true);
+			
+			//AddTextToTextAreas
+			title.setText("BUSSINESS COMMUNICATIONS");
+			subtitle1.setText("DESCRIPTION");
+			subtitle2.setText("COURSES");
+			content1.setText("Description for this bussiness communication xml dude.");
+			content2.setText("Foreign English, Foreign French, Management, ...");
+			
+			//addTextAreas
+			this.clearAllGestures(title);
+			this.getCanvas().addChild(title);
+			this.clearAllGestures(subtitle1);
+			this.getCanvas().addChild(subtitle1);
+			this.clearAllGestures(subtitle2);
+			this.getCanvas().addChild(subtitle2);
+			this.clearAllGestures(subtitle3);
+			this.getCanvas().addChild(subtitle3);
+			this.clearAllGestures(content1);
+			this.getCanvas().addChild(content1);
+			this.clearAllGestures(content2);
+			this.getCanvas().addChild(content2);
+			this.clearAllGestures(content3);
+			this.getCanvas().addChild(content3);
+			
 								
 			PImage loadedImage = app.loadImage("buscom1.png");
 			MTRectangle loadedrectangle = new MTRectangle(loadedImage, app);
