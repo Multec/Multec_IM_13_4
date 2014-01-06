@@ -81,29 +81,55 @@ public class development2 extends AbstractScene {
 
 			//Tap gesture
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
-			circle.setFillColor(kleurbol1);
+			circle.setFillColor(kleurbol2);
 			circle.setNoStroke(true);
 			this.clearAllGestures(circle);
 			getCanvas().addChild(circle);
 			final MTTextArea tap1 = new MTTextArea(mtApplication, font);
 			tap1.setFillColor(textAreaColor);
 			tap1.setStrokeColor(textAreaColor);
-			tap1.setText("DEVELOPMENT");
+			tap1.setText("DESIGN");
 			this.clearAllGestures(tap1);
 			tap1.registerInputProcessor(new TapProcessor(app));
+			tap1.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (design == null){
+								design = new design(app, "design2");
+								//Add the scene to the mt application
+								app.addScene(design);
+							}
+							//Do the scene change
+							app.changeScene(design);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			getCanvas().addChild(tap1);
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
 			//Tap and Hold gesture
-			final MTTextArea secondpage1 = new MTTextArea(mtApplication, font);
-			secondpage1.setFillColor(textAreaColor);
-			secondpage1.setStrokeColor(textAreaColor);
-			secondpage1.setText("BACK");
-			this.clearAllGestures(secondpage1);
-			secondpage1.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			secondpage1.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			secondpage1.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
+			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
+			secondpage2.setFillColor(textAreaColor);
+			secondpage2.setStrokeColor(textAreaColor);
+			secondpage2.setText("BACK");
+			this.clearAllGestures(secondpage2);
+			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
+			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
+			secondpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {
 					TapAndHoldEvent th = (TapAndHoldEvent)ge;
 					switch (th.getId()) {
@@ -114,13 +140,13 @@ public class development2 extends AbstractScene {
 					case TapAndHoldEvent.GESTURE_ENDED:
 						if (th.isHoldComplete()){
 							app.pushScene();
-							if (design == null){ 
-								design = new development(app, "Scene 1"); 
+							if (development == null){
+								development = new development(app, "development 2");
 								//Add the scene to the mt application
-								app.addScene(design);
+								app.addScene(development);
 							}
 							//Do the scene change
-							app.changeScene(design);//Ga terug naar de eerste scene na de "hold" op BACK
+							app.changeScene(development);
 							break;	
 						}
 					default: break;
@@ -128,18 +154,18 @@ public class development2 extends AbstractScene {
 					return false;
 				}
 			});
-			this.getCanvas().addChild(secondpage1);
-			secondpage1.setAnchor(PositionAnchor.UPPER_LEFT);
-			secondpage1.setPositionGlobal(new Vector3D(500,500,0));
+			this.getCanvas().addChild(secondpage2);
+			secondpage2.setAnchor(PositionAnchor.UPPER_LEFT);
+			secondpage2.setPositionGlobal(new Vector3D(500,500,0));
 			
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
-			circle2.setFillColor(kleurbol2);
+			circle2.setFillColor(kleurbol3);
 			circle2.setNoStroke(true);
 			getCanvas().addChild(circle2);
 			final MTTextArea tap2 = new MTTextArea(mtApplication, font);
 			tap2.setFillColor(textAreaColor);
 			tap2.setStrokeColor(textAreaColor);
-			tap2.setText("DESIGN");
+			tap2.setText("TECHNOLOGY");
 			this.clearAllGestures(tap2);
 			tap2.registerInputProcessor(new TapProcessor(app));
 			tap2.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -154,13 +180,13 @@ public class development2 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (design == null){
-								design = new development(app, "Scene 2");
+							if (technology == null){
+								technology = new technology(app, "technology");
 								//Add the scene to the mt application
-								app.addScene(design);
+								app.addScene(technology);
 							}
 							//Do the scene change
-							app.changeScene(design);
+							app.changeScene(technology);
 							break;
 							}
 					default: break;
@@ -174,13 +200,13 @@ public class development2 extends AbstractScene {
 			tap2.setPositionGlobal(new Vector3D((mtApplication.width/5)*1,30,0));
 			
 			MTEllipse circle3 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*2 + 35, 50), 30, 30);
-			circle3.setFillColor(kleurbol3);
+			circle3.setFillColor(kleurbol5);
 			circle3.setNoStroke(true);
 			getCanvas().addChild(circle3);
 			final MTTextArea tap3 = new MTTextArea(mtApplication, font);
 			tap3.setFillColor(textAreaColor);
 			tap3.setStrokeColor(textAreaColor);
-			tap3.setText("TECHNOLOGY");
+			tap3.setText("BUSSINESS");
 			this.clearAllGestures(tap3);
 			tap3.registerInputProcessor(new TapProcessor(app));
 			tap3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -195,13 +221,13 @@ public class development2 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (technology == null){
-								technology = new technology(app, "Scene 3");
+							if (bussiness == null){
+								bussiness = new bussiness(app, "bussiness");
 								//Add the scene to the mt application
-								app.addScene(technology);
+								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.changeScene(technology);
+							app.changeScene(bussiness);
 							break;
 							}
 					default: break;
@@ -214,16 +240,14 @@ public class development2 extends AbstractScene {
 			tap3.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap3.setPositionGlobal(new Vector3D((mtApplication.width/5)*2,30,0));
 			
-			
-			
 			MTEllipse circle4 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*3 + 35, 50), 30, 30);
-			circle4.setFillColor(kleurbol4);
+			circle4.setFillColor(kleurbol1);
 			circle4.setNoStroke(true);
 			getCanvas().addChild(circle4);
 			final MTTextArea tap4 = new MTTextArea(mtApplication, font);
 			tap4.setFillColor(textAreaColor);
 			tap4.setStrokeColor(textAreaColor);
-			tap4.setText("INTEGRATION PROJECT");
+			tap4.setText("DEVELOPMENT");
 			this.clearAllGestures(tap4);
 			tap4.registerInputProcessor(new TapProcessor(app));
 			tap4.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -238,13 +262,13 @@ public class development2 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (integration == null){
-								integration = new integration(app, "Scene 4");
+							if (development == null){
+								development = new development(app, "development");
 								//Add the scene to the mt application
-								app.addScene(integration);
+								app.addScene(development);
 							}
 							//Do the scene change
-							app.changeScene(integration);
+							app.changeScene(development);
 							break;
 							}
 					default: break;
@@ -257,13 +281,13 @@ public class development2 extends AbstractScene {
 			tap4.setPositionGlobal(new Vector3D((mtApplication.width/5)*3,30,0));
 			
 			MTEllipse circle5 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*4 + 35, 50), 30, 30);
-			circle5.setFillColor(kleurbol5);
+			circle5.setFillColor(kleurbol4);
 			circle5.setNoStroke(true);
 			getCanvas().addChild(circle5);
 			final MTTextArea tap5 = new MTTextArea(mtApplication, font);
 			tap5.setFillColor(textAreaColor);
 			tap5.setStrokeColor(textAreaColor);
-			tap5.setText("BUSINESS COMMUNICATION");
+			tap5.setText("INTEGRATION");
 			this.clearAllGestures(tap5);
 			tap5.registerInputProcessor(new TapProcessor(app));
 			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -278,13 +302,13 @@ public class development2 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (bussiness == null){
-								bussiness = new bussiness(app, "Scene 5");
+							if (integration == null){
+								integration = new integration(app, "integration");
 								//Add the scene to the mt application
-								app.addScene(bussiness);
+								app.addScene(integration);
 							}
 							//Do the scene change
-							app.changeScene(bussiness);
+							app.changeScene(integration);
 							break;
 							}
 					default: break;
