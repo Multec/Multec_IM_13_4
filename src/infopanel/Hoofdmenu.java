@@ -245,7 +245,7 @@ public class Hoofdmenu extends AbstractScene {
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
 						if (scene5 == null){
-							scene5 = new scene5(mtApp, "scene5");
+							scene5 = new bussiness(mtApp, "scene5");
 							mtApp.addScene(scene5);
 						}
 						//Do the scene change

@@ -51,19 +51,19 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class scene1 extends AbstractScene {
+public class bussiness extends AbstractScene {
 		private MTApplication app;
-		private Iscene scene11;
+		private Iscene scene1;
 		private Iscene scene2;
 		private Iscene scene3;
 		private Iscene scene4;
 		private Iscene scene5;
 		
-		public scene1(final MTApplication mtApplication, String name) {
+		public bussiness(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("development.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("buscom.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -91,19 +91,45 @@ public class scene1 extends AbstractScene {
 			tap1.setText("DEVELOPMENT");
 			this.clearAllGestures(tap1);
 			tap1.registerInputProcessor(new TapProcessor(app));
+			tap1.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (scene1 == null){
+								scene1 = new scene1(app, "Scene 1");
+								//Add the scene to the mt application
+								app.addScene(scene1);
+							}
+							//Do the scene change
+							app.changeScene(scene1);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			getCanvas().addChild(tap1);
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
 			//Tap and Hold gesture
-			final MTTextArea firstpage2 = new MTTextArea(mtApplication, font);
-			firstpage2.setFillColor(textAreaColor);
-			firstpage2.setStrokeColor(textAreaColor);
-			firstpage2.setText("NEXT");
-			this.clearAllGestures(firstpage2);
-			firstpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			firstpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			firstpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
+			final MTTextArea fifthpage2 = new MTTextArea(mtApplication, font);
+			fifthpage2.setFillColor(textAreaColor);
+			fifthpage2.setStrokeColor(textAreaColor);
+			fifthpage2.setText("NEXT");
+			this.clearAllGestures(fifthpage2);
+			fifthpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
+			fifthpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
+			fifthpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {
 					TapAndHoldEvent th = (TapAndHoldEvent)ge;
 					switch (th.getId()) {
@@ -114,13 +140,13 @@ public class scene1 extends AbstractScene {
 					case TapAndHoldEvent.GESTURE_ENDED:
 						if (th.isHoldComplete()){
 							app.pushScene();
-							if (scene11 == null){ 
-								scene11 = new scene11(app, "Scene 11"); //Maak een tweede scene aan voor de eerste pijler.
+							if (scene55 == null){ 
+								scene55 = new scene55(app, "Scene 55"); //Maak een tweede scene aan voor de vijfde pijler.
 								//Add the scene to the mt application
-								app.addScene(scene11);
+								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.changeScene(scene11);
+							app.changeScene(business5);
 							break;	
 						}
 					default: break;
@@ -128,10 +154,10 @@ public class scene1 extends AbstractScene {
 					return false;
 				}
 			});
-			this.getCanvas().addChild(firstpage2);
-			firstpage2.setAnchor(PositionAnchor.UPPER_LEFT);
-			firstpage2.setPositionGlobal(new Vector3D(500,500,0));
-			
+			this.getCanvas().addChild(fifthpage2);
+			fifthpage2.setAnchor(PositionAnchor.UPPER_LEFT);
+			fifthpage2.setPositionGlobal(new Vector3D(500,500,0));
+				
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol2);
 			circle2.setNoStroke(true);
@@ -154,7 +180,7 @@ public class scene1 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene2 == null){
+							if (design == null){
 								scene2 = new scene2(app, "Scene 2");
 								//Add the scene to the mt application
 								app.addScene(scene2);
@@ -195,7 +221,7 @@ public class scene1 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene3 == null){
+							if (technology == null){
 								scene3 = new scene3(app, "Scene 3");
 								//Add the scene to the mt application
 								app.addScene(scene3);
@@ -206,15 +232,12 @@ public class scene1 extends AbstractScene {
 							}
 					default: break;
 				}
-					return false;
-					
+					return false;			
 			}
 			});
 			getCanvas().addChild(tap3);
 			tap3.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap3.setPositionGlobal(new Vector3D((mtApplication.width/5)*2,30,0));
-			
-			
 			
 			MTEllipse circle4 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*3 + 35, 50), 30, 30);
 			circle4.setFillColor(kleurbol4);
@@ -238,7 +261,7 @@ public class scene1 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene4 == null){
+							if (intergration == null){
 								scene4 = new scene4(app, "Scene 4");
 								//Add the scene to the mt application
 								app.addScene(scene4);
@@ -249,7 +272,7 @@ public class scene1 extends AbstractScene {
 							}
 					default: break;
 				}
-					return false;			
+					return false;				
 			}
 			});
 			getCanvas().addChild(tap4);
@@ -266,32 +289,6 @@ public class scene1 extends AbstractScene {
 			tap5.setText("BUSINESS COMMUNICATION");
 			this.clearAllGestures(tap5);
 			tap5.registerInputProcessor(new TapProcessor(app));
-			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (scene5 == null){
-								scene5 = new bussiness(app, "Scene 5");
-								//Add the scene to the mt application
-								app.addScene(scene5);
-							}
-							//Do the scene change
-							app.changeScene(scene5);
-							break;
-							}
-					default: break;
-				}
-					return false;				
-			}
-			});
 			getCanvas().addChild(tap5);
 			tap5.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap5.setPositionGlobal(new Vector3D((mtApplication.width/5)*4,30,0));
@@ -300,44 +297,42 @@ public class scene1 extends AbstractScene {
 			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
 			tekstinhoud.setNoFill(true);
 			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("WEB DEVELOPMENT                                                                                                                                             "
-								+"IN THESE COURSES, STUDENTS WILL LEARN HOW TO DEVELOP WEBSITES,                           USING A VARIETY OF SOFTWARE AND LANGUAGES.                                                                                                                        "
-								+ "LANGUAGES:                                                                      HTML, CSS, JQUERY, JSON, XML, AJAX, PHP.                                                                                                                         "
+			tekstinhoud.setText("COMMUNICATION SKILLS                                                                                                                                          "
+								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW TO COMMUNICATE PROFESSIONALY, IN MULTIPLE LANGUAGES.                                                                        "
+								+ "LANGUAGES:                                                                    "
+								+ "   DUTCH, FRENCH AND ENGLISH                                                                                                                                   "
 								+ "SOFTWARE:                                                                    "
-								+ "   DREAMWEAVER, NETBEANS AND XAMMP.                                                                                                                            "
-								+ "COURSES:                                                                    "
-								+ "    STATIC WEB DEVELOPMENT, DYNAMIC WEB DEVELOPMENT, ADVANCED WEB DEVELOPMENT,                  WINDOWS APP DEVELOPMENT, INNOVATION IN APP AND WEB                                                                                                            "
+								+ "    MICROSOFT OFFICE WORD, MICROSOFT OFFICE EXCEL, MICROSOFT OFFICE POWERPOINT, GOOGLE DRIVE                                                                                   "
+								+ "COURSES:                                                                     "
+								+ "    BUSINESS COMMUNICATION SKILLS, FRENCH, ENGLISH, COPYRIGHT AND MEDIARIGHTS                                                                                                  "
 								+ "TEACHERS:                                                                    "
-								+ "   DIRLY DE SCHRIJVER, JAN KLAAS VANDERMEERSCHE                                                                                                        "
+								+ "    HERMAN GILLAERTS"
+					
 					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
-			
-			PImage Image1 = app.loadImage("webdev1.png");
-			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
-			RectangleImage1.setNoStroke(true);
-			
-			PImage Image2 = app.loadImage("webdev2.png");
-			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
-			RectangleImage2.setNoStroke(true);
+								
+			PImage loadedImage = app.loadImage("buscom1.png");
+			MTRectangle loadedrectangle = new MTRectangle(loadedImage, app);
+			getCanvas().addChild(loadedrectangle);
+			loadedrectangle.setPositionGlobal(new Vector3D(1200,300,0));
+			loadedrectangle.setNoStroke(true);
+			this.clearAllGestures(loadedrectangle);
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
-				this.setTransition(new FadeTransition(app, 700)); 
+				this.setTransition(new FadeTransition(app, 700));
 			else{
 				this.setTransition(new FadeTransition(app, 700));
-			}							
+			}
+								
 		}
 
 		
 		private void clearAllGestures(MTComponent comp){
 			comp.unregisterAllInputProcessors();
 			comp.removeAllGestureEventListeners();
-		}
+		}	
 	
 	@Override
 	public void init() {
@@ -350,3 +345,4 @@ public class scene1 extends AbstractScene {
 	}
 
 }
+

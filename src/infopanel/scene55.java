@@ -141,7 +141,7 @@ public class scene55 extends AbstractScene {
 						if (th.isHoldComplete()){
 							app.pushScene();
 							if (scene5 == null){ 
-								scene5 = new scene5(app, "Scene 5"); //Maak een tweede scene aan voor de vijfde pijler.
+								scene5 = new bussiness(app, "Scene 5"); //Maak een tweede scene aan voor de vijfde pijler.
 								//Add the scene to the mt application
 								app.addScene(scene5);
 							}
