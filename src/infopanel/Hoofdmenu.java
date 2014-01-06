@@ -25,12 +25,16 @@ import org.mt4j.util.MTColor;
 import org.mt4j.util.math.Vector3D;
 import org.mt4j.util.opengl.GLFBO;
 
-import basic.scenes.Scene3;
 import processing.core.PImage;
 
 public class Hoofdmenu extends AbstractScene {
 	private MTApplication mtApp;
 	protected Screensaver screensaver;
+	private Iscene scene1;
+	private Iscene scene2;
+	private Iscene scene3;
+	private Iscene scene4;
+	private Iscene scene5;
 
 	public Hoofdmenu(MTApplication mtApplication, String name) {
 		
@@ -113,7 +117,7 @@ public class Hoofdmenu extends AbstractScene {
 				this.clearAllGestures(multecHolder);
 				this.clearAllGestures(contentRect);
 
-		//addButtons
+		//addGestures
 		textArDes.registerInputProcessor(new TapProcessor(mtApp));
 		textArDes.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
@@ -128,12 +132,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (screensaver == null){
-							screensaver = new Screensaver(mtApp, "screensaver");
-							mtApp.addScene(screensaver);
+						if (scene1 == null){
+							scene1 = new scene1(mtApp, "scene1");
+							mtApp.addScene(scene1);
 						}
 						//Do the scene change
-						mtApp.changeScene(screensaver);
+						mtApp.changeScene(scene1);
 						
 					break;
 				}
@@ -142,7 +146,118 @@ public class Hoofdmenu extends AbstractScene {
 				return false;
 		}
 		});
-		
+		textArTec.registerInputProcessor(new TapProcessor(mtApp));
+		textArTec.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			public boolean processGestureEvent(MTGestureEvent ge) {
+				TapEvent te = (TapEvent)ge;
+				switch (te.getId()) {
+				case MTGestureEvent.GESTURE_DETECTED:
+					textArDes.setFillColor(new MTColor(220,220,220,255));
+					break;
+				case MTGestureEvent.GESTURE_UPDATED:
+					break;
+				case MTGestureEvent.GESTURE_ENDED:
+					if (te.isTapped()){
+						//Save the current scene on the scene stack before changing
+						mtApp.pushScene();
+						if (scene2 == null){
+							scene2 = new scene2(mtApp, "scene2");
+							mtApp.addScene(scene2);
+						}
+						//Do the scene change
+						mtApp.changeScene(scene2);
+						
+					break;
+				}
+				return false;
+			}
+				return false;
+		}
+		});
+		textArBus.registerInputProcessor(new TapProcessor(mtApp));
+		textArBus.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			public boolean processGestureEvent(MTGestureEvent ge) {
+				TapEvent te = (TapEvent)ge;
+				switch (te.getId()) {
+				case MTGestureEvent.GESTURE_DETECTED:
+					textArDes.setFillColor(new MTColor(220,220,220,255));
+					break;
+				case MTGestureEvent.GESTURE_UPDATED:
+					break;
+				case MTGestureEvent.GESTURE_ENDED:
+					if (te.isTapped()){
+						//Save the current scene on the scene stack before changing
+						mtApp.pushScene();
+						if (scene3 == null){
+							scene3 = new scene3(mtApp, "scene3");
+							mtApp.addScene(scene3);
+						}
+						//Do the scene change
+						mtApp.changeScene(scene3);
+						
+					break;
+				}
+				return false;
+			}
+				return false;
+		}
+		});
+		textArDev.registerInputProcessor(new TapProcessor(mtApp));
+		textArDev.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			public boolean processGestureEvent(MTGestureEvent ge) {
+				TapEvent te = (TapEvent)ge;
+				switch (te.getId()) {
+				case MTGestureEvent.GESTURE_DETECTED:
+					textArDes.setFillColor(new MTColor(220,220,220,255));
+					break;
+				case MTGestureEvent.GESTURE_UPDATED:
+					break;
+				case MTGestureEvent.GESTURE_ENDED:
+					if (te.isTapped()){
+						//Save the current scene on the scene stack before changing
+						mtApp.pushScene();
+						if (scene4 == null){
+							scene4 = new scene4(mtApp, "scene4");
+							mtApp.addScene(scene4);
+						}
+						//Do the scene change
+						mtApp.changeScene(scene4);
+						
+					break;
+				}
+				return false;
+			}
+				return false;
+		}
+		});
+		textArInt.registerInputProcessor(new TapProcessor(mtApp));
+		textArInt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			public boolean processGestureEvent(MTGestureEvent ge) {
+				TapEvent te = (TapEvent)ge;
+				switch (te.getId()) {
+				case MTGestureEvent.GESTURE_DETECTED:
+					textArDes.setFillColor(new MTColor(220,220,220,255));
+					break;
+				case MTGestureEvent.GESTURE_UPDATED:
+					break;
+				case MTGestureEvent.GESTURE_ENDED:
+					if (te.isTapped()){
+						//Save the current scene on the scene stack before changing
+						mtApp.pushScene();
+						if (scene5 == null){
+							scene5 = new scene5(mtApp, "scene5");
+							mtApp.addScene(scene5);
+						}
+						//Do the scene change
+						mtApp.changeScene(scene5);
+						
+					break;
+				}
+				return false;
+			}
+				return false;
+		}
+		});
 		
 		this.getCanvas().addChild(textArDes);
 		this.getCanvas().addChild(textArBus);
