@@ -108,6 +108,18 @@ public class development extends AbstractScene {
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(facTxt);
 			
+			//arrows
+			PImage arrowL = mtApplication.loadImage("pijl_links.png");
+			PImage arrowR = mtApplication.loadImage("pijl_rechts.png");
+			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
+			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
+			arrowLHolder.setPositionGlobal(new Vector3D(10, app.height/2 - 116/2));
+			arrowLHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowLHolder);
+			arrowRHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			arrowRHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowRHolder);
+			
 			//multecLogo
 			PImage multec = mtApplication.loadImage("multec_logo.png");
 			MTRectangle multecHolder = new MTRectangle(multec, app);
