@@ -293,22 +293,24 @@ public class bussiness extends AbstractScene {
 			tap5.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap5.setPositionGlobal(new Vector3D((mtApplication.width/5)*4,30,0));
 			
-			//Textarea
-			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
+			//Textareas
+			IFont fontTitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
+					40, 	//Font size
+					new MTColor(255,255,255),  //Font fill color
+					new MTColor(255,255,255));	//Font outline color
+			IFont fontSubTitles = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
+					22, 	//Font size
+					new MTColor(255,255,255),  //Font fill color
+					new MTColor(255,255,255));	//Font outline color
+			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.ttf", 
+					64, 	//Font size
+					new MTColor(255,255,255),  //Font fill color
+					new MTColor(255,255,255));	//Font outline color
+			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, fontTitle, mtApplication); 
 			tekstinhoud.setNoFill(true);
 			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("COMMUNICATION SKILLS                                                                                                                                          "
-								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW TO COMMUNICATE PROFESSIONALY, IN MULTIPLE LANGUAGES.                                                                        "
-								+ "LANGUAGES:                                                                    "
-								+ "   DUTCH, FRENCH AND ENGLISH                                                                                                                                   "
-								+ "SOFTWARE:                                                                    "
-								+ "    MICROSOFT OFFICE WORD, MICROSOFT OFFICE EXCEL, MICROSOFT OFFICE POWERPOINT, GOOGLE DRIVE                                                                                   "
-								+ "COURSES:                                                                     "
-								+ "    BUSINESS COMMUNICATION SKILLS, FRENCH, ENGLISH, COPYRIGHT AND MEDIARIGHTS                                                                                                  "
-								+ "TEACHERS:                                                                    "
-								+ "    HERMAN GILLAERTS"
+			tekstinhoud.setText("BUSSINESS AND COMMUNICATION");
 					
-					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
 								
