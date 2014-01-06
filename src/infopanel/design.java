@@ -68,11 +68,11 @@ public class design extends AbstractScene {
 			
 			MTColor white = new MTColor(255,255,255);
 			MTColor black = new MTColor(0,0,0);
-			MTColor kleurbol1 = new MTColor(255, 51, 51, 125);
-			MTColor kleurbol2 = new MTColor(60, 146, 48, 125);
-			MTColor kleurbol3 = new MTColor(0, 102, 204, 125);
-			MTColor kleurbol4 = new MTColor(191, 21, 165, 125);
-			MTColor kleurbol5 = new MTColor(204, 153, 0, 125);
+			MTColor kleurbol1 = new MTColor(248, 76, 76, 125);
+			MTColor kleurbol2 = new MTColor(93,160,83, 125);
+			MTColor kleurbol3 = new MTColor(65, 135, 206, 125);
+			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
+			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
