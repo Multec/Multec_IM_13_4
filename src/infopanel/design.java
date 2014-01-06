@@ -51,19 +51,19 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class scene1 extends AbstractScene {
+public class design extends AbstractScene {
 		private MTApplication app;
-		private Iscene scene11;
-		private Iscene scene2;
-		private Iscene scene3;
-		private Iscene scene4;
-		private Iscene scene5;
+		private Iscene development;
+		private Iscene technology;
+		private Iscene integration;
+		private Iscene bussiness;
+		private Iscene design2;
 		
-		public scene1(final MTApplication mtApplication, String name) {
+		public design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("development.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("design.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -91,58 +91,7 @@ public class scene1 extends AbstractScene {
 			tap1.setText("DEVELOPMENT");
 			this.clearAllGestures(tap1);
 			tap1.registerInputProcessor(new TapProcessor(app));
-			getCanvas().addChild(tap1);
-			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
-			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
-			
-			//Tap and Hold gesture
-			final MTTextArea firstpage2 = new MTTextArea(mtApplication, font);
-			firstpage2.setFillColor(textAreaColor);
-			firstpage2.setStrokeColor(textAreaColor);
-			firstpage2.setText("NEXT");
-			this.clearAllGestures(firstpage2);
-			firstpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			firstpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			firstpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {
-					TapAndHoldEvent th = (TapAndHoldEvent)ge;
-					switch (th.getId()) {
-					case TapAndHoldEvent.GESTURE_DETECTED:
-						break;
-					case TapAndHoldEvent.GESTURE_UPDATED:
-						break;
-					case TapAndHoldEvent.GESTURE_ENDED:
-						if (th.isHoldComplete()){
-							app.pushScene();
-							if (scene11 == null){ 
-								scene11 = new scene11(app, "Scene 11"); //Maak een tweede scene aan voor de eerste pijler.
-								//Add the scene to the mt application
-								app.addScene(scene11);
-							}
-							//Do the scene change
-							app.changeScene(scene11);
-							break;	
-						}
-					default: break;
-					}
-					return false;
-				}
-			});
-			this.getCanvas().addChild(firstpage2);
-			firstpage2.setAnchor(PositionAnchor.UPPER_LEFT);
-			firstpage2.setPositionGlobal(new Vector3D(500,500,0));
-			
-			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
-			circle2.setFillColor(kleurbol2);
-			circle2.setNoStroke(true);
-			getCanvas().addChild(circle2);
-			final MTTextArea tap2 = new MTTextArea(mtApplication, font);
-			tap2.setFillColor(textAreaColor);
-			tap2.setStrokeColor(textAreaColor);
-			tap2.setText("DESIGN");
-			this.clearAllGestures(tap2);
-			tap2.registerInputProcessor(new TapProcessor(app));
-			tap2.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			tap1.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {					
 					TapEvent te = (TapEvent)ge;
 					switch (te.getId()) {
@@ -154,21 +103,71 @@ public class scene1 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene2 == null){
-								scene2 = new scene2(app, "Scene 2");
+							if (development == null){
+								development = new development(app, "Scene 1");
 								//Add the scene to the mt application
-								app.addScene(scene2);
+								app.addScene(development);
 							}
 							//Do the scene change
-							app.changeScene(scene2);
+							app.changeScene(development);
 							break;
 							}
 					default: break;
 				}
-					return false;
-					
+					return false;			
 			}
 			});
+			getCanvas().addChild(tap1);
+			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
+			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
+			
+			//Tap and Hold gesture
+			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
+			secondpage2.setFillColor(textAreaColor);
+			secondpage2.setStrokeColor(textAreaColor);
+			secondpage2.setText("NEXT");
+			this.clearAllGestures(secondpage2);
+			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
+			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
+			secondpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {
+					TapAndHoldEvent th = (TapAndHoldEvent)ge;
+					switch (th.getId()) {
+					case TapAndHoldEvent.GESTURE_DETECTED:
+						break;
+					case TapAndHoldEvent.GESTURE_UPDATED:
+						break;
+					case TapAndHoldEvent.GESTURE_ENDED:
+						if (th.isHoldComplete()){
+							app.pushScene();
+							if (design2 == null){
+								design2 = new design2(app, "Scene 22");
+								//Add the scene to the mt application
+								app.addScene(design2);
+							}
+							//Do the scene change
+							app.changeScene(design2);
+							break;	
+						}
+					default: break;
+					}
+					return false;
+				}
+			});
+			this.getCanvas().addChild(secondpage2);
+			secondpage2.setAnchor(PositionAnchor.UPPER_LEFT);
+			secondpage2.setPositionGlobal(new Vector3D(500,500,0));
+			
+			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
+			circle2.setFillColor(kleurbol2);
+			circle2.setNoStroke(true);
+			getCanvas().addChild(circle2);
+			final MTTextArea tap2 = new MTTextArea(mtApplication, font);
+			tap2.setFillColor(textAreaColor);
+			tap2.setStrokeColor(textAreaColor);
+			tap2.setText("DESIGN");
+			this.clearAllGestures(tap2);
+			tap2.registerInputProcessor(new TapProcessor(app));
 			getCanvas().addChild(tap2);
 			tap2.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap2.setPositionGlobal(new Vector3D((mtApplication.width/5)*1,30,0));
@@ -195,13 +194,13 @@ public class scene1 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene3 == null){
-								scene3 = new scene3(app, "Scene 3");
+							if (technology == null){
+								technology = new technology(app, "Scene 3");
 								//Add the scene to the mt application
-								app.addScene(scene3);
+								app.addScene(technology);
 							}
 							//Do the scene change
-							app.changeScene(scene3);
+							app.changeScene(technology);
 							break;
 							}
 					default: break;
@@ -213,8 +212,6 @@ public class scene1 extends AbstractScene {
 			getCanvas().addChild(tap3);
 			tap3.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap3.setPositionGlobal(new Vector3D((mtApplication.width/5)*2,30,0));
-			
-			
 			
 			MTEllipse circle4 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*3 + 35, 50), 30, 30);
 			circle4.setFillColor(kleurbol4);
@@ -238,13 +235,13 @@ public class scene1 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene4 == null){
-								scene4 = new scene4(app, "Scene 4");
+							if (integration == null){
+								integration = new integration(app, "Scene 4");
 								//Add the scene to the mt application
-								app.addScene(scene4);
+								app.addScene(integration);
 							}
 							//Do the scene change
-							app.changeScene(scene4);
+							app.changeScene(integration);
 							break;
 							}
 					default: break;
@@ -278,13 +275,13 @@ public class scene1 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene5 == null){
-								scene5 = new scene5(app, "Scene 5");
+							if (bussiness == null){
+								bussiness = new bussiness(app, "Scene 5");
 								//Add the scene to the mt application
-								app.addScene(scene5);
+								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.changeScene(scene5);
+							app.changeScene(bussiness);
 							break;
 							}
 					default: break;
@@ -300,44 +297,39 @@ public class scene1 extends AbstractScene {
 			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
 			tekstinhoud.setNoFill(true);
 			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("WEB DEVELOPMENT                                                                                                                                             "
-								+"IN THESE COURSES, STUDENTS WILL LEARN HOW TO DEVELOP WEBSITES,                           USING A VARIETY OF SOFTWARE AND LANGUAGES.                                                                                                                        "
-								+ "LANGUAGES:                                                                      HTML, CSS, JQUERY, JSON, XML, AJAX, PHP.                                                                                                                         "
-								+ "SOFTWARE:                                                                    "
-								+ "   DREAMWEAVER, NETBEANS AND XAMMP.                                                                                                                            "
-								+ "COURSES:                                                                    "
-								+ "    STATIC WEB DEVELOPMENT, DYNAMIC WEB DEVELOPMENT, ADVANCED WEB DEVELOPMENT,                  WINDOWS APP DEVELOPMENT, INNOVATION IN APP AND WEB                                                                                                            "
+			tekstinhoud.setText("DESIGN AND VISUAL                                                                                                                                             "
+								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW TO DESIGN FOR WEB AS WELL AS AUDIO VISUAL DESIGN.                                                                               "
+								+ "SOFTWARE:                                                                "
+								+ "       PHOTOSHOP, ILLUSTRATOR, PREMIERE PRO AND FLASH.                                                                                                                    "
+								+ "COURSES:                                                                     "
+								+ "   DESIGN PRINCIPLES, AUDIOVISUAL DESIGN, USER EXPERIENCE DESIGN, COCNEPT DESIGN, MOTION DESIGN,          CROSS MEDIA DESIGN, DATA VISUALISATION                                                                                                                           "
 								+ "TEACHERS:                                                                    "
-								+ "   DIRLY DE SCHRIJVER, JAN KLAAS VANDERMEERSCHE                                                                                                        "
+								+ "   FILIP VANDEPUTTE, STEFAN TILBURGS                                                                                                        "
 					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
 			
-			PImage Image1 = app.loadImage("webdev1.png");
+			PImage Image1 = app.loadImage("buscom1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 			getCanvas().addChild(RectangleImage1);
 			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
 			RectangleImage1.setNoStroke(true);
 			
-			PImage Image2 = app.loadImage("webdev2.png");
-			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
-			RectangleImage2.setNoStroke(true);
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
-				this.setTransition(new FadeTransition(app, 700)); 
+				this.setTransition(new FadeTransition(app, 700));
 			else{
 				this.setTransition(new FadeTransition(app, 700));
-			}							
+			}
+								
 		}
 
 		
 		private void clearAllGestures(MTComponent comp){
 			comp.unregisterAllInputProcessors();
 			comp.removeAllGestureEventListeners();
-		}
+		}	
 	
 	@Override
 	public void init() {

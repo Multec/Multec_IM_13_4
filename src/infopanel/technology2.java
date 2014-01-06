@@ -51,15 +51,15 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class scene33 extends AbstractScene {
+public class technology2 extends AbstractScene {
 		private MTApplication app;
-		private Iscene scene1;
-		private Iscene scene2;
-		private Iscene scene3;
-		private Iscene scene4;
-		private Iscene scene5;
+		private Iscene development;
+		private Iscene design;
+		private Iscene technology;
+		private Iscene integration;
+		private Iscene bussiness;
 		
-		public scene33(final MTApplication mtApplication, String name) {
+		public technology2(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
@@ -103,13 +103,13 @@ public class scene33 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene1 == null){
-								scene1 = new scene1(app, "Scene 1");
+							if (development == null){
+								development = new development(app, "Scene 1");
 								//Add the scene to the mt application
-								app.addScene(scene1);
+								app.addScene(development);
 							}
 							//Do the scene change
-							app.changeScene(scene1);
+							app.changeScene(development);
 							break;
 							}
 					default: break;
@@ -140,13 +140,13 @@ public class scene33 extends AbstractScene {
 					case TapAndHoldEvent.GESTURE_ENDED:
 						if (th.isHoldComplete()){
 							app.pushScene();
-							if (scene3 == null){ 
-								scene3 = new scene3(app, "Scene 3");
+							if (technology == null){ 
+								technology = new technology(app, "Scene 3");
 								//Add the scene to the mt application
-								app.addScene(scene3);
+								app.addScene(technology);
 							}
 							//Do the scene change
-							app.changeScene(scene3);
+							app.changeScene(technology);
 							break;	
 						}
 					default: break;
@@ -180,13 +180,13 @@ public class scene33 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene2 == null){
-								scene2 = new scene2(app, "Scene 2");
+							if (design == null){
+								design = new design(app, "Scene 2");
 								//Add the scene to the mt application
-								app.addScene(scene2);
+								app.addScene(design);
 							}
 							//Do the scene change
-							app.changeScene(scene2);
+							app.changeScene(design);
 							break;
 							}
 					default: break;
@@ -235,13 +235,13 @@ public class scene33 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene4 == null){
-								scene4 = new scene4(app, "Scene 4");
+							if (integration == null){
+								integration = new integration(app, "Scene 4");
 								//Add the scene to the mt application
-								app.addScene(scene4);
+								app.addScene(integration);
 							}
 							//Do the scene change
-							app.changeScene(scene4);
+							app.changeScene(integration);
 							break;
 							}
 					default: break;
@@ -275,13 +275,13 @@ public class scene33 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene5 == null){
-								scene5 = new scene5(app, "Scene 5");
+							if (bussiness == null){
+								bussiness = new bussiness(app, "Scene 5");
 								//Add the scene to the mt application
-								app.addScene(scene5);
+								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.changeScene(scene5);
+							app.changeScene(bussiness);
 							break;
 							}
 					default: break;

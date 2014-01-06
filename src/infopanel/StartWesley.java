@@ -10,6 +10,6 @@ public class StartWesley extends MTApplication {
 	}
 	@Override
 	public void startUp() {
-		addScene(new scene1(this, "Multi-touch Gestures Example Scene"));
+		addScene(new development(this, "Multi-touch Gestures Example Scene"));
 	}
 }
