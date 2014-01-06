@@ -338,6 +338,12 @@ public class technology extends AbstractScene {
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
 			
+			PImage Image1 = app.loadImage("technology3.png"); 
+			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(RectangleImage1);
+			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
+			RectangleImage1.setNoStroke(true);
+			
 			PImage Image2 = app.loadImage("technology2.png"); 
 			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 			getCanvas().addChild(RectangleImage2);
