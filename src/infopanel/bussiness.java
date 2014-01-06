@@ -78,13 +78,15 @@ public class bussiness extends AbstractScene {
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
-			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 17, black, black);
+			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 
 			
 			//multecLogo
 			PImage multec = mtApplication.loadImage("multec_logo.png");
 			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-100,app.height-30,0));
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.getCanvas().addChild(multecHolder);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -93,11 +95,25 @@ public class bussiness extends AbstractScene {
 			this.clearAllGestures(specBtn);
 			getCanvas().addChild(specBtn);
 			
-			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 135, app.height-40), 25, 25);
+			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
+			specTxt.setFillColor(textAreaColor);
+			specTxt.setStrokeColor(textAreaColor);
+			specTxt.setText("SPECIALIZATIONS");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(specTxt);
+			
+			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
 			facBtn.setFillColor(white);
 			facBtn.setNoStroke(true);
 			this.clearAllGestures(facBtn);
 			getCanvas().addChild(facBtn);
+			
+			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
+			facTxt.setFillColor(textAreaColor);
+			facTxt.setStrokeColor(textAreaColor);
+			facTxt.setText("STUDENT FACILITIES");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(facTxt);
 			
 			//MENU ITEMS W GESTURES
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);

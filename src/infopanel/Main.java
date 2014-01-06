@@ -12,7 +12,7 @@ public class Main extends MTApplication {
 	@Override
 	public void startUp() {
 
-		addScene(new bussiness(this, "bussiness"));
+		addScene(new technology(this, "bussiness"));
 
 		
 	}
