@@ -96,6 +96,7 @@ public class Hoofdmenu extends AbstractScene {
 		textArBus.setText("BUSINESS COM");
 		textArDev.setText("DEVELOPMENT");
 		textArInt.setText("INTEGRATION");
+		
 		//Center the textfield on the screen
 		textArDes.setPositionGlobal(new Vector3D(220, mtApp.height/2+5,2));
 		textArTec.setPositionGlobal(new Vector3D(530, mtApp.height/2+5,2));
@@ -132,34 +133,6 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (development == null){
-							development = new development(mtApp, "development");
-							mtApp.addScene(development);
-						}
-						//Do the scene change
-						mtApp.changeScene(development);
-						
-					break;
-				}
-				return false;
-			}
-				return false;
-		}
-		});
-		textArTec.registerInputProcessor(new TapProcessor(mtApp));
-		textArTec.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-			public boolean processGestureEvent(MTGestureEvent ge) {
-				TapEvent te = (TapEvent)ge;
-				switch (te.getId()) {
-				case MTGestureEvent.GESTURE_DETECTED:
-					textArDes.setFillColor(new MTColor(220,220,220,255));
-					break;
-				case MTGestureEvent.GESTURE_UPDATED:
-					break;
-				case MTGestureEvent.GESTURE_ENDED:
-					if (te.isTapped()){
-						//Save the current scene on the scene stack before changing
-						mtApp.pushScene();
 						if (design == null){
 							design = new design(mtApp, "design");
 							mtApp.addScene(design);
@@ -174,8 +147,8 @@ public class Hoofdmenu extends AbstractScene {
 				return false;
 		}
 		});
-		textArBus.registerInputProcessor(new TapProcessor(mtApp));
-		textArBus.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+		textArTec.registerInputProcessor(new TapProcessor(mtApp));
+		textArTec.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
 				TapEvent te = (TapEvent)ge;
 				switch (te.getId()) {
@@ -202,6 +175,34 @@ public class Hoofdmenu extends AbstractScene {
 				return false;
 		}
 		});
+		textArBus.registerInputProcessor(new TapProcessor(mtApp));
+		textArBus.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			public boolean processGestureEvent(MTGestureEvent ge) {
+				TapEvent te = (TapEvent)ge;
+				switch (te.getId()) {
+				case MTGestureEvent.GESTURE_DETECTED:
+					textArDes.setFillColor(new MTColor(220,220,220,255));
+					break;
+				case MTGestureEvent.GESTURE_UPDATED:
+					break;
+				case MTGestureEvent.GESTURE_ENDED:
+					if (te.isTapped()){
+						//Save the current scene on the scene stack before changing
+						mtApp.pushScene();
+						if (bussiness == null){
+							bussiness = new bussiness(mtApp, "bussiness");
+							mtApp.addScene(bussiness);
+						}
+						//Do the scene change
+						mtApp.changeScene(bussiness);
+						
+					break;
+				}
+				return false;
+			}
+				return false;
+		}
+		});
 		textArDev.registerInputProcessor(new TapProcessor(mtApp));
 		textArDev.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
@@ -216,12 +217,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (integration == null){
-							integration = new integration(mtApp, "integration");
-							mtApp.addScene(integration);
+						if (development == null){
+							development = new development(mtApp, "development");
+							mtApp.addScene(development);
 						}
 						//Do the scene change
-						mtApp.changeScene(integration);
+						mtApp.changeScene(development);
 						
 					break;
 				}
@@ -244,12 +245,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (bussiness == null){
-							bussiness = new bussiness(mtApp, "bussiness");
-							mtApp.addScene(bussiness);
+						if (integration == null){
+							integration = new integration(mtApp, "integration");
+							mtApp.addScene(integration);
 						}
 						//Do the scene change
-						mtApp.changeScene(bussiness);
+						mtApp.changeScene(integration);
 						
 					break;
 				}
