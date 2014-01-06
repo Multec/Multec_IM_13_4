@@ -51,18 +51,19 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class scene4 extends AbstractScene {
+public class bussiness2 extends AbstractScene {
 		private MTApplication app;
-		private Iscene scene1;
-		private Iscene scene2;
-		private Iscene scene3;
-		private Iscene scene5;
+		private Iscene development;
+		private Iscene design;
+		private Iscene technology;
+		private Iscene integration;
+		private Iscene bussiness;
 		
-		public scene4(final MTApplication mtApplication, String name) {
+		public bussiness2(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("project.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("buscom.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -102,13 +103,13 @@ public class scene4 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene1 == null){
-								scene1 = new scene1(app, "Scene 1");
+							if (development == null){
+								development = new development(app, "Scene 1");
 								//Add the scene to the mt application
-								app.addScene(scene1);
+								app.addScene(development);
 							}
 							//Do the scene change
-							app.changeScene(scene1);
+							app.changeScene(development);
 							break;
 							}
 					default: break;
@@ -120,6 +121,43 @@ public class scene4 extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
+			//Tap and Hold gesture
+			final MTTextArea fifthpage2 = new MTTextArea(mtApplication, font);
+			fifthpage2.setFillColor(textAreaColor);
+			fifthpage2.setStrokeColor(textAreaColor);
+			fifthpage2.setText("BACK");
+			this.clearAllGestures(fifthpage2);
+			fifthpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
+			fifthpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
+			fifthpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {
+					TapAndHoldEvent th = (TapAndHoldEvent)ge;
+					switch (th.getId()) {
+					case TapAndHoldEvent.GESTURE_DETECTED:
+						break;
+					case TapAndHoldEvent.GESTURE_UPDATED:
+						break;
+					case TapAndHoldEvent.GESTURE_ENDED:
+						if (th.isHoldComplete()){
+							app.pushScene();
+							if (bussiness == null){ 
+								bussiness = new bussiness(app, "Scene 5"); //Maak een tweede scene aan voor de vijfde pijler.
+								//Add the scene to the mt application
+								app.addScene(bussiness);
+							}
+							//Do the scene change
+							app.changeScene(bussiness);
+							break;	
+						}
+					default: break;
+					}
+					return false;
+				}
+			});
+			this.getCanvas().addChild(fifthpage2);
+			fifthpage2.setAnchor(PositionAnchor.UPPER_LEFT);
+			fifthpage2.setPositionGlobal(new Vector3D(500,500,0));
+				
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol2);
 			circle2.setNoStroke(true);
@@ -142,13 +180,13 @@ public class scene4 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene2 == null){
-								scene2 = new scene2(app, "Scene 2");
+							if (design == null){
+								design = new design(app, "Scene 2");
 								//Add the scene to the mt application
-								app.addScene(scene2);
+								app.addScene(design);
 							}
 							//Do the scene change
-							app.changeScene(scene2);
+							app.changeScene(design);
 							break;
 							}
 					default: break;
@@ -183,13 +221,13 @@ public class scene4 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene3 == null){
-								scene3 = new scene3(app, "Scene 3");
+							if (technology == null){
+								technology = new technology(app, "Scene 3");
 								//Add the scene to the mt application
-								app.addScene(scene3);
+								app.addScene(technology);
 							}
 							//Do the scene change
-							app.changeScene(scene3);
+							app.changeScene(technology);
 							break;
 							}
 					default: break;
@@ -211,6 +249,32 @@ public class scene4 extends AbstractScene {
 			tap4.setText("INTEGRATION PROJECT");
 			this.clearAllGestures(tap4);
 			tap4.registerInputProcessor(new TapProcessor(app));
+			tap4.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (integration == null){
+								integration = new integration(app, "Scene 4");
+								//Add the scene to the mt application
+								app.addScene(integration);
+							}
+							//Do the scene change
+							app.changeScene(integration);
+							break;
+							}
+					default: break;
+				}
+					return false;				
+			}
+			});
 			getCanvas().addChild(tap4);
 			tap4.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap4.setPositionGlobal(new Vector3D((mtApplication.width/5)*3,30,0));
@@ -225,32 +289,6 @@ public class scene4 extends AbstractScene {
 			tap5.setText("BUSINESS COMMUNICATION");
 			this.clearAllGestures(tap5);
 			tap5.registerInputProcessor(new TapProcessor(app));
-			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (scene5 == null){
-								scene5 = new bussiness(app, "Scene 5");
-								//Add the scene to the mt application
-								app.addScene(scene5);
-							}
-							//Do the scene change
-							app.changeScene(scene5);
-							break;
-							}
-					default: break;
-				}
-					return false;				
-			}
-			});
 			getCanvas().addChild(tap5);
 			tap5.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap5.setPositionGlobal(new Vector3D((mtApplication.width/5)*4,30,0));
@@ -259,20 +297,27 @@ public class scene4 extends AbstractScene {
 			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
 			tekstinhoud.setNoFill(true);
 			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("INTEGRATION PROJECT                                                                                                                                          "
-								+"DURING THE FIRST TWO YEARS OF THEIR STUDIES, OUR STUDENTS WILL WORK ON DIFFERENT PROJECTS.      THIS WAY, OUR STUDENTS GET A LOT OF PRATICE BEFORE THEY WILL WORK ON PROJECTS IN A BUSINESS ENVIRONMENT.                                                                                                                                              "
-								+ "PROJECTS:                                                                    "
-								+ "   INTEGRATION WEB: DEVELOPMENT OF A STATIC WEBSITE IN TEAM.                              "
-								+ "   INTEGRATION MOBILE: DEVELOPMENT OF A MOBILE SITE IN TEAM.                               "
-								+ "   INTEGRATION MULTISCREEN: DEVELOPMENT OF AN APPLICATION FOR TOUCHSCREEN IN TEAM.             "
-								+ "   INTEGRATION MOBILE APP AND WEB: HIER MOET NOG TEKST KOMEN !!!                          "
-								+ "   INTEGRATION ART AND TECHNOLOGY: HIER MOET NOG TEKST KOMEN !!!                                                                                                         "
-								+ "INTERNSHIP:                                                                    "
-								+ "   MULTEC PROVIDES THEIR STUDENTS TO WORK IN A REAL BUSNIESS ENVIRONMENT AT THE END OF THEIR STUDIES.                                                                             "
-								+ "FINAL WORK: THIS WILL BE MADE IN THE LAST YEAR.   "
+			tekstinhoud.setText("MANAGEMENT                                                                                                                                               "
+								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW MANAGEMENT WORK,                           AS WELL AS HOW TO MANAGE YOUR OWN PROJECTS.                                                                                                                    "
+								+ "LANGUAGES:                                                                    "
+								+ "   DUTCH                                                                                                                                                   "
+								+ "SOFTWARE:                                                                    "
+								+ "    MICROSOFT OFFICE WORD, MICROSOFT OFFICE EXCEL, MICROSOFT OFFICE PROJECT                                                                                              "
+								+ "COURSES:                                                                     "
+								+ "    PROJECT MANAGEMENT, ONLINE MARKETING, ENTREPENEURSHIP                                                                                                          "
+								+ "TEACHERS:                                                                    "
+								+ "    JAN ALEN"
+					
 					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
+								
+			PImage loadedImage = app.loadImage("buscom1.png");
+			MTRectangle loadedrectangle = new MTRectangle(loadedImage, app);
+			getCanvas().addChild(loadedrectangle);
+			loadedrectangle.setPositionGlobal(new Vector3D(1500,300,0));
+			loadedrectangle.setNoStroke(true);
+			this.clearAllGestures(loadedrectangle);
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))

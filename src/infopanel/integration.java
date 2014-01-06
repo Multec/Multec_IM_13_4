@@ -51,19 +51,18 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class scene2 extends AbstractScene {
+public class integration extends AbstractScene {
 		private MTApplication app;
-		private Iscene scene1;
-		private Iscene scene3;
-		private Iscene scene4;
-		private Iscene scene5;
-		private Iscene scene22;
+		private Iscene design;
+		private Iscene development;
+		private Iscene technology;
+		private Iscene bussiness;
 		
-		public scene2(final MTApplication mtApplication, String name) {
+		public integration(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("design.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("project.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -103,13 +102,13 @@ public class scene2 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene1 == null){
-								scene1 = new scene1(app, "Scene 1");
+							if (design == null){
+								design = new development(app, "Scene 1");
 								//Add the scene to the mt application
-								app.addScene(scene1);
+								app.addScene(design);
 							}
 							//Do the scene change
-							app.changeScene(scene1);
+							app.changeScene(design);
 							break;
 							}
 					default: break;
@@ -121,43 +120,6 @@ public class scene2 extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-			//Tap and Hold gesture
-			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
-			secondpage2.setFillColor(textAreaColor);
-			secondpage2.setStrokeColor(textAreaColor);
-			secondpage2.setText("NEXT");
-			this.clearAllGestures(secondpage2);
-			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {
-					TapAndHoldEvent th = (TapAndHoldEvent)ge;
-					switch (th.getId()) {
-					case TapAndHoldEvent.GESTURE_DETECTED:
-						break;
-					case TapAndHoldEvent.GESTURE_UPDATED:
-						break;
-					case TapAndHoldEvent.GESTURE_ENDED:
-						if (th.isHoldComplete()){
-							app.pushScene();
-							if (scene22 == null){
-								scene22 = new scene22(app, "Scene 22");
-								//Add the scene to the mt application
-								app.addScene(scene22);
-							}
-							//Do the scene change
-							app.changeScene(scene22);
-							break;	
-						}
-					default: break;
-					}
-					return false;
-				}
-			});
-			this.getCanvas().addChild(secondpage2);
-			secondpage2.setAnchor(PositionAnchor.UPPER_LEFT);
-			secondpage2.setPositionGlobal(new Vector3D(500,500,0));
-			
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol2);
 			circle2.setNoStroke(true);
@@ -168,6 +130,33 @@ public class scene2 extends AbstractScene {
 			tap2.setText("DESIGN");
 			this.clearAllGestures(tap2);
 			tap2.registerInputProcessor(new TapProcessor(app));
+			tap2.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (design == null){
+								design = new design(app, "Scene 2");
+								//Add the scene to the mt application
+								app.addScene(design);
+							}
+							//Do the scene change
+							app.changeScene(design);
+							break;
+							}
+					default: break;
+				}
+					return false;
+					
+			}
+			});
 			getCanvas().addChild(tap2);
 			tap2.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap2.setPositionGlobal(new Vector3D((mtApplication.width/5)*1,30,0));
@@ -194,19 +183,18 @@ public class scene2 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene3 == null){
-								scene3 = new scene3(app, "Scene 3");
+							if (technology == null){
+								technology = new technology(app, "Scene 3");
 								//Add the scene to the mt application
-								app.addScene(scene3);
+								app.addScene(technology);
 							}
 							//Do the scene change
-							app.changeScene(scene3);
+							app.changeScene(technology);
 							break;
 							}
 					default: break;
 				}
-					return false;
-					
+					return false;			
 			}
 			});
 			getCanvas().addChild(tap3);
@@ -223,32 +211,6 @@ public class scene2 extends AbstractScene {
 			tap4.setText("INTEGRATION PROJECT");
 			this.clearAllGestures(tap4);
 			tap4.registerInputProcessor(new TapProcessor(app));
-			tap4.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (scene4 == null){
-								scene4 = new scene4(app, "Scene 4");
-								//Add the scene to the mt application
-								app.addScene(scene4);
-							}
-							//Do the scene change
-							app.changeScene(scene4);
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
 			getCanvas().addChild(tap4);
 			tap4.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap4.setPositionGlobal(new Vector3D((mtApplication.width/5)*3,30,0));
@@ -275,13 +237,13 @@ public class scene2 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene5 == null){
-								scene5 = new bussiness(app, "Scene 5");
+							if (bussiness == null){
+								bussiness = new bussiness(app, "Scene 5");
 								//Add the scene to the mt application
-								app.addScene(scene5);
+								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.changeScene(scene5);
+							app.changeScene(bussiness);
 							break;
 							}
 					default: break;
@@ -297,24 +259,20 @@ public class scene2 extends AbstractScene {
 			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
 			tekstinhoud.setNoFill(true);
 			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("DESIGN AND VISUAL                                                                                                                                             "
-								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW TO DESIGN FOR WEB AS WELL AS AUDIO VISUAL DESIGN.                                                                               "
-								+ "SOFTWARE:                                                                "
-								+ "       PHOTOSHOP, ILLUSTRATOR, PREMIERE PRO AND FLASH.                                                                                                                    "
-								+ "COURSES:                                                                     "
-								+ "   DESIGN PRINCIPLES, AUDIOVISUAL DESIGN, USER EXPERIENCE DESIGN, COCNEPT DESIGN, MOTION DESIGN,          CROSS MEDIA DESIGN, DATA VISUALISATION                                                                                                                           "
-								+ "TEACHERS:                                                                    "
-								+ "   FILIP VANDEPUTTE, STEFAN TILBURGS                                                                                                        "
+			tekstinhoud.setText("INTEGRATION PROJECT                                                                                                                                          "
+								+"DURING THE FIRST TWO YEARS OF THEIR STUDIES, OUR STUDENTS WILL WORK ON DIFFERENT PROJECTS.      THIS WAY, OUR STUDENTS GET A LOT OF PRATICE BEFORE THEY WILL WORK ON PROJECTS IN A BUSINESS ENVIRONMENT.                                                                                                                                              "
+								+ "PROJECTS:                                                                    "
+								+ "   INTEGRATION WEB: DEVELOPMENT OF A STATIC WEBSITE IN TEAM.                              "
+								+ "   INTEGRATION MOBILE: DEVELOPMENT OF A MOBILE SITE IN TEAM.                               "
+								+ "   INTEGRATION MULTISCREEN: DEVELOPMENT OF AN APPLICATION FOR TOUCHSCREEN IN TEAM.             "
+								+ "   INTEGRATION MOBILE APP AND WEB: HIER MOET NOG TEKST KOMEN !!!                          "
+								+ "   INTEGRATION ART AND TECHNOLOGY: HIER MOET NOG TEKST KOMEN !!!                                                                                                         "
+								+ "INTERNSHIP:                                                                    "
+								+ "   MULTEC PROVIDES THEIR STUDENTS TO WORK IN A REAL BUSNIESS ENVIRONMENT AT THE END OF THEIR STUDIES.                                                                             "
+								+ "FINAL WORK: THIS WILL BE MADE IN THE LAST YEAR.   "
 					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
-			
-			PImage Image1 = app.loadImage("buscom1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
-			RectangleImage1.setNoStroke(true);
-			
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
@@ -342,3 +300,4 @@ public class scene2 extends AbstractScene {
 	}
 
 }
+

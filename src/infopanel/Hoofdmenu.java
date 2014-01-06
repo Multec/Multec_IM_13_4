@@ -30,11 +30,11 @@ import processing.core.PImage;
 public class Hoofdmenu extends AbstractScene {
 	private MTApplication mtApp;
 	protected Screensaver screensaver;
-	private Iscene scene1;
-	private Iscene scene2;
-	private Iscene scene3;
-	private Iscene scene4;
-	private Iscene scene5;
+	private Iscene development;
+	private Iscene design;
+	private Iscene technology;
+	private Iscene integration;
+	private Iscene bussiness;
 
 	public Hoofdmenu(MTApplication mtApplication, String name) {
 		
@@ -132,12 +132,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (scene1 == null){
-							scene1 = new scene1(mtApp, "scene1");
-							mtApp.addScene(scene1);
+						if (development == null){
+							development = new development(mtApp, "development");
+							mtApp.addScene(development);
 						}
 						//Do the scene change
-						mtApp.changeScene(scene1);
+						mtApp.changeScene(development);
 						
 					break;
 				}
@@ -160,12 +160,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (scene2 == null){
-							scene2 = new scene2(mtApp, "scene2");
-							mtApp.addScene(scene2);
+						if (design == null){
+							design = new design(mtApp, "design");
+							mtApp.addScene(design);
 						}
 						//Do the scene change
-						mtApp.changeScene(scene2);
+						mtApp.changeScene(design);
 						
 					break;
 				}
@@ -188,12 +188,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (scene3 == null){
-							scene3 = new scene3(mtApp, "scene3");
-							mtApp.addScene(scene3);
+						if (technology == null){
+							technology = new technology(mtApp, "technology");
+							mtApp.addScene(technology);
 						}
 						//Do the scene change
-						mtApp.changeScene(scene3);
+						mtApp.changeScene(technology);
 						
 					break;
 				}
@@ -216,12 +216,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (scene4 == null){
-							scene4 = new scene4(mtApp, "scene4");
-							mtApp.addScene(scene4);
+						if (integration == null){
+							integration = new integration(mtApp, "integration");
+							mtApp.addScene(integration);
 						}
 						//Do the scene change
-						mtApp.changeScene(scene4);
+						mtApp.changeScene(integration);
 						
 					break;
 				}
@@ -244,12 +244,12 @@ public class Hoofdmenu extends AbstractScene {
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
-						if (scene5 == null){
-							scene5 = new bussiness(mtApp, "scene5");
-							mtApp.addScene(scene5);
+						if (bussiness == null){
+							bussiness = new bussiness(mtApp, "bussiness");
+							mtApp.addScene(bussiness);
 						}
 						//Do the scene change
-						mtApp.changeScene(scene5);
+						mtApp.changeScene(bussiness);
 						
 					break;
 				}

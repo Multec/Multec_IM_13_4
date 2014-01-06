@@ -51,16 +51,15 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class scene22 extends AbstractScene {
+public class design extends AbstractScene {
 		private MTApplication app;
-		private Iscene scene1;
-		private Iscene scene2;
-		private Iscene scene3;
-		private Iscene scene4;
-		private Iscene scene5;
+		private Iscene development;
+		private Iscene technology;
+		private Iscene integration;
+		private Iscene bussiness;
+		private Iscene design2;
 		
-		
-		public scene22(final MTApplication mtApplication, String name) {
+		public design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
@@ -104,13 +103,13 @@ public class scene22 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene1 == null){
-								scene1 = new scene1(app, "Scene 1");
+							if (development == null){
+								development = new development(app, "Scene 1");
 								//Add the scene to the mt application
-								app.addScene(scene1);
+								app.addScene(development);
 							}
 							//Do the scene change
-							app.changeScene(scene1);
+							app.changeScene(development);
 							break;
 							}
 					default: break;
@@ -126,7 +125,7 @@ public class scene22 extends AbstractScene {
 			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
 			secondpage2.setFillColor(textAreaColor);
 			secondpage2.setStrokeColor(textAreaColor);
-			secondpage2.setText("BACK");
+			secondpage2.setText("NEXT");
 			this.clearAllGestures(secondpage2);
 			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
 			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
@@ -141,13 +140,13 @@ public class scene22 extends AbstractScene {
 					case TapAndHoldEvent.GESTURE_ENDED:
 						if (th.isHoldComplete()){
 							app.pushScene();
-							if (scene2 == null){
-								scene2 = new scene2(app, "Scene 2");
+							if (design2 == null){
+								design2 = new design2(app, "Scene 22");
 								//Add the scene to the mt application
-								app.addScene(scene2);
+								app.addScene(design2);
 							}
 							//Do the scene change
-							app.changeScene(scene2);
+							app.changeScene(design2);
 							break;	
 						}
 					default: break;
@@ -195,13 +194,13 @@ public class scene22 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene3 == null){
-								scene3 = new scene3(app, "Scene 3");
+							if (technology == null){
+								technology = new technology(app, "Scene 3");
 								//Add the scene to the mt application
-								app.addScene(scene3);
+								app.addScene(technology);
 							}
 							//Do the scene change
-							app.changeScene(scene3);
+							app.changeScene(technology);
 							break;
 							}
 					default: break;
@@ -236,13 +235,13 @@ public class scene22 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene4 == null){
-								scene4 = new scene4(app, "Scene 4");
+							if (integration == null){
+								integration = new integration(app, "Scene 4");
 								//Add the scene to the mt application
-								app.addScene(scene4);
+								app.addScene(integration);
 							}
 							//Do the scene change
-							app.changeScene(scene4);
+							app.changeScene(integration);
 							break;
 							}
 					default: break;
@@ -276,13 +275,13 @@ public class scene22 extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (scene5 == null){
-								scene5 = new bussiness(app, "Scene 5");
+							if (bussiness == null){
+								bussiness = new bussiness(app, "Scene 5");
 								//Add the scene to the mt application
-								app.addScene(scene5);
+								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.changeScene(scene5);
+							app.changeScene(bussiness);
 							break;
 							}
 					default: break;
@@ -298,17 +297,24 @@ public class scene22 extends AbstractScene {
 			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
 			tekstinhoud.setNoFill(true);
 			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("3D                                                                                                                                                        "
-								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW TO DESIGN FOR 3D MODELLING AS WELL AS MODEL IN 3D.                                                                              "
+			tekstinhoud.setText("DESIGN AND VISUAL                                                                                                                                             "
+								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW TO DESIGN FOR WEB AS WELL AS AUDIO VISUAL DESIGN.                                                                               "
 								+ "SOFTWARE:                                                                "
-								+ "       MAYA AUTODESK                                                                                                                                           "
+								+ "       PHOTOSHOP, ILLUSTRATOR, PREMIERE PRO AND FLASH.                                                                                                                    "
 								+ "COURSES:                                                                     "
-								+ "   3D DESIGN, REAL TIME 3D                                                                                                                                       "
+								+ "   DESIGN PRINCIPLES, AUDIOVISUAL DESIGN, USER EXPERIENCE DESIGN, COCNEPT DESIGN, MOTION DESIGN,          CROSS MEDIA DESIGN, DATA VISUALISATION                                                                                                                           "
 								+ "TEACHERS:                                                                    "
-								+ "   DAVID MOLENBERGHS                                                                                                        "
+								+ "   FILIP VANDEPUTTE, STEFAN TILBURGS                                                                                                        "
 					);
 			this.clearAllGestures(tekstinhoud);
 			this.getCanvas().addChild(tekstinhoud);
+			
+			PImage Image1 = app.loadImage("buscom1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(RectangleImage1);
+			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
+			RectangleImage1.setNoStroke(true);
+			
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
