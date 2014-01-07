@@ -78,32 +78,7 @@ public class integration extends AbstractScene {
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
-			//arrows+arrowText
-			PImage arrowL = mtApplication.loadImage("arrowL.png");
-			PImage arrowR = mtApplication.loadImage("arrowR.png");
-			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
-			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
-			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
-			arrowLHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowLHolder);
-			clearAllGestures(arrowLHolder);
-			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
-			arrowRHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowRHolder);
-			clearAllGestures(arrowRHolder);
-			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
-			arrowLTxt.setNoStroke(true);
-			arrowLTxt.setNoFill(true);
-			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
-			arrowRTxt.setNoStroke(true);
-			arrowRTxt.setNoFill(true);
-			arrowLTxt.setText("PROGRAMMING");
-			arrowRTxt.setText("MOBILE DEVELOPMENT");
-			this.getCanvas().addChild(arrowLTxt);
-			this.getCanvas().addChild(arrowRTxt);
-			clearAllGestures(arrowRHolder);
-			this.clearAllGestures(arrowLTxt);
-			this.clearAllGestures(arrowRTxt);
+	
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -384,13 +359,13 @@ public class integration extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("WEB DEVELOPMENT");
+			title.setText("INTEGRATION PROJECTS");
 			subtitle1.setText("DESCRIPTION");
-			subtitle2.setText("COURSES");
-			content1.setText("Web development dummy text writing down here just something."); 
-			content2.appendText("Static web, Dynamic web, Advanced web");
-			subtitle3.setText("LANGUAGES");
-			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+			subtitle2.setText("PROJECTS");
+			content1.setText("During the first two years of their studies, our students will work on different projects. This way, our students get a lot of practice before they will work on projects in a business environment."); 
+			content2.appendText("Integration Web: Development of a static website in team. \n Integration Mobile: Development of a mobile site in team. \n Integration Multiscreen: Development of an application for touchscreen in team. \n Integration Mobile App and Web: \n Integratiob Art and Technology:");
+			subtitle3.setText("");
+			content3.setText("");
 			
 			
 			//addTextAreas
@@ -409,106 +384,7 @@ public class integration extends AbstractScene {
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
 			
-			//arrowLTapGesture
-			arrowLHolder.registerInputProcessor(new TapProcessor(app));
-			arrowLHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (pageCounter==0){
-								title.setText("PROGRAMMING");
-								content1.setText("This is programming dude..");
-								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
-								content3.setText("Java");
-								pageCounter = -1;
-								arrowLTxt.setText("MOBILE DEVELOPMENT");
-								arrowRTxt.setText("WEB DEVELOPMENT");
-							}
-							else if (pageCounter == -1)
-							{
-								title.setText("MOBILE DEVELOPMENT");
-								content1.setText("This is mobile development dude..");
-								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
-								content3.setText("Objective C");
-								pageCounter = 1;
-								arrowLTxt.setText("WEB DEVELOPMENT");
-								arrowRTxt.setText("PROGRAMMING");
-							}
-							else if(pageCounter == 1)
-							{
-								title.setText("WEB DEVELOPMENT");
-								content1.setText("Web development dummy text writing down here just something."); 
-								content2.appendText("Static web, Dynamic web, Advanced web");
-								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
-								pageCounter = 0;
-								arrowLTxt.setText("PROGRAMMING");
-								arrowRTxt.setText("MOBILE DEVELOPMENT");
-							}
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
-			//arrowRTabGesture
-			arrowRHolder.registerInputProcessor(new TapProcessor(app));
-			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (pageCounter==0){
-								title.setText("MOBILE DEVELOPMENT");
-								content1.setText("This is mobile development dude..");
-								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
-								content3.setText("Objective C");
-								pageCounter = 1;
-								arrowRTxt.setText("PROGRAMMING");
-								arrowLTxt.setText("WEB DEVELOPMENT");
-							}
-							else if (pageCounter == -1)
-							{
-								title.setText("WEB DEVELOPMENT");
-								content1.setText("Web development dummy text writing down here just something."); 
-								content2.appendText("Static web, Dynamic web, Advanced web");
-								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
-								pageCounter = 0;
-								arrowRTxt.setText("MOBILE DEVELOPMENT");
-								arrowLTxt.setText("PROGRAMMING");
-							}
-							else if (pageCounter == 1)
-							{
-								title.setText("PROGRAMMING");
-								content1.setText("This is programming dude..");
-								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
-								content3.setText("Java");
-								pageCounter = -1;			
-								arrowRTxt.setText("WEB DEVELOPMENT");
-								arrowLTxt.setText("MOBILE DEVELOPMENT");
-							}
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
+			
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
