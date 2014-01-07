@@ -79,6 +79,11 @@ public class bussiness2 extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 17, black, black);
 
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-100,app.height-30,0));
+			
 			//Tap gesture
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);

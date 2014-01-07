@@ -59,6 +59,8 @@ public class design extends AbstractScene {
 		private Iscene bussiness;
 		private Iscene design2;
 		private Iscene design;
+		private int positionX = 0;
+		
 		
 		public design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -80,6 +82,11 @@ public class design extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 17, black, black);
 
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-100,app.height-30,0));
+			
 			//Tap gesture
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
@@ -123,6 +130,10 @@ public class design extends AbstractScene {
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
 			//Tap and Hold gesture
+			
+			//Tap gesture for slide naar andere less
+			
+			
 			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
 			secondpage2.setFillColor(textAreaColor);
 			secondpage2.setStrokeColor(textAreaColor);
