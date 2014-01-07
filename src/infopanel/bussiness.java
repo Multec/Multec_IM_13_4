@@ -61,6 +61,7 @@ public class bussiness extends AbstractScene {
 		private Iscene integration;
 		private Iscene bussiness;	
 		private Iscene bussiness2;
+		private int pageCounter = 0;
 		
 		public bussiness(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -76,11 +77,40 @@ public class bussiness extends AbstractScene {
 			MTColor kleurbol3 = new MTColor(65, 135, 206, 125);
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
+			MTColor grey = new MTColor(184,184,184);
 			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
+			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
+			
+			//arrows+arrowText
+			PImage arrowL = mtApplication.loadImage("arrowL.png");
+			PImage arrowR = mtApplication.loadImage("arrowR.png");
+			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
+			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
+			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
+			arrowLHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowLHolder);
+			clearAllGestures(arrowLHolder);
+			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
+			arrowRHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowRHolder);
+			clearAllGestures(arrowRHolder);
+			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
+			arrowLTxt.setNoStroke(true);
+			arrowLTxt.setNoFill(true);
+			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
+			arrowRTxt.setNoStroke(true);
+			arrowRTxt.setNoFill(true);
+			arrowLTxt.setText("...");
+			arrowRTxt.setText("...");
+			this.getCanvas().addChild(arrowLTxt);
+			this.getCanvas().addChild(arrowRTxt);
+			clearAllGestures(arrowRHolder);
+			this.clearAllGestures(arrowLTxt);
+			this.clearAllGestures(arrowRTxt);
 
 			
 			//multecLogo
@@ -392,6 +422,47 @@ public class bussiness extends AbstractScene {
 			loadedrectangle.setPositionGlobal(new Vector3D(450,500,0));
 			loadedrectangle.setNoStroke(true);
 			this.clearAllGestures(loadedrectangle);
+			
+			//arrowLTapGesture
+			arrowLHolder.registerInputProcessor(new TapProcessor(app));
+			arrowLHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//arrowRTabGesture
+			arrowRHolder.registerInputProcessor(new TapProcessor(app));
+			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						
+					default: break;
+				}
+					return false;			
+			}
+			});
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))

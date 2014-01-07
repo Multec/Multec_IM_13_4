@@ -59,6 +59,7 @@ public class design extends AbstractScene {
 		private Iscene bussiness;
 		private Iscene design2;
 		private Iscene design;
+		private int pageCounter = 0;
 		
 		public design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -74,13 +75,15 @@ public class design extends AbstractScene {
 			MTColor kleurbol3 = new MTColor(65, 135, 206, 125);
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
+			MTColor grey = new MTColor(184,184,184);
 			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			final IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
+			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
-			//arrows
+			//arrows+arrowText
 			PImage arrowL = mtApplication.loadImage("arrowL.png");
 			PImage arrowR = mtApplication.loadImage("arrowR.png");
 			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
@@ -93,31 +96,20 @@ public class design extends AbstractScene {
 			arrowRHolder.setNoStroke(true);
 			this.getCanvas().addChild(arrowRHolder);
 			clearAllGestures(arrowRHolder);
-			
-			//button arrows
-			arrowRHolder.registerInputProcessor(new TapProcessor(app));
-			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							
-							app.pushScene();
-							System.out.println("printing next text !!!!!!!!!");
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
-			
+			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
+			arrowLTxt.setNoStroke(true);
+			arrowLTxt.setNoFill(true);
+			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
+			arrowRTxt.setNoStroke(true);
+			arrowRTxt.setNoFill(true);
+			arrowLTxt.setText("3D");
+			arrowRTxt.setText("3D");
+			this.getCanvas().addChild(arrowLTxt);
+			this.getCanvas().addChild(arrowRTxt);
+			clearAllGestures(arrowRHolder);
+			this.clearAllGestures(arrowLTxt);
+			this.clearAllGestures(arrowRTxt);
+	
 			
 			
 			//downNavigation menu
@@ -396,21 +388,68 @@ public class design extends AbstractScene {
 			tap5.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap5.setPositionGlobal(new Vector3D((mtApplication.width/5)*4,30,0));
 			
-			//Textarea
-			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
-			tekstinhoud.setNoFill(true);
-			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("DESIGN AND VISUAL                                                                                                                                             "
-								+"IN THESE COURSES, THE STUDENTS WILL LEARN HOW TO DESIGN FOR WEB AS WELL AS AUDIO VISUAL DESIGN.                                                                               "
-								+ "SOFTWARE:                                                                "
-								+ "       PHOTOSHOP, ILLUSTRATOR, PREMIERE PRO AND FLASH.                                                                                                                    "
-								+ "COURSES:                                                                     "
-								+ "   DESIGN PRINCIPLES, AUDIOVISUAL DESIGN, USER EXPERIENCE DESIGN, COCNEPT DESIGN, MOTION DESIGN,          CROSS MEDIA DESIGN, DATA VISUALISATION                                                                                                                           "
-								+ "TEACHERS:                                                                    "
-								+ "   FILIP VANDEPUTTE, STEFAN TILBURGS                                                                                                        "
-					);
-			this.clearAllGestures(tekstinhoud);
-			this.getCanvas().addChild(tekstinhoud);
+			//initFonts
+			IFont fontTitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
+					30, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			IFont fontSubtitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
+					20, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTf", 
+					12, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			
+			//textAreas
+			final MTTextArea title = new MTTextArea(300, 150, 700, 300, fontTitle, app); 
+			final MTTextArea subtitle1 = new MTTextArea(300, 200, 700, 300, fontSubtitle, app); 
+			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
+			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
+			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
+			final MTTextArea subtitle3 = new MTTextArea(300, 340, 700, 300, fontSubtitle, app); 
+			final MTTextArea content3 = new MTTextArea(300, 360, 700, 300, fontContent, app); 
+			title.setNoStroke(true);
+			title.setNoFill(true);
+			subtitle1.setNoStroke(true);
+			subtitle1.setNoFill(true);
+			subtitle2.setNoStroke(true);
+			subtitle2.setNoFill(true);
+			subtitle3.setNoStroke(true);
+			subtitle3.setNoFill(true);
+			content1.setNoStroke(true);
+			content1.setNoFill(true);
+			content2.setNoStroke(true);
+			content2.setNoFill(true);
+			content3.setNoStroke(true);
+			content3.setNoFill(true);
+			
+			//AddTextToTextAreas
+			title.setText("DESIGN AND VISUAL");
+			subtitle1.setText("DESCRIPTION");
+			subtitle2.setText("COURSES");
+			content1.setText("In these courses, the students will learn how to design for web as well as audio visual design."); 
+			content2.appendText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+			subtitle3.setText("LANGUAGES");
+			content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
+			
+			
+			//addTextAreas
+			this.clearAllGestures(title);
+			this.getCanvas().addChild(title);
+			this.clearAllGestures(subtitle1);
+			this.getCanvas().addChild(subtitle1);
+			this.clearAllGestures(subtitle2);
+			this.getCanvas().addChild(subtitle2);
+			this.clearAllGestures(subtitle3);
+			this.getCanvas().addChild(subtitle3);
+			this.clearAllGestures(content1);
+			this.getCanvas().addChild(content1);
+			this.clearAllGestures(content2);
+			this.getCanvas().addChild(content2);
+			this.clearAllGestures(content3);
+			this.getCanvas().addChild(content3);
 			
 			PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
@@ -423,6 +462,88 @@ public class design extends AbstractScene {
 			getCanvas().addChild(RectangleImage2);
 			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
 			RectangleImage2.setNoStroke(true);
+			
+			//arrowLTapGesture
+			arrowLHolder.registerInputProcessor(new TapProcessor(app));
+			arrowLHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (pageCounter==0){
+								title.setText("3D");
+								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
+								content2.setText("3D Design, Real-Time 3D");
+								content3.setText("Maya Autodesk");
+								pageCounter = -1;
+								arrowLTxt.setText("DESIGN AND VISUAL");
+								arrowRTxt.setText("DESIGN AND VISUAL");
+							}
+							else if (pageCounter == -1)
+							{
+								title.setText("DESIGN AND VISUAL");
+								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
+								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
+								pageCounter = 0;
+								arrowLTxt.setText("3D");
+								arrowRTxt.setText("3D");
+							}
+							
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//arrowRTabGesture
+			arrowRHolder.registerInputProcessor(new TapProcessor(app));
+			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (pageCounter==0){
+								title.setText("3D");
+								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
+								content2.setText("3D Design, Real-Time 3D");
+								content3.setText("Maya Autodesk");
+								pageCounter = -1;
+								arrowLTxt.setText("DESIGN AND VISUAL");
+								arrowRTxt.setText("DESIGN AND VISUAL");
+							}
+							else if (pageCounter == -1)
+							{
+								title.setText("DESIGN AND VISUAL");
+								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
+								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
+								pageCounter = 0;
+								arrowLTxt.setText("3D");
+								arrowRTxt.setText("3D");
+							}
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
