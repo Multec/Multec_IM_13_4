@@ -78,7 +78,7 @@ public class design extends AbstractScene {
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
-			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
+			final IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			
 			//arrows
 			PImage arrowL = mtApplication.loadImage("arrowL.png");
@@ -93,6 +93,32 @@ public class design extends AbstractScene {
 			arrowRHolder.setNoStroke(true);
 			this.getCanvas().addChild(arrowRHolder);
 			clearAllGestures(arrowRHolder);
+			
+			//button arrows
+			arrowRHolder.registerInputProcessor(new TapProcessor(app));
+			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							
+							app.pushScene();
+							System.out.println("printing next text !!!!!!!!!");
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			
+			
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
