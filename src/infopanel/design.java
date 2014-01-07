@@ -59,8 +59,6 @@ public class design extends AbstractScene {
 		private Iscene bussiness;
 		private Iscene design2;
 		private Iscene design;
-		private int positionX = 0;
-		
 		
 		public design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -80,12 +78,81 @@ public class design extends AbstractScene {
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
-			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 17, black, black);
-
+			final IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
+			
+			//arrows
+			PImage arrowL = mtApplication.loadImage("arrowL.png");
+			PImage arrowR = mtApplication.loadImage("arrowR.png");
+			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
+			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
+			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
+			arrowLHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowLHolder);
+			clearAllGestures(arrowLHolder);
+			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
+			arrowRHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowRHolder);
+			clearAllGestures(arrowRHolder);
+			
+			//button arrows
+			arrowRHolder.registerInputProcessor(new TapProcessor(app));
+			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							
+							app.pushScene();
+							System.out.println("printing next text !!!!!!!!!");
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			
+			
+			
+			//downNavigation menu
+			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
+			specBtn.setFillColor(white);
+			specBtn.setNoStroke(true);
+			this.clearAllGestures(specBtn);
+			getCanvas().addChild(specBtn);
+			
+			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
+			specTxt.setFillColor(textAreaColor);
+			specTxt.setStrokeColor(textAreaColor);
+			specTxt.setText("SPECIALIZATIONS");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(specTxt);
+			
+			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
+			facBtn.setFillColor(white);
+			facBtn.setNoStroke(true);
+			this.clearAllGestures(facBtn);
+			getCanvas().addChild(facBtn);
+			
+			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
+			facTxt.setFillColor(textAreaColor);
+			facTxt.setStrokeColor(textAreaColor);
+			facTxt.setText("STUDENT FACILITIES");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(facTxt);
+			
 			//multecLogo
 			PImage multec = mtApplication.loadImage("multec_logo.png");
 			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-100,app.height-30,0));
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.getCanvas().addChild(multecHolder);
 			
 			//Tap gesture
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
@@ -130,10 +197,6 @@ public class design extends AbstractScene {
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
 			//Tap and Hold gesture
-			
-			//Tap gesture for slide naar andere less
-			
-			
 			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
 			secondpage2.setFillColor(textAreaColor);
 			secondpage2.setStrokeColor(textAreaColor);
@@ -301,6 +364,7 @@ public class design extends AbstractScene {
 			tap5.setStrokeColor(textAreaColor);
 			tap5.setText("INTEGRATION");
 			this.clearAllGestures(tap5);
+			this.clearAllGestures(circle5);
 			tap5.registerInputProcessor(new TapProcessor(app));
 			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {					
