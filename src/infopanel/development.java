@@ -525,7 +525,7 @@ public class development extends AbstractScene {
 				public boolean processGestureEvent(MTGestureEvent ge) {					
 					TapEvent te = (TapEvent)ge;
 					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
+					case MTGestureEvent.GESTURE_DETECTED: 
 						break;
 					case MTGestureEvent.GESTURE_UPDATED:
 						break;

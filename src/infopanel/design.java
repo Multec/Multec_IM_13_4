@@ -60,6 +60,8 @@ public class design extends AbstractScene {
 		private Iscene design2;
 		private Iscene design;
 		private int pageCounter = 0;
+		private MTEllipse smallCircle2;
+		private MTEllipse smallCircle3; 
 		
 		public design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -76,6 +78,7 @@ public class design extends AbstractScene {
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			MTColor grey = new MTColor(184,184,184);
+			MTColor whiteTrans = new MTColor(255,255,255, 125);
 			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
@@ -102,15 +105,25 @@ public class design extends AbstractScene {
 			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
 			arrowRTxt.setNoStroke(true);
 			arrowRTxt.setNoFill(true);
-			arrowLTxt.setText("3D");
-			arrowRTxt.setText("3D");
+			arrowLTxt.setText("3D DEVELOPMENT");
+			arrowRTxt.setText("3D DEVELOPMENT");
 			this.getCanvas().addChild(arrowLTxt);
 			this.getCanvas().addChild(arrowRTxt);
 			clearAllGestures(arrowRHolder);
 			this.clearAllGestures(arrowLTxt);
 			this.clearAllGestures(arrowRTxt);
 	
-			
+			//contentCircleViewers
+			smallCircle2 = new MTEllipse (app, new Vector3D((app.width/2 - 8), app.height - 30), 5, 5);
+			smallCircle2.setFillColor(white);
+			smallCircle2.setNoStroke(true);
+			getCanvas().addChild(smallCircle2);
+			this.clearAllGestures(smallCircle2);
+			smallCircle3 = new MTEllipse (app, new Vector3D((app.width/2 + 8), app.height - 30), 5, 5);
+			smallCircle3.setFillColor(whiteTrans);
+			smallCircle3.setNoStroke(true);
+			getCanvas().addChild(smallCircle3);
+			this.clearAllGestures(smallCircle3);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -187,43 +200,6 @@ public class design extends AbstractScene {
 			getCanvas().addChild(tap1);
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
-			
-			//Tap and Hold gesture
-			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
-			secondpage2.setFillColor(textAreaColor);
-			secondpage2.setStrokeColor(textAreaColor);
-			secondpage2.setText("NEXT");
-			this.clearAllGestures(secondpage2);
-			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {
-					TapAndHoldEvent th = (TapAndHoldEvent)ge;
-					switch (th.getId()) {
-					case TapAndHoldEvent.GESTURE_DETECTED:
-						break;
-					case TapAndHoldEvent.GESTURE_UPDATED:
-						break;
-					case TapAndHoldEvent.GESTURE_ENDED:
-						if (th.isHoldComplete()){
-							app.pushScene();
-							if (design2 == null){
-								design2 = new design2(app, "Scene 22");
-								//Add the scene to the mt application
-								app.addScene(design2);
-							}
-							//Do the scene change
-							app.changeScene(design2);
-							break;	
-						}
-					default: break;
-					}
-					return false;
-				}
-			});
-			this.getCanvas().addChild(secondpage2);
-			secondpage2.setAnchor(PositionAnchor.UPPER_LEFT);
-			secondpage2.setPositionGlobal(new Vector3D(500,500,0));
 			
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
@@ -478,13 +454,15 @@ public class design extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (pageCounter==0){
-								title.setText("3D");
+								title.setText("3D DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
 								content2.setText("3D Design, Real-Time 3D");
 								content3.setText("Maya Autodesk");
 								pageCounter = -1;
 								arrowLTxt.setText("DESIGN AND VISUAL");
 								arrowRTxt.setText("DESIGN AND VISUAL");
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
 							}
 							else if (pageCounter == -1)
 							{
@@ -493,8 +471,10 @@ public class design extends AbstractScene {
 								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
 								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
 								pageCounter = 0;
-								arrowLTxt.setText("3D");
-								arrowRTxt.setText("3D");
+								arrowLTxt.setText("3D DEVELOPMENT");
+								arrowRTxt.setText("3D DEVELOPMENT");
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+								smallCircle3.setFillColor(new MTColor(255,255,255,125));
 							}
 							
 							break;
@@ -519,13 +499,15 @@ public class design extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (pageCounter==0){
-								title.setText("3D");
+								title.setText("3D DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
 								content2.setText("3D Design, Real-Time 3D");
 								content3.setText("Maya Autodesk");
 								pageCounter = -1;
 								arrowLTxt.setText("DESIGN AND VISUAL");
 								arrowRTxt.setText("DESIGN AND VISUAL");
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
 							}
 							else if (pageCounter == -1)
 							{
@@ -534,8 +516,10 @@ public class design extends AbstractScene {
 								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
 								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
 								pageCounter = 0;
-								arrowLTxt.setText("3D");
-								arrowRTxt.setText("3D");
+								arrowLTxt.setText("3D DEVELOPMENT");
+								arrowRTxt.setText("3D DEVELOPMENT");
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							break;
 							}

@@ -60,6 +60,8 @@ public class technology extends AbstractScene {
 		private Iscene integration;
 		private Iscene bussiness;
 		private int pageCounter = 0;
+		private MTEllipse smallCircle2;
+		private MTEllipse smallCircle3;
 		
 		public technology(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -76,6 +78,7 @@ public class technology extends AbstractScene {
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			MTColor grey = new MTColor(184,184,184);
+			MTColor whiteTrans = new MTColor(255,255,255, 125);
 			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
@@ -110,7 +113,17 @@ public class technology extends AbstractScene {
 			this.clearAllGestures(arrowLTxt);
 			this.clearAllGestures(arrowRTxt);
 			
-			
+			//contentCircleViewers
+			smallCircle2 = new MTEllipse (app, new Vector3D((app.width/2 - 8), app.height - 30), 5, 5);
+			smallCircle2.setFillColor(white);
+			smallCircle2.setNoStroke(true);
+			getCanvas().addChild(smallCircle2);
+			this.clearAllGestures(smallCircle2);
+			smallCircle3 = new MTEllipse (app, new Vector3D((app.width/2 + 8), app.height - 30), 5, 5);
+			smallCircle3.setFillColor(whiteTrans);
+			smallCircle3.setNoStroke(true);
+			getCanvas().addChild(smallCircle3);
+			this.clearAllGestures(smallCircle3);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -188,42 +201,6 @@ public class technology extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-			//Tap and Hold gesture
-			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
-			secondpage2.setFillColor(textAreaColor);
-			secondpage2.setStrokeColor(textAreaColor);
-			secondpage2.setText("NEXT");
-			this.clearAllGestures(secondpage2);
-			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {
-					TapAndHoldEvent th = (TapAndHoldEvent)ge;
-					switch (th.getId()) {
-					case TapAndHoldEvent.GESTURE_DETECTED:
-						break;
-					case TapAndHoldEvent.GESTURE_UPDATED:
-						break;
-					case TapAndHoldEvent.GESTURE_ENDED:
-						if (th.isHoldComplete()){
-							app.pushScene();
-							if (technology2 == null){
-								technology2 = new technology2(app, "technology2");
-								//Add the scene to the mt application
-								app.addScene(technology2);
-							}
-							//Do the scene change
-							app.changeScene(technology2);
-							break;	
-						}
-					default: break;
-					}
-					return false;
-				}
-			});
-			this.getCanvas().addChild(secondpage2);
-			secondpage2.setAnchor(PositionAnchor.UPPER_LEFT);
-			secondpage2.setPositionGlobal(new Vector3D(500,500,0));
 			
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
@@ -485,16 +462,20 @@ public class technology extends AbstractScene {
 								pageCounter = 1;
 								arrowLTxt.setText("ELECTRONICS");
 								arrowRTxt.setText("ELECTRONICS");
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
 							}
 							else if (pageCounter == 1)
 							{
-								title.setText("DELECTRONICS");
+								title.setText("ELECTRONICS");
 								content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice.  These courses are a large part of the specialisation Art and Technology.");
 								content2.setText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling.");
 								content3.setText("Arduino(Processing)");
 								pageCounter = 0;
 								arrowLTxt.setText("DATA AND MEDIA");
 								arrowRTxt.setText("DATA AND MEDIA");
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							break;
 							}
@@ -525,6 +506,8 @@ public class technology extends AbstractScene {
 								pageCounter = 1;
 								arrowLTxt.setText("ELECTRONICS");
 								arrowRTxt.setText("ELECTRONICS");
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
 							}
 							else if (pageCounter == 1)
 							{
@@ -535,6 +518,8 @@ public class technology extends AbstractScene {
 								pageCounter = 0;
 								arrowLTxt.setText("DATA AND MEDIA");
 								arrowRTxt.setText("DATA AND MEDIA");
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							break;
 							}
