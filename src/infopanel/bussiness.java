@@ -289,6 +289,7 @@ public class bussiness extends AbstractScene {
 			tap5.setStrokeColor(textAreaColor);
 			tap5.setText("INTEGRATION");
 			this.clearAllGestures(tap5);
+			this.clearAllGestures(circle5);
 			tap5.registerInputProcessor(new TapProcessor(app));
 			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {					

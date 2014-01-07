@@ -53,7 +53,6 @@ import processing.core.PImage;
 	
 public class development extends AbstractScene {
 		private MTApplication app;
-		private Iscene design2;
 		private Iscene design;
 		private Iscene technology;
 		private Iscene integration;
@@ -79,7 +78,7 @@ public class development extends AbstractScene {
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
-			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 17, black, black);
+			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -109,16 +108,18 @@ public class development extends AbstractScene {
 			this.getCanvas().addChild(facTxt);
 			
 			//arrows
-			PImage arrowL = mtApplication.loadImage("pijl_links.png");
-			PImage arrowR = mtApplication.loadImage("pijl_rechts.png");
+			PImage arrowL = mtApplication.loadImage("arrowL.png");
+			PImage arrowR = mtApplication.loadImage("arrowR.png");
 			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
 			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
-			arrowLHolder.setPositionGlobal(new Vector3D(10, app.height/2 - 116/2));
+			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
 			arrowLHolder.setNoStroke(true);
 			this.getCanvas().addChild(arrowLHolder);
-			arrowRHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			clearAllGestures(arrowLHolder);
+			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
 			arrowRHolder.setNoStroke(true);
 			this.getCanvas().addChild(arrowRHolder);
+			clearAllGestures(arrowRHolder);
 			
 			//multecLogo
 			PImage multec = mtApplication.loadImage("multec_logo.png");
@@ -336,6 +337,7 @@ public class development extends AbstractScene {
 			tap5.setFillColor(textAreaColor);
 			tap5.setStrokeColor(textAreaColor);
 			tap5.setText("INTEGRATION");
+			this.clearAllGestures(circle5);
 			this.clearAllGestures(tap5);
 			tap5.registerInputProcessor(new TapProcessor(app));
 			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
