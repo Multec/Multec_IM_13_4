@@ -2,14 +2,16 @@ package infopanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
 import java.awt.event.AdjustmentListener;
 import java.awt.event.AdjustmentEvent;
 import java.applet.Applet;
 import java.awt.Label;
+
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
 import org.mt4j.components.TransformSpace;
@@ -67,6 +69,9 @@ public class development extends AbstractScene {
 		private Iscene development2;
 		private Iscene development;
 		private int pageCounter = 0;
+		private MTEllipse smallCircle1;
+		private MTEllipse smallCircle2;
+		private MTEllipse smallCircle3;
 		
 		public development(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -83,12 +88,14 @@ public class development extends AbstractScene {
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			MTColor grey = new MTColor(184,184,184);
-			
+			MTColor whiteTrans = new MTColor(255,255,255, 125);
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
+			
+			
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -153,7 +160,24 @@ public class development extends AbstractScene {
 			multecHolder.setNoStroke(true);
 			this.getCanvas().addChild(multecHolder);
 			
-			//Tap gesture
+			//contentCircleViewers
+			smallCircle1 = new MTEllipse (app, new Vector3D((app.width/2 - 15), app.height - 30), 5, 5);
+			smallCircle1.setFillColor(whiteTrans);
+			smallCircle1.setNoStroke(true);
+			getCanvas().addChild(smallCircle1);
+			this.clearAllGestures(smallCircle1);
+			smallCircle2 = new MTEllipse (app, new Vector3D((app.width/2), app.height - 30), 5, 5);
+			smallCircle2.setFillColor(white);
+			smallCircle2.setNoStroke(true);
+			getCanvas().addChild(smallCircle2);
+			this.clearAllGestures(smallCircle2);
+			smallCircle3 = new MTEllipse (app, new Vector3D((app.width/2 + 15), app.height - 30), 5, 5);
+			smallCircle3.setFillColor(whiteTrans);
+			smallCircle3.setNoStroke(true);
+			getCanvas().addChild(smallCircle3);
+			this.clearAllGestures(smallCircle3);
+			
+			//MENU ITEM DESIGN
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
 			circle.setNoStroke(true);
@@ -195,43 +219,7 @@ public class development extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-			//Tap and Hold gesture
-			final MTTextArea secondpage2 = new MTTextArea(mtApplication, font);
-			secondpage2.setFillColor(textAreaColor);
-			secondpage2.setStrokeColor(textAreaColor);
-			secondpage2.setText("NEXT");
-			this.clearAllGestures(secondpage2);
-			secondpage2.registerInputProcessor(new TapAndHoldProcessor(app, 2000));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new TapAndHoldVisualizer(app, getCanvas()));
-			secondpage2.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {
-					TapAndHoldEvent th = (TapAndHoldEvent)ge;
-					switch (th.getId()) {
-					case TapAndHoldEvent.GESTURE_DETECTED:
-						break;
-					case TapAndHoldEvent.GESTURE_UPDATED:
-						break;
-					case TapAndHoldEvent.GESTURE_ENDED:
-						if (th.isHoldComplete()){
-							app.pushScene();
-							if (development2 == null){
-								development2 = new development2(app, "development 2");
-								//Add the scene to the mt application
-								app.addScene(development2);
-							}
-							//Do the scene change
-							app.changeScene(development2);
-							break;	
-						}
-					default: break;
-					}
-					return false;
-				}
-			});
-			this.getCanvas().addChild(secondpage2);
-			secondpage2.setAnchor(PositionAnchor.UPPER_LEFT);
-			secondpage2.setPositionGlobal(new Vector3D(500,500,0));
-			
+			//MENU ITEM TECHNOLOGY
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
 			circle2.setNoStroke(true);
@@ -273,6 +261,7 @@ public class development extends AbstractScene {
 			tap2.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap2.setPositionGlobal(new Vector3D((mtApplication.width/5)*1,30,0));
 			
+			//MENU ITEM BUSSINESS
 			MTEllipse circle3 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*2 + 35, 50), 30, 30);
 			circle3.setFillColor(kleurbol5);
 			circle3.setNoStroke(true);
@@ -314,6 +303,7 @@ public class development extends AbstractScene {
 			tap3.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap3.setPositionGlobal(new Vector3D((mtApplication.width/5)*2,30,0));
 			
+			//MENU ITEM DEVELOPMENT
 			MTEllipse circle4 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*3 + 35, 50), 30, 30);
 			circle4.setFillColor(kleurbol1);
 			circle4.setNoStroke(true);
@@ -354,6 +344,7 @@ public class development extends AbstractScene {
 			tap4.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap4.setPositionGlobal(new Vector3D((mtApplication.width/5)*3,30,0));
 			
+			//MENU ITEM INTEGRATION
 			MTEllipse circle5 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*4 + 35, 50), 30, 30);
 			circle5.setFillColor(kleurbol4);
 			circle5.setNoStroke(true);
@@ -483,7 +474,6 @@ public class development extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
 							if (pageCounter==0){
 								title.setText("PROGRAMMING");
 								content1.setText("This is programming dude..");
@@ -492,6 +482,9 @@ public class development extends AbstractScene {
 								pageCounter = -1;
 								arrowLTxt.setText("MOBILE DEVELOPMENT");
 								arrowRTxt.setText("WEB DEVELOPMENT");
+								smallCircle1.setFillColor(new MTColor(255,255,255));
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							else if (pageCounter == -1)
 							{
@@ -502,6 +495,9 @@ public class development extends AbstractScene {
 								pageCounter = 1;
 								arrowLTxt.setText("WEB DEVELOPMENT");
 								arrowRTxt.setText("PROGRAMMING");
+								smallCircle1.setFillColor(new MTColor(255,255, 255, 125));
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
 							}
 							else if(pageCounter == 1)
 							{
@@ -512,6 +508,9 @@ public class development extends AbstractScene {
 								pageCounter = 0;
 								arrowLTxt.setText("PROGRAMMING");
 								arrowRTxt.setText("MOBILE DEVELOPMENT");
+								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							break;
 							}
@@ -527,13 +526,11 @@ public class development extends AbstractScene {
 					TapEvent te = (TapEvent)ge;
 					switch (te.getId()) {
 					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
 						break;
 					case MTGestureEvent.GESTURE_UPDATED:
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
 							if (pageCounter==0){
 								title.setText("MOBILE DEVELOPMENT");
 								content1.setText("This is mobile development dude..");
@@ -542,6 +539,9 @@ public class development extends AbstractScene {
 								pageCounter = 1;
 								arrowRTxt.setText("PROGRAMMING");
 								arrowLTxt.setText("WEB DEVELOPMENT");
+								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
 							}
 							else if (pageCounter == -1)
 							{
@@ -552,6 +552,9 @@ public class development extends AbstractScene {
 								pageCounter = 0;
 								arrowRTxt.setText("MOBILE DEVELOPMENT");
 								arrowLTxt.setText("PROGRAMMING");
+								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							else if (pageCounter == 1)
 							{
@@ -562,6 +565,9 @@ public class development extends AbstractScene {
 								pageCounter = -1;			
 								arrowRTxt.setText("WEB DEVELOPMENT");
 								arrowLTxt.setText("MOBILE DEVELOPMENT");
+								smallCircle1.setFillColor(new MTColor(255,255,255));
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							break;
 							}
