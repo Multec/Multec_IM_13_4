@@ -3,6 +3,8 @@ package infopanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JEditorPane;
+
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
 import org.mt4j.components.TransformSpace;
@@ -339,8 +341,8 @@ public class bussiness extends AbstractScene {
 			final MTTextArea title = new MTTextArea(300, 150, 700, 300, fontTitle, app); 
 			final MTTextArea subtitle1 = new MTTextArea(300, 200, 700, 300, fontSubtitle, app); 
 			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
-			final MTTextArea subtitle2 = new MTTextArea(300, 250, 700, 300, fontSubtitle, app); 
-			final MTTextArea content2 = new MTTextArea(300, 270, 700, 300, fontContent, app); 
+			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
+			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
 			final MTTextArea subtitle3 = new MTTextArea(app, fontSubtitle); 
 			final MTTextArea content3 = new MTTextArea(app, fontContent);
 			title.setNoStroke(true);
@@ -362,8 +364,10 @@ public class bussiness extends AbstractScene {
 			title.setText("BUSSINESS COMMUNICATIONS");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
-			content1.setText("Description for this bussiness communication xml dude.");
-			content2.setText("Foreign English, Foreign French, Management, ...");
+			content1.setText("Bussiness & Communication is divided into 2 main topics. The first is 'communication skills' where students will learn how to communicate in different languages on different media. 'Management' is the second main topic. In management, students will learn how to manage your own project properly, and you'll also learn how to start your own business.");
+			content2.appendText("Bussiness & Communication: \nFrench, English, Bussiness communication skills, copyright & mediarights");
+			content2.appendText("\nManagement: \nProject management, Online Marketing");
+			
 			
 			//addTextAreas
 			this.clearAllGestures(title);
@@ -385,7 +389,7 @@ public class bussiness extends AbstractScene {
 			PImage loadedImage = app.loadImage("buscom1.png");
 			MTRectangle loadedrectangle = new MTRectangle(loadedImage, app);
 			getCanvas().addChild(loadedrectangle);
-			loadedrectangle.setPositionGlobal(new Vector3D(1200,300,0));
+			loadedrectangle.setPositionGlobal(new Vector3D(450,500,0));
 			loadedrectangle.setNoStroke(true);
 			this.clearAllGestures(loadedrectangle);
 			

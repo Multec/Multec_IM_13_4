@@ -3,6 +3,13 @@ package infopanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.AdjustmentEvent;
+import java.applet.Applet;
+import java.awt.Label;
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
 import org.mt4j.components.TransformSpace;
@@ -59,6 +66,7 @@ public class development extends AbstractScene {
 		private Iscene bussiness;
 		private Iscene development2;
 		private Iscene development;
+		private int pageCounter = 0;
 		
 		public development(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -74,11 +82,13 @@ public class development extends AbstractScene {
 			MTColor kleurbol3 = new MTColor(65, 135, 206, 125);
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
+			MTColor grey = new MTColor(184,184,184);
 			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
+			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -107,7 +117,7 @@ public class development extends AbstractScene {
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(facTxt);
 			
-			//arrows
+			//arrows+arrowText
 			PImage arrowL = mtApplication.loadImage("arrowL.png");
 			PImage arrowR = mtApplication.loadImage("arrowR.png");
 			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
@@ -120,6 +130,21 @@ public class development extends AbstractScene {
 			arrowRHolder.setNoStroke(true);
 			this.getCanvas().addChild(arrowRHolder);
 			clearAllGestures(arrowRHolder);
+			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
+			arrowLTxt.setNoStroke(true);
+			arrowLTxt.setNoFill(true);
+			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
+			arrowRTxt.setNoStroke(true);
+			arrowRTxt.setNoFill(true);
+			arrowLTxt.setText("PROGRAMMING");
+			arrowRTxt.setText("MOBILE DEVELOPMENT");
+			this.getCanvas().addChild(arrowLTxt);
+			this.getCanvas().addChild(arrowRTxt);
+			clearAllGestures(arrowRHolder);
+			this.clearAllGestures(arrowLTxt);
+			this.clearAllGestures(arrowRTxt);
+			
+			
 			
 			//multecLogo
 			PImage multec = mtApplication.loadImage("multec_logo.png");
@@ -370,22 +395,68 @@ public class development extends AbstractScene {
 			tap5.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap5.setPositionGlobal(new Vector3D((mtApplication.width/5)*4,30,0));
 			
-			//Textarea
-			final MTTextArea tekstinhoud = new MTTextArea(300, 150, 700, 300, inhoudfont, mtApplication); 
-			tekstinhoud.setNoFill(true);
-			tekstinhoud.setNoStroke(true);
-			tekstinhoud.setText("WEB DEVELOPMENT                                                                                                                                             "
-								+"IN THESE COURSES, STUDENTS WILL LEARN HOW TO DEVELOP WEBSITES,                           USING A VARIETY OF SOFTWARE AND LANGUAGES.                                                                                                                        "
-								+ "LANGUAGES:                                                                      HTML, CSS, JQUERY, JSON, XML, AJAX, PHP.                                                                                                                         "
-								+ "SOFTWARE:                                                                    "
-								+ "   DREAMWEAVER, NETBEANS AND XAMMP.                                                                                                                            "
-								+ "COURSES:                                                                    "
-								+ "    STATIC WEB DEVELOPMENT, DYNAMIC WEB DEVELOPMENT, ADVANCED WEB DEVELOPMENT,                  WINDOWS APP DEVELOPMENT, INNOVATION IN APP AND WEB                                                                                                            "
-								+ "TEACHERS:                                                                    "
-								+ "   DIRLY DE SCHRIJVER, JAN KLAAS VANDERMEERSCHE                                                                                                        "
-					);
-			this.clearAllGestures(tekstinhoud);
-			this.getCanvas().addChild(tekstinhoud);
+			//initFonts
+			IFont fontTitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
+					30, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			IFont fontSubtitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
+					20, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTf", 
+					12, 	//Font size
+					new MTColor(0,0,0),  //Font fill color
+					new MTColor(0,0,0));	//Font outline color
+			
+			//textAreas
+			final MTTextArea title = new MTTextArea(300, 150, 700, 300, fontTitle, app); 
+			final MTTextArea subtitle1 = new MTTextArea(300, 200, 700, 300, fontSubtitle, app); 
+			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
+			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
+			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
+			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
+			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
+			title.setNoStroke(true);
+			title.setNoFill(true);
+			subtitle1.setNoStroke(true);
+			subtitle1.setNoFill(true);
+			subtitle2.setNoStroke(true);
+			subtitle2.setNoFill(true);
+			subtitle3.setNoStroke(true);
+			subtitle3.setNoFill(true);
+			content1.setNoStroke(true);
+			content1.setNoFill(true);
+			content2.setNoStroke(true);
+			content2.setNoFill(true);
+			content3.setNoStroke(true);
+			content3.setNoFill(true);
+			
+			//AddTextToTextAreas
+			title.setText("WEB DEVELOPMENT");
+			subtitle1.setText("DESCRIPTION");
+			subtitle2.setText("COURSES");
+			content1.setText("Web development dummy text writing down here just something."); 
+			content2.appendText("Static web, Dynamic web, Advanced web");
+			subtitle3.setText("LANGUAGES");
+			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+			
+			
+			//addTextAreas
+			this.clearAllGestures(title);
+			this.getCanvas().addChild(title);
+			this.clearAllGestures(subtitle1);
+			this.getCanvas().addChild(subtitle1);
+			this.clearAllGestures(subtitle2);
+			this.getCanvas().addChild(subtitle2);
+			this.clearAllGestures(subtitle3);
+			this.getCanvas().addChild(subtitle3);
+			this.clearAllGestures(content1);
+			this.getCanvas().addChild(content1);
+			this.clearAllGestures(content2);
+			this.getCanvas().addChild(content2);
+			this.clearAllGestures(content3);
+			this.getCanvas().addChild(content3);
 			
 			PImage Image1 = app.loadImage("webdev1.png");
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
@@ -399,6 +470,106 @@ public class development extends AbstractScene {
 			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
 			RectangleImage2.setNoStroke(true);
 			
+			//arrowLTapGesture
+			arrowLHolder.registerInputProcessor(new TapProcessor(app));
+			arrowLHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (pageCounter==0){
+								title.setText("PROGRAMMING");
+								content1.setText("This is programming dude..");
+								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
+								content3.setText("Java");
+								pageCounter = -1;
+								arrowLTxt.setText("MOBILE DEVELOPMENT");
+								arrowRTxt.setText("WEB DEVELOPMENT");
+							}
+							else if (pageCounter == -1)
+							{
+								title.setText("MOBILE DEVELOPMENT");
+								content1.setText("This is mobile development dude..");
+								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
+								content3.setText("Objective C");
+								pageCounter = 1;
+								arrowLTxt.setText("WEB DEVELOPMENT");
+								arrowRTxt.setText("PROGRAMMING");
+							}
+							else if(pageCounter == 1)
+							{
+								title.setText("WEB DEVELOPMENT");
+								content1.setText("Web development dummy text writing down here just something."); 
+								content2.appendText("Static web, Dynamic web, Advanced web");
+								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+								pageCounter = 0;
+								arrowLTxt.setText("PROGRAMMING");
+								arrowRTxt.setText("MOBILE DEVELOPMENT");
+							}
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//arrowRTabGesture
+			arrowRHolder.registerInputProcessor(new TapProcessor(app));
+			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (pageCounter==0){
+								title.setText("MOBILE DEVELOPMENT");
+								content1.setText("This is mobile development dude..");
+								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
+								content3.setText("Objective C");
+								pageCounter = 1;
+								arrowRTxt.setText("PROGRAMMING");
+								arrowLTxt.setText("WEB DEVELOPMENT");
+							}
+							else if (pageCounter == -1)
+							{
+								title.setText("WEB DEVELOPMENT");
+								content1.setText("Web development dummy text writing down here just something."); 
+								content2.appendText("Static web, Dynamic web, Advanced web");
+								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+								pageCounter = 0;
+								arrowRTxt.setText("MOBILE DEVELOPMENT");
+								arrowLTxt.setText("PROGRAMMING");
+							}
+							else if (pageCounter == 1)
+							{
+								title.setText("PROGRAMMING");
+								content1.setText("This is programming dude..");
+								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
+								content3.setText("Java");
+								pageCounter = -1;			
+								arrowRTxt.setText("WEB DEVELOPMENT");
+								arrowLTxt.setText("MOBILE DEVELOPMENT");
+							}
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
 				this.setTransition(new FadeTransition(app, 700)); 
