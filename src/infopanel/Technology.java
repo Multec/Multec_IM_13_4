@@ -563,6 +563,7 @@ public class Technology extends AbstractScene {
 								arrowRTxt.setText("ELECTRONICS");
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255));
+								docent1.setText("Bert Van Rillaer");
 							}
 							else if (pageCounter == 1)
 							{
@@ -581,6 +582,10 @@ public class Technology extends AbstractScene {
 					default: break;
 				}
 					return false;			
+			}
+			private void clearAllGestures(MTRectangle comp) {
+				comp.unregisterAllInputProcessors();
+				comp.removeAllGestureEventListeners();	
 			}
 			});
 			//arrowRTabGesture

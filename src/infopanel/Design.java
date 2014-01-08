@@ -563,7 +563,7 @@ public class Design extends AbstractScene {
 			this.clearAllGestures(RectangleImage4);
 			
 			PImage Voorbeeld3 = app.loadImage("monomini.jpg"); 
-			MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
+			final MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
 			getCanvas().addChild(RectangleImage5);
 			RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
 			RectangleImage5.setNoStroke(true);
@@ -608,6 +608,107 @@ public class Design extends AbstractScene {
 								RectangleImage1.setNoStroke(true);
 								getCanvas().removeChild(RectangleImage2);
 								docent2.setText("");
+								
+								PImage Voorbeeld1 = app.loadImage("3D1mini.jpg"); 
+								MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
+								getCanvas().addChild(RectangleImage3);
+								RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
+								RectangleImage3.setNoStroke(true);	
+								this.clearAllGestures(RectangleImage3);
+								RectangleImage3.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isDoubleTap()){
+											MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);
+											PImage Voorbeeld11 = app.loadImage("3D1.jpg"); 
+											MTRectangle RectangleImage33 = new MTRectangle(Voorbeeld11, app);
+											this.clearAllGestures(transparantkader);
+											this.clearAllGestures(RectangleImage33);
+											getCanvas().addChild(RectangleImage33);
+											RectangleImage33.setPositionGlobal(new Vector3D(950,500,0));
+										}
+										return false;
+									}
+
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+										
+									}
+								});
+								getCanvas().addChild(RectangleImage3);
+								RectangleImage3.setAnchor(PositionAnchor.UPPER_LEFT);
+								
+								PImage Voorbeeld2 = app.loadImage("3D2mini.jpg"); 
+								MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
+								getCanvas().addChild(RectangleImage4);
+								RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
+								RectangleImage4.setNoStroke(true);	
+								this.clearAllGestures(RectangleImage4);
+								RectangleImage4.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage4.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isDoubleTap()){
+											MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);
+											PImage Voorbeeld11 = app.loadImage("3D2.jpg"); 
+											MTRectangle RectangleImage33 = new MTRectangle(Voorbeeld11, app);
+											this.clearAllGestures(transparantkader);
+											this.clearAllGestures(RectangleImage33);
+											getCanvas().addChild(RectangleImage33);
+											RectangleImage33.setPositionGlobal(new Vector3D(950,500,0));
+										}
+										return false;
+									}
+
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+										
+									}
+								});
+								getCanvas().addChild(RectangleImage4);
+								RectangleImage4.setAnchor(PositionAnchor.UPPER_LEFT);
+								
+								PImage Voorbeeld3 = app.loadImage("3D3mini.jpg"); 
+								MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
+								getCanvas().addChild(RectangleImage5);
+								RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
+								RectangleImage5.setNoStroke(true);	
+								this.clearAllGestures(RectangleImage5);
+								RectangleImage5.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isDoubleTap()){
+											MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);
+											PImage Voorbeeld11 = app.loadImage("3D3.jpg"); 
+											MTRectangle RectangleImage33 = new MTRectangle(Voorbeeld11, app);
+											this.clearAllGestures(transparantkader);
+											this.clearAllGestures(RectangleImage33);
+											getCanvas().addChild(RectangleImage33);
+											RectangleImage33.setPositionGlobal(new Vector3D(950,500,0));
+											
+										}
+										return false;
+										//getCanvas().removeChild(RectangleImage4);
+									}
+
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+										
+									}
+								});
+								getCanvas().addChild(RectangleImage5);
+								RectangleImage5.setAnchor(PositionAnchor.UPPER_LEFT);
 							}
 							else if (pageCounter == -1)
 							{
@@ -619,7 +720,6 @@ public class Design extends AbstractScene {
 								arrowLTxt.setText("3D DEVELOPMENT");
 								arrowRTxt.setText("3D DEVELOPMENT");
 								smallCircle2.setFillColor(new MTColor(255,255,255));
-
 								smallCircle3.setFillColor(new MTColor(255,255,255,125));
 								docent1.setText("Filip Vandeputte");
 								docent2.setText("Stefan Tilburgs");
@@ -629,7 +729,7 @@ public class Design extends AbstractScene {
 								getCanvas().addChild(RectangleImage1);
 								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 								RectangleImage1.setNoStroke(true);
-								
+														
 								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 								getCanvas().addChild(RectangleImage2);

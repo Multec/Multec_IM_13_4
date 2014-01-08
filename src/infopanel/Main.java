@@ -12,7 +12,7 @@ public class Main extends MTApplication {
 	@Override
 	public void startUp() {
 
-		addScene(new Design(this, "bussiness"));
+		addScene(new Screensaver(this, "screensaver"));
 		}
 
 }
