@@ -168,13 +168,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Screensaver == null){
 								Screensaver = new Screensaver(app, "Screensaver");
 								//Add the scene to the mt application
 								app.addScene(Screensaver);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(Screensaver);
 							break;
 							}
@@ -197,13 +198,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Specialization == null){
 								Specialization = new Specialization(app, "specialization_page");
 								//Add the scene to the mt application
 								app.addScene(Specialization);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(Specialization);
 							break;
 							}
@@ -224,13 +226,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Facilities == null){
 								Facilities = new Facilities(app, "facilities_page");
 								//Add the scene to the mt application
 								app.addScene(Facilities);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(Facilities);
 							break;
 							}
@@ -268,13 +271,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (design == null){
 								design = new Design(app, "design");
 								//Add the scene to the mt application
 								app.addScene(design);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(design);
 							break;
 							}
@@ -308,13 +312,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (technology == null){
 								technology = new Technology(app, "technology");
 								//Add the scene to the mt application
 								app.addScene(technology);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(technology);
 							break;
 							}
@@ -349,13 +354,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (bussiness == null){
 								bussiness = new Bussiness(app, "bussiness");
 								//Add the scene to the mt application
 								app.addScene(bussiness);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(bussiness);
 							break;
 							}
@@ -390,13 +396,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (development == null){
 								development = new Development(app, "development");
 								//Add the scene to the mt application
 								app.addScene(development);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(development);
 							break;
 							}
@@ -431,13 +438,14 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (integration == null){
 								integration = new Integration(app, "integration");
 								//Add the scene to the mt application
 								app.addScene(integration);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(design);
 							app.changeScene(integration);
 							break;
 							}
@@ -588,7 +596,7 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (pageCounter==0){
 								title.setText("3D DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
@@ -666,7 +674,7 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (pageCounter==0){
 								title.setText("3D DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");

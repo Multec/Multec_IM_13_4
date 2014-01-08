@@ -127,7 +127,7 @@ public class Hoofdmenu extends AbstractScene {
 				case MTGestureEvent.GESTURE_ENDED:
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
-						mtApp.pushScene();
+						mtApp.popScene();
 						if (design == null){
 							design = new Design(mtApp, "design");
 							mtApp.addScene(design);
@@ -155,7 +155,7 @@ public class Hoofdmenu extends AbstractScene {
 				case MTGestureEvent.GESTURE_ENDED:
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
-						mtApp.pushScene();
+						mtApp.popScene();
 						if (technology == null){
 							technology = new Technology(mtApp, "technology");
 							mtApp.addScene(technology);
@@ -183,7 +183,7 @@ public class Hoofdmenu extends AbstractScene {
 				case MTGestureEvent.GESTURE_ENDED:
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
-						mtApp.pushScene();
+						mtApp.popScene();
 						if (bussiness == null){
 							bussiness = new Bussiness(mtApp, "bussiness");
 							mtApp.addScene(bussiness);
@@ -211,7 +211,7 @@ public class Hoofdmenu extends AbstractScene {
 				case MTGestureEvent.GESTURE_ENDED:
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
-						mtApp.pushScene();
+						mtApp.popScene();
 						if (development == null){
 							development = new Development(mtApp, "development");
 							mtApp.addScene(development);
@@ -239,7 +239,7 @@ public class Hoofdmenu extends AbstractScene {
 				case MTGestureEvent.GESTURE_ENDED:
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
-						mtApp.pushScene();
+						mtApp.popScene();
 						if (integration == null){
 							integration = new Integration(mtApp, "integration");
 							mtApp.addScene(integration);
@@ -272,7 +272,7 @@ public class Hoofdmenu extends AbstractScene {
 					break;
 				case MTGestureEvent.GESTURE_ENDED:
 					if (te.isTapped()){
-						mtApp.pushScene();
+						mtApp.popScene();
 						if (Screensaver == null){
 							Screensaver = new Screensaver(mtApp, "Screensaver");
 							//Add the scene to the mt application
