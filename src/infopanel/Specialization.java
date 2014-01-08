@@ -208,8 +208,8 @@ public class Specialization extends AbstractScene {
 								app.addScene(Bussiness);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Bussiness);
+							app.destroySceneAfterTransition(Specialization);
 							break;
 							}
 					default: break;
@@ -343,11 +343,11 @@ public class Specialization extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("SPECIALISATIONS");
+			title.setText("SPECIALIZATIONS");
 			subtitle1.setText("APP AND WEB");
 			subtitle2.setText("ART AND TECHNOLOGY");
-			content1.setText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. \n Mobile App and Web students will learn how to develope multimedial applications for a variety of mobile devices. \n Not only iOS and Android Development and its design will be central in this specialisation, also argumented reality and serious gaming technology will be the topic.");
-			content2.appendText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. Art and Technology students will focus on integration of multimedial technology in a fysical environment. \n Multec will teach them how to program and use different kinds of electronics and devices so they can make full working multimedial installations.");
+			content1.setText("Our students will have the ability to choose between 2 unique SPECIALIZATIONS in their second year at Erasmushogeschool Brussel. \n Mobile App and Web students will learn how to develope multimedial applications for a variety of mobile devices. \n Not only iOS and Android Development and its design will be central in this specialisation, also argumented reality and serious gaming technology will be the topic.");
+			content2.appendText("Our students will have the ability to choose between 2 unique SPECIALIZATIONS in their second year at Erasmushogeschool Brussel. Art and Technology students will focus on integration of multimedial technology in a fysical environment. \n Multec will teach them how to program and use different kinds of electronics and devices so they can make full working multimedial installations.");
 		//	content2.appendText("\nManagement: \nProject management, Online Marketing");
 			
 			

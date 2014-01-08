@@ -145,7 +145,7 @@ public class Development extends AbstractScene {
 			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
 			specTxt.setFillColor(textAreaColor);
 			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALISATIONS");
+			specTxt.setText("SPECIALIZATIONS");
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(specTxt);
 			
@@ -308,6 +308,13 @@ public class Development extends AbstractScene {
 			clearAllGestures(arrowRHolder);
 			this.clearAllGestures(arrowLTxt);
 			this.clearAllGestures(arrowRTxt);
+			
+			//pageCircle
+			MTEllipse pCircle = new MTEllipse(app, new Vector3D(330, 167), 30, 30);
+			pCircle.setFillColor(kleurbol1);
+			pCircle.setNoStroke(true);
+			this.clearAllGestures(pCircle);
+			getCanvas().addChild(pCircle);
 			
 			//contentCircleViewers
 			smallCircle1 = new MTEllipse (app, new Vector3D((app.width/2 - 15), app.height - 30), 5, 5);

@@ -134,7 +134,7 @@ public class Bussiness extends AbstractScene {
 			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
 			specTxt.setFillColor(textAreaColor);
 			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALISATIONS");
+			specTxt.setText("SPECIALIZATIONS");
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(specTxt);
 			
@@ -178,8 +178,8 @@ public class Bussiness extends AbstractScene {
 								app.addScene(Specialization);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Bussiness);
 							app.changeScene(Specialization);
+							app.destroySceneAfterTransition(Bussiness);
 							break;
 							}
 					default: break;
