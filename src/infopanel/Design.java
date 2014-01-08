@@ -94,11 +94,7 @@ public class Design extends AbstractScene {
 			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
 			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
 			arrowLHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowLHolder);
-			clearAllGestures(arrowLHolder);
-			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
-			arrowRHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowRHolder);
+			
 			clearAllGestures(arrowRHolder);
 			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
 			arrowLTxt.setNoStroke(true);
@@ -449,9 +445,9 @@ public class Design extends AbstractScene {
 			final MTTextArea subtitle3 = new MTTextArea(300, 340, 700, 300, fontSubtitle, app); 
 			final MTTextArea content3 = new MTTextArea(300, 360, 700, 300, fontContent, app); 
 
-			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
-			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
-			final MTTextArea docent2 = new MTTextArea(1450, 380, 700 ,300, fontContent, app);
+			final MTTextArea title2 = new MTTextArea(1050, 150, 700, 300, fontSubtitle, app);
+			final MTTextArea docent1 = new MTTextArea(1050, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1350, 380, 700 ,300, fontContent, app);
 			
 			title2.setNoStroke(true);
 			title2.setNoFill(true);
@@ -519,8 +515,6 @@ public class Design extends AbstractScene {
 			final MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 			getCanvas().addChild(RectangleImage2);
 
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,290,0));
-
 			RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 
 			RectangleImage2.setNoStroke(true);
@@ -542,6 +536,12 @@ public class Design extends AbstractScene {
 			getCanvas().addChild(RectangleImage5);
 			RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
 			RectangleImage5.setNoStroke(true);	
+			
+			this.getCanvas().addChild(arrowLHolder);
+			clearAllGestures(arrowLHolder);
+			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
+			arrowRHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowRHolder);
 
 			//arrowLTapGesture
 			arrowLHolder.registerInputProcessor(new TapProcessor(app));
@@ -571,7 +571,7 @@ public class Design extends AbstractScene {
 								PImage Image1 = app.loadImage("3d1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1250,290,0));
+								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 								RectangleImage1.setNoStroke(true);
 								getCanvas().removeChild(RectangleImage2);
 								docent2.setText("");
@@ -593,16 +593,15 @@ public class Design extends AbstractScene {
 								PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1250,290,0));
+								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 								RectangleImage1.setNoStroke(true);
 								
 								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 								getCanvas().addChild(RectangleImage2);
-								RectangleImage2.setPositionGlobal(new Vector3D(1600,290,0));
+								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 								RectangleImage2.setNoStroke(true);
 								
-
 								smallCircle3.setFillColor(new MTColor(255,255,255,125));	
 
 							}
