@@ -55,7 +55,6 @@ import processing.core.PImage;
 	
 public class Bussiness extends AbstractScene {
 		private MTApplication app;
-<<<<<<< HEAD:src/infopanel/bussiness.java
 		private Iscene development;
 		private Iscene design;
 		private Iscene technology;
@@ -63,7 +62,7 @@ public class Bussiness extends AbstractScene {
 		private Iscene bussiness;	
 		private Iscene bussiness2;
 		
-=======
+
 		private Iscene Development;
 		private Iscene Design;
 		private Iscene Technology;
@@ -71,7 +70,6 @@ public class Bussiness extends AbstractScene {
 		private Iscene Bussiness;	
 		private Iscene Specialization;
 		private Iscene Facilities;
->>>>>>> daca8b00c7a80990e5dbd717bd4457498e9ed353:src/infopanel/Bussiness.java
 		
 		public Bussiness(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -138,12 +136,9 @@ public class Bussiness extends AbstractScene {
 			pCircle.setNoStroke(true);
 			this.clearAllGestures(pCircle);
 			getCanvas().addChild(pCircle);
-<<<<<<< HEAD:src/infopanel/bussiness.java
 			
 			//MENU ITEMS W GESTURES
-=======
 			//MENU ITEMS Design
->>>>>>> daca8b00c7a80990e5dbd717bd4457498e9ed353:src/infopanel/Bussiness.java
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
 			circle.setNoStroke(true);
@@ -185,11 +180,7 @@ public class Bussiness extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-<<<<<<< HEAD:src/infopanel/bussiness.java
-		
-=======
 			//MENU ITEM Technology
->>>>>>> daca8b00c7a80990e5dbd717bd4457498e9ed353:src/infopanel/Bussiness.java
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
 			circle2.setNoStroke(true);

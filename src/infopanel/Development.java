@@ -66,15 +66,12 @@ public class Development extends AbstractScene {
 		private Iscene Technology;
 		private Iscene Integration;
 		private Iscene bussiness;
-<<<<<<< HEAD:src/infopanel/development.java
 		private Iscene development2;
 		private Iscene development;
 		private Iscene facilities;
-=======
 		private Iscene Development;
 		private Iscene Specialization;
 		private Iscene Facilities;
->>>>>>> daca8b00c7a80990e5dbd717bd4457498e9ed353:src/infopanel/Development.java
 		private int pageCounter = 0;
 		private MTEllipse smallCircle1;
 		private MTEllipse smallCircle2;
@@ -147,7 +144,7 @@ public class Development extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (facilities == null){
-								facilities = new facilities(app, "facilities");
+								facilities = new Facilities(app, "facilities");
 								//Add the scene to the mt application
 								app.addScene(facilities);
 							}
@@ -175,13 +172,13 @@ public class Development extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (facilities == null){
-								bussiness = new bussiness(app, "facilities");
+							if (Specialization == null){
+								Specialization = new Specialization(app, "Specialization");
 								//Add the scene to the mt application
-								app.addScene(facilities);
+								app.addScene(Specialization);
 							}
 							//Do the scene change
-							app.changeScene(facilities);
+							app.changeScene(Specialization);
 							break;
 							}
 					default: break;
