@@ -51,24 +51,24 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class technology extends AbstractScene {
+public class Technology extends AbstractScene {
 		private MTApplication app;
-		private Iscene development;
-		private Iscene design;
-		private Iscene technology;
-		private Iscene integration;
-		private Iscene bussiness;
+		private Iscene Development;
+		private Iscene Design;
+		private Iscene Technology;
+		private Iscene Integration;
+		private Iscene Bussiness;
 		private Iscene Specialization;
 		private Iscene Facilities;
 		private int pageCounter = 0;
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3;
 		
-		public technology(final MTApplication mtApplication, String name) {
+		public Technology(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("technology.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("Technology.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -221,7 +221,7 @@ public class technology extends AbstractScene {
 			pCircle.setNoStroke(true);
 			this.clearAllGestures(pCircle);
 			getCanvas().addChild(pCircle);
-			//MENU ITEM DESIGN
+			//MENU ITEM Design
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
 			circle.setNoStroke(true);
@@ -245,13 +245,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (design == null){
-								design = new design(app, "design2");
+							if (Design == null){
+								Design = new Design(app, "Design2");
 								//Add the scene to the mt application
-								app.addScene(design);
+								app.addScene(Design);
 							}
 							//Do the scene change
-							app.changeScene(design);
+							app.changeScene(Design);
 							break;
 							}
 					default: break;
@@ -286,13 +286,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (technology == null){
-								technology = new technology(app, "technology");
+							if (Technology == null){
+								Technology = new Technology(app, "Technology");
 								//Add the scene to the mt application
-								app.addScene(technology);
+								app.addScene(Technology);
 							}
 							//Do the scene change
-							app.changeScene(technology);
+							app.changeScene(Technology);
 							break;
 							}
 					default: break;
@@ -327,13 +327,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (bussiness == null){
-								bussiness = new bussiness(app, "bussiness");
+							if (Bussiness == null){
+								Bussiness = new Bussiness(app, "Bussiness");
 								//Add the scene to the mt application
-								app.addScene(bussiness);
+								app.addScene(Bussiness);
 							}
 							//Do the scene change
-							app.changeScene(bussiness);
+							app.changeScene(Bussiness);
 							break;
 							}
 					default: break;
@@ -368,13 +368,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (development == null){
-								development = new development(app, "development");
+							if (Development == null){
+								Development = new Development(app, "Development");
 								//Add the scene to the mt application
-								app.addScene(development);
+								app.addScene(Development);
 							}
 							//Do the scene change
-							app.changeScene(development);
+							app.changeScene(Development);
 							break;
 							}
 					default: break;
@@ -409,13 +409,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (integration == null){
-								integration = new integration(app, "integration");
+							if (Integration == null){
+								Integration = new Integration(app, "Integration");
 								//Add the scene to the mt application
-								app.addScene(integration);
+								app.addScene(Integration);
 							}
 							//Do the scene change
-							app.changeScene(integration);
+							app.changeScene(Integration);
 							break;
 							}
 					default: break;
@@ -499,13 +499,13 @@ public class technology extends AbstractScene {
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
 			
-			PImage Image1 = app.loadImage("technology3.png"); 
+			PImage Image1 = app.loadImage("Technology3.png"); 
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 			getCanvas().addChild(RectangleImage1);
 			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
 			RectangleImage1.setNoStroke(true);
 			
-			PImage Image2 = app.loadImage("technology2.png"); 
+			PImage Image2 = app.loadImage("Technology2.png"); 
 			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 			getCanvas().addChild(RectangleImage2);
 			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
@@ -582,7 +582,7 @@ public class technology extends AbstractScene {
 							}
 							else if (pageCounter == 1)
 							{
-								title.setText("DELECTRONICS");
+								title.setText("ELECTRONICS");
 								content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice.  These courses are a large part of the specialisation Art and Technology.");
 								content2.setText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling.");
 								content3.setText("Arduino(Processing)");

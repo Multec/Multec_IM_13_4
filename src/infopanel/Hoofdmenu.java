@@ -134,7 +134,7 @@ public class Hoofdmenu extends AbstractScene {
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
 						if (design == null){
-							design = new design(mtApp, "design");
+							design = new Design(mtApp, "design");
 							mtApp.addScene(design);
 						}
 						//Do the scene change
@@ -162,7 +162,7 @@ public class Hoofdmenu extends AbstractScene {
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
 						if (technology == null){
-							technology = new technology(mtApp, "technology");
+							technology = new Technology(mtApp, "technology");
 							mtApp.addScene(technology);
 						}
 						//Do the scene change
@@ -190,7 +190,7 @@ public class Hoofdmenu extends AbstractScene {
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
 						if (bussiness == null){
-							bussiness = new bussiness(mtApp, "bussiness");
+							bussiness = new Bussiness(mtApp, "bussiness");
 							mtApp.addScene(bussiness);
 						}
 						//Do the scene change
@@ -218,7 +218,7 @@ public class Hoofdmenu extends AbstractScene {
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
 						if (development == null){
-							development = new development(mtApp, "development");
+							development = new Development(mtApp, "development");
 							mtApp.addScene(development);
 						}
 						//Do the scene change
@@ -246,7 +246,7 @@ public class Hoofdmenu extends AbstractScene {
 						//Save the current scene on the scene stack before changing
 						mtApp.pushScene();
 						if (integration == null){
-							integration = new integration(mtApp, "integration");
+							integration = new Integration(mtApp, "integration");
 							mtApp.addScene(integration);
 						}
 						//Do the scene change
