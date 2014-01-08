@@ -51,7 +51,7 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class design extends AbstractScene {
+public class Design extends AbstractScene {
 		private MTApplication app;
 		private Iscene development;
 		private Iscene technology;
@@ -64,7 +64,7 @@ public class design extends AbstractScene {
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3; 
 		
-		public design(final MTApplication mtApplication, String name) {
+		public Design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
@@ -246,7 +246,7 @@ public class design extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (design == null){
-								design = new design(app, "design");
+								design = new Design(app, "design");
 								//Add the scene to the mt application
 								app.addScene(design);
 							}
@@ -286,7 +286,7 @@ public class design extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (technology == null){
-								technology = new technology(app, "technology");
+								technology = new Technology(app, "technology");
 								//Add the scene to the mt application
 								app.addScene(technology);
 							}
@@ -327,7 +327,7 @@ public class design extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (bussiness == null){
-								bussiness = new bussiness(app, "bussiness");
+								bussiness = new Bussiness(app, "bussiness");
 								//Add the scene to the mt application
 								app.addScene(bussiness);
 							}
@@ -368,7 +368,7 @@ public class design extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (development == null){
-								development = new development(app, "development");
+								development = new Development(app, "development");
 								//Add the scene to the mt application
 								app.addScene(development);
 							}
@@ -409,7 +409,7 @@ public class design extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (integration == null){
-								integration = new integration(app, "integration");
+								integration = new Integration(app, "integration");
 								//Add the scene to the mt application
 								app.addScene(integration);
 							}

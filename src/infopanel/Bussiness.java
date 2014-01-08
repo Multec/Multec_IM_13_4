@@ -3,6 +3,8 @@ package infopanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JEditorPane;
+
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
 import org.mt4j.components.TransformSpace;
@@ -51,24 +53,21 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class technology extends AbstractScene {
+public class Bussiness extends AbstractScene {
 		private MTApplication app;
-		private Iscene development;
-		private Iscene design;
-		private Iscene technology;
-		private Iscene integration;
-		private Iscene bussiness;
+		private Iscene Development;
+		private Iscene Design;
+		private Iscene Technology;
+		private Iscene Integration;
+		private Iscene Bussiness;	
 		private Iscene Specialization;
 		private Iscene Facilities;
-		private int pageCounter = 0;
-		private MTEllipse smallCircle2;
-		private MTEllipse smallCircle3;
 		
-		public technology(final MTApplication mtApplication, String name) {
+		public Bussiness(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("technology.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("buscom.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -79,52 +78,16 @@ public class technology extends AbstractScene {
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			MTColor grey = new MTColor(184,184,184);
-			MTColor whiteTrans = new MTColor(255,255,255, 125);
-			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
-			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
-			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
-			//arrows+arrowText
-			PImage arrowL = mtApplication.loadImage("arrowL.png");
-			PImage arrowR = mtApplication.loadImage("arrowR.png");
-			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
-			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
-			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
-			arrowLHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowLHolder);
-			clearAllGestures(arrowLHolder);
-			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
-			arrowRHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowRHolder);
-			clearAllGestures(arrowRHolder);
-			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
-			arrowLTxt.setNoStroke(true);
-			arrowLTxt.setNoFill(true);
-			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
-			arrowRTxt.setNoStroke(true);
-			arrowRTxt.setNoFill(true);
-			arrowLTxt.setText("DATA AND MEDIA");
-			arrowRTxt.setText("DATA AND MEDIA");
-			this.getCanvas().addChild(arrowLTxt);
-			this.getCanvas().addChild(arrowRTxt);
-			clearAllGestures(arrowRHolder);
-			this.clearAllGestures(arrowLTxt);
-			this.clearAllGestures(arrowRTxt);
-			
-			//contentCircleViewers
-			smallCircle2 = new MTEllipse (app, new Vector3D((app.width/2 - 8), app.height - 30), 5, 5);
-			smallCircle2.setFillColor(white);
-			smallCircle2.setNoStroke(true);
-			getCanvas().addChild(smallCircle2);
-			this.clearAllGestures(smallCircle2);
-			smallCircle3 = new MTEllipse (app, new Vector3D((app.width/2 + 8), app.height - 30), 5, 5);
-			smallCircle3.setFillColor(whiteTrans);
-			smallCircle3.setNoStroke(true);
-			getCanvas().addChild(smallCircle3);
-			this.clearAllGestures(smallCircle3);
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.getCanvas().addChild(multecHolder);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -153,13 +116,6 @@ public class technology extends AbstractScene {
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(facTxt);
 			
-			//multecLogo
-			PImage multec = mtApplication.loadImage("multec_logo.png");
-			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
-			multecHolder.setNoStroke(true);
-			this.getCanvas().addChild(multecHolder);
-
 			//SUB MENU ITEM BUTTONS
 			//specialization page
 			specTxt.registerInputProcessor(new TapProcessor(app));
@@ -217,11 +173,11 @@ public class technology extends AbstractScene {
 			});
 			//pageCircle
 			MTEllipse pCircle = new MTEllipse(app, new Vector3D(330, 167), 30, 30);
-			pCircle.setFillColor(kleurbol3);
+			pCircle.setFillColor(kleurbol5);
 			pCircle.setNoStroke(true);
 			this.clearAllGestures(pCircle);
 			getCanvas().addChild(pCircle);
-			//MENU ITEM DESIGN
+			//MENU ITEMS Design
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
 			circle.setNoStroke(true);
@@ -245,13 +201,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (design == null){
-								design = new design(app, "design2");
+							if (Design == null){
+								Design = new Design(app, "Design2");
 								//Add the scene to the mt application
-								app.addScene(design);
+								app.addScene(Design);
 							}
 							//Do the scene change
-							app.changeScene(design);
+							app.changeScene(Design);
 							break;
 							}
 					default: break;
@@ -263,7 +219,7 @@ public class technology extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-			
+			//MENU ITEM Technology
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
 			circle2.setNoStroke(true);
@@ -286,13 +242,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (technology == null){
-								technology = new technology(app, "technology");
+							if (Technology == null){
+								Technology = new Technology(app, "Technology");
 								//Add the scene to the mt application
-								app.addScene(technology);
+								app.addScene(Technology);
 							}
 							//Do the scene change
-							app.changeScene(technology);
+							app.changeScene(Technology);
 							break;
 							}
 					default: break;
@@ -327,13 +283,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (bussiness == null){
-								bussiness = new bussiness(app, "bussiness");
+							if (Bussiness == null){
+								Bussiness = new Bussiness(app, "Bussiness");
 								//Add the scene to the mt application
-								app.addScene(bussiness);
+								app.addScene(Bussiness);
 							}
 							//Do the scene change
-							app.changeScene(bussiness);
+							app.changeScene(Bussiness);
 							break;
 							}
 					default: break;
@@ -368,13 +324,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (development == null){
-								development = new development(app, "development");
+							if (Development == null){
+								Development = new Development(app, "Development");
 								//Add the scene to the mt application
-								app.addScene(development);
+								app.addScene(Development);
 							}
 							//Do the scene change
-							app.changeScene(development);
+							app.changeScene(Development);
 							break;
 							}
 					default: break;
@@ -394,8 +350,8 @@ public class technology extends AbstractScene {
 			tap5.setFillColor(textAreaColor);
 			tap5.setStrokeColor(textAreaColor);
 			tap5.setText("INTEGRATION");
-			this.clearAllGestures(circle5);
 			this.clearAllGestures(tap5);
+			this.clearAllGestures(circle5);
 			tap5.registerInputProcessor(new TapProcessor(app));
 			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {					
@@ -409,13 +365,13 @@ public class technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							app.pushScene();
-							if (integration == null){
-								integration = new integration(app, "integration");
+							if (Integration == null){
+								Integration = new Integration(app, "Integration");
 								//Add the scene to the mt application
-								app.addScene(integration);
+								app.addScene(Integration);
 							}
 							//Do the scene change
-							app.changeScene(integration);
+							app.changeScene(Integration);
 							break;
 							}
 					default: break;
@@ -447,8 +403,8 @@ public class technology extends AbstractScene {
 			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
 			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
 			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
-			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
-			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
+			final MTTextArea subtitle3 = new MTTextArea(app, fontSubtitle); 
+			final MTTextArea content3 = new MTTextArea(app, fontContent);
 			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
 			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
 			final MTTextArea docent2 = new MTTextArea(1400, 380, 700 ,300, fontContent, app);
@@ -474,13 +430,12 @@ public class technology extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("ELECTRONICS");
+			title.setText("BUSSINESS COMMUNICATIONS");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
-			content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice. These courses are a large part of the specialisation Art and Technology."); 
-			content2.appendText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling");
-			subtitle3.setText("LANGUAGES");
-			content3.setText("Arduino(Processing)");
+			content1.setText("Bussiness & Communication is divided into 2 main topics. The first is 'communication skills' where students will learn how to communicate in different languages on different media. 'Management' is the second main topic. In management, students will learn how to manage your own project properly, and you'll also learn how to start your own business.");
+			content2.appendText("Bussiness & Communication: \nFrench, English, Bussiness communication skills, copyright & mediarights");
+			content2.appendText("\nManagement: \nProject management, Online Marketing");
 			
 			
 			//addTextAreas
@@ -499,107 +454,15 @@ public class technology extends AbstractScene {
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
 			
-			PImage Image1 = app.loadImage("technology3.png"); 
-			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
-			RectangleImage1.setNoStroke(true);
+								
+			PImage loadedImage = app.loadImage("buscom1.png");
+			MTRectangle loadedrectangle = new MTRectangle(loadedImage, app);
+			getCanvas().addChild(loadedrectangle);
+			loadedrectangle.setPositionGlobal(new Vector3D(450,500,0));
+			loadedrectangle.setNoStroke(true);
+			this.clearAllGestures(loadedrectangle);
 			
-			PImage Image2 = app.loadImage("technology2.png"); 
-			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
-			RectangleImage2.setNoStroke(true);
-			
-			//arrowLTapGesture
-			arrowLHolder.registerInputProcessor(new TapProcessor(app));
-			arrowLHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (pageCounter==0){
-								title.setText("DATA AND MEDIA");
-								content1.setText("In these courses, students will learn how to generate and manage data and media.");
-								content2.setText("Data management, Networked Media, New Trends, Media in Performance, New Media Devices.");
-								content3.setText("MySQL");
-								pageCounter = 1;
-								arrowLTxt.setText("ELECTRONICS");
-								arrowRTxt.setText("ELECTRONICS");
-								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
-								smallCircle3.setFillColor(new MTColor(255,255,255));
-							}
-							else if (pageCounter == 1)
-							{
-								title.setText("ELECTRONICS");
-								content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice.  These courses are a large part of the specialisation Art and Technology.");
-								content2.setText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling.");
-								content3.setText("Arduino(Processing)");
-								pageCounter = 0;
-								arrowLTxt.setText("DATA AND MEDIA");
-								arrowRTxt.setText("DATA AND MEDIA");
-								smallCircle2.setFillColor(new MTColor(255,255,255));
-								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
-							}
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
-			//arrowRTabGesture
-			arrowRHolder.registerInputProcessor(new TapProcessor(app));
-			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (pageCounter==0){
-								title.setText("DATA AND MEDIA");
-								content1.setText("In these courses, students will learn how to generate and manage data and media.");
-								content2.setText("Data management, Networked Media, New Trends, Media in Performance, New Media Devices.");
-								content3.setText("MySQL");
-								pageCounter = 1;
-								arrowLTxt.setText("ELECTRONICS");
-								arrowRTxt.setText("ELECTRONICS");
-								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
-								smallCircle3.setFillColor(new MTColor(255,255,255));
-							}
-							else if (pageCounter == 1)
-							{
-								title.setText("DELECTRONICS");
-								content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice.  These courses are a large part of the specialisation Art and Technology.");
-								content2.setText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling.");
-								content3.setText("Arduino(Processing)");
-								pageCounter = 0;
-								arrowLTxt.setText("DATA AND MEDIA");
-								arrowRTxt.setText("DATA AND MEDIA");
-								smallCircle2.setFillColor(new MTColor(255,255,255));
-								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
-							}
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
-			
+	
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
 				this.setTransition(new FadeTransition(app, 700));
@@ -626,3 +489,4 @@ public class technology extends AbstractScene {
 	}
 
 }
+
