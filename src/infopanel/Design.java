@@ -606,6 +606,7 @@ public class Design extends AbstractScene {
 								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 								getCanvas().addChild(RectangleImage2);
+								this.clearAllGestures(RectangleImage2);
 								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 								RectangleImage2.setNoStroke(true);
 								

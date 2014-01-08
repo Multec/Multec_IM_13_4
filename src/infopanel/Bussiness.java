@@ -230,7 +230,7 @@ public class Bussiness extends AbstractScene {
 			final MTTextArea tap3 = new MTTextArea(mtApplication, font);
 			tap3.setFillColor(textAreaColor);
 			tap3.setStrokeColor(textAreaColor);
-			tap3.setText("BUSSINESS");
+			tap3.setText("BUSINESS");
 			this.clearAllGestures(tap3);
 			tap3.registerInputProcessor(new TapProcessor(app));
 			tap3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -383,7 +383,7 @@ public class Bussiness extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("BUSSINESS COMMUNICATIONS");
+			title.setText("BUSINESS COMMUNICATIONS");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
 			content1.setText("Bussiness & Communication is divided into 2 main topics. The first is 'communication skills' where students will learn how to communicate in different languages on different media. 'Management' is the second main topic. In management, students will learn how to manage your own project properly, and you'll also learn how to start your own business.");

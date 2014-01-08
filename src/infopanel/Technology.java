@@ -136,7 +136,7 @@ public class Technology extends AbstractScene {
 			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
 			specTxt.setFillColor(textAreaColor);
 			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALIZATIONS");
+			specTxt.setText("SPECIALISATIONS");
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(specTxt);
 			
@@ -150,7 +150,7 @@ public class Technology extends AbstractScene {
 			facTxt.setFillColor(textAreaColor);
 			facTxt.setStrokeColor(textAreaColor);
 			facTxt.setText("STUDENT FACILITIES");
-			this.clearAllGestures(specTxt);
+			this.clearAllGestures(facTxt);
 			this.getCanvas().addChild(facTxt);
 			
 			//multecLogo
@@ -158,6 +158,7 @@ public class Technology extends AbstractScene {
 			MTRectangle multecHolder = new MTRectangle(multec, app);
 			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
 			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
 			this.getCanvas().addChild(multecHolder);
 
 			//SUB MENU ITEM BUTTONS
