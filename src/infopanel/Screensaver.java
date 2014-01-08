@@ -88,7 +88,7 @@ public class Screensaver extends AbstractScene {
 				case MTGestureEvent.GESTURE_ENDED:
 					if (te.isTapped()){
 						//Save the current scene on the scene stack before changing
-						mtApplication.pushScene();
+						mtApplication.popScene();
 						if (hoofdmenu == null){
 							hoofdmenu = new Hoofdmenu(mtApplication, "Hoofdmenu");
 							mtApplication.addScene(hoofdmenu);

@@ -117,13 +117,14 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Design == null){
 								Design = new Design(app, "Design2");
 								//Add the scene to the mt application
 								app.addScene(Design);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Design);
 							break;
 							}
@@ -158,13 +159,14 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Technology == null){
 								Technology = new Technology(app, "Technology");
 								//Add the scene to the mt application
 								app.addScene(Technology);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Technology);
 							break;
 							}
@@ -199,7 +201,7 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Bussiness == null){
 								Bussiness = new Bussiness(app, "Bussiness");
 								//Add the scene to the mt application
@@ -207,6 +209,7 @@ public class Specialization extends AbstractScene {
 							}
 							//Do the scene change
 							app.changeScene(Bussiness);
+							app.destroySceneAfterTransition(Specialization);
 							break;
 							}
 					default: break;
@@ -240,13 +243,14 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Development == null){
 								Development = new Development(app, "Development");
 								//Add the scene to the mt application
 								app.addScene(Development);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Development);
 							break;
 							}
@@ -281,13 +285,14 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Integration == null){
 								Integration = new Integration(app, "Integration");
 								//Add the scene to the mt application
 								app.addScene(Integration);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Integration);
 							break;
 							}
@@ -338,11 +343,11 @@ public class Specialization extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("SPECIALISATIONS");
+			title.setText("SPECIALIZATIONS");
 			subtitle1.setText("APP AND WEB");
 			subtitle2.setText("ART AND TECHNOLOGY");
-			content1.setText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. \n Mobile App and Web students will learn how to develope multimedial applications for a variety of mobile devices. \n Not only iOS and Android Development and its design will be central in this specialisation, also argumented reality and serious gaming technology will be the topic.");
-			content2.appendText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. Art and Technology students will focus on integration of multimedial technology in a fysical environment. \n Multec will teach them how to program and use different kinds of electronics and devices so they can make full working multimedial installations.");
+			content1.setText("Our students will have the ability to choose between 2 unique SPECIALIZATIONS in their second year at Erasmushogeschool Brussel. \n Mobile App and Web students will learn how to develope multimedial applications for a variety of mobile devices. \n Not only iOS and Android Development and its design will be central in this specialisation, also argumented reality and serious gaming technology will be the topic.");
+			content2.appendText("Our students will have the ability to choose between 2 unique SPECIALIZATIONS in their second year at Erasmushogeschool Brussel. Art and Technology students will focus on integration of multimedial technology in a fysical environment. \n Multec will teach them how to program and use different kinds of electronics and devices so they can make full working multimedial installations.");
 		//	content2.appendText("\nManagement: \nProject management, Online Marketing");
 			
 			
@@ -407,13 +412,14 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Screensaver == null){
 								Screensaver = new Screensaver(app, "Screensaver");
 								//Add the scene to the mt application
 								app.addScene(Screensaver);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Screensaver);
 							break;
 							}
@@ -436,13 +442,14 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Specialization == null){
 								Specialization = new Specialization(app, "specialization_page");
 								//Add the scene to the mt application
 								app.addScene(Specialization);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Specialization);
 							break;
 							}
@@ -463,13 +470,14 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.pushScene();
+							app.popScene();
 							if (Facilities == null){
 								Facilities = new Facilities(app, "facilities_page");
 								//Add the scene to the mt application
 								app.addScene(Facilities);
 							}
 							//Do the scene change
+							app.destroySceneAfterTransition(Specialization);
 							app.changeScene(Facilities);
 							break;
 							}
