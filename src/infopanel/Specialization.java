@@ -100,7 +100,7 @@ public class Specialization extends AbstractScene {
 			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
 			specTxt.setFillColor(textAreaColor);
 			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALIZATIONS");
+			specTxt.setText("SPECIALISATIONS");
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(specTxt);
 			
@@ -270,7 +270,7 @@ public class Specialization extends AbstractScene {
 			final MTTextArea tap3 = new MTTextArea(mtApplication, font);
 			tap3.setFillColor(textAreaColor);
 			tap3.setStrokeColor(textAreaColor);
-			tap3.setText("BUSSINESS");
+			tap3.setText("BUSINESS");
 			this.clearAllGestures(tap3);
 			tap3.registerInputProcessor(new TapProcessor(app));
 			tap3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -423,7 +423,7 @@ public class Specialization extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("SPECIALIZATIONS");
+			title.setText("SPECIALISATIONS");
 			subtitle1.setText("APP AND WEB");
 			subtitle2.setText("ART AND TECHNOLOGY");
 			content1.setText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. \n Mobile App and Web students will learn how to develope multimedial applications for a variety of mobile devices. \n Not only iOS and Android Development and its design will be central in this specialisation, also argumented reality and serious gaming technology will be the topic.");

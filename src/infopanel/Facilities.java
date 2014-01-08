@@ -100,7 +100,7 @@ public class Facilities extends AbstractScene {
 			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
 			specTxt.setFillColor(textAreaColor);
 			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALIZATIONS");
+			specTxt.setText("SPECIALISATIONS");
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(specTxt);
 			
@@ -270,7 +270,7 @@ public class Facilities extends AbstractScene {
 			final MTTextArea tap3 = new MTTextArea(mtApplication, font);
 			tap3.setFillColor(textAreaColor);
 			tap3.setStrokeColor(textAreaColor);
-			tap3.setText("BUSSINESS");
+			tap3.setText("BUSINESS");
 			this.clearAllGestures(tap3);
 			tap3.registerInputProcessor(new TapProcessor(app));
 			tap3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
