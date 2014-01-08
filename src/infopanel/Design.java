@@ -146,7 +146,7 @@ public class Design extends AbstractScene {
 			facTxt.setFillColor(textAreaColor);
 			facTxt.setStrokeColor(textAreaColor);
 			facTxt.setText("STUDENT FACILITIES");
-			this.clearAllGestures(specTxt);
+			this.clearAllGestures(facTxt);
 			this.getCanvas().addChild(facTxt);
 			
 			//multecLogo
@@ -154,6 +154,7 @@ public class Design extends AbstractScene {
 			MTRectangle multecHolder = new MTRectangle(multec, app);
 			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
 			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
 			this.getCanvas().addChild(multecHolder);
 			
 			//SUB MENU ITEM BUTTONS
@@ -504,38 +505,42 @@ public class Design extends AbstractScene {
 			this.getCanvas().addChild(docent1);
 			this.clearAllGestures(docent2);
 			this.getCanvas().addChild(docent2);
+
 			
 			PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 			getCanvas().addChild(RectangleImage1);
 			RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 			RectangleImage1.setNoStroke(true);
+			this.clearAllGestures(RectangleImage1);
 			
 			PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 			final MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 			getCanvas().addChild(RectangleImage2);
-
 			RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
-
 			RectangleImage2.setNoStroke(true);
+			this.clearAllGestures(RectangleImage2);
 			
 			PImage Voorbeeld1 = app.loadImage("schetsenmini.jpg"); 
 			MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
 			getCanvas().addChild(RectangleImage3);
 			RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
 			RectangleImage3.setNoStroke(true);	
+			this.clearAllGestures(RectangleImage3);
 			
 			PImage Voorbeeld2 = app.loadImage("typeradiomini.jpg"); 
 			MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
 			getCanvas().addChild(RectangleImage4);
 			RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
-			RectangleImage4.setNoStroke(true);	
+			RectangleImage4.setNoStroke(true);
+			this.clearAllGestures(RectangleImage4);
 			
 			PImage Voorbeeld3 = app.loadImage("monomini.jpg"); 
 			MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
 			getCanvas().addChild(RectangleImage5);
 			RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
-			RectangleImage5.setNoStroke(true);	
+			RectangleImage5.setNoStroke(true);
+			this.clearAllGestures(RectangleImage5);
 			
 			this.getCanvas().addChild(arrowLHolder);
 			clearAllGestures(arrowLHolder);
@@ -671,7 +676,9 @@ public class Design extends AbstractScene {
 		private void clearAllGestures(MTComponent comp){
 			comp.unregisterAllInputProcessors();
 			comp.removeAllGestureEventListeners();
-		}	
+		}
+		
+		
 	
 	@Override
 	public void init() {
