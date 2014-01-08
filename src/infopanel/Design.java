@@ -450,7 +450,7 @@ public class Design extends AbstractScene {
 			final MTTextArea content3 = new MTTextArea(300, 360, 700, 300, fontContent, app); 
 			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
 			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
-			final MTTextArea docent2 = new MTTextArea(1400, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1450, 380, 700 ,300, fontContent, app);
 			title2.setNoStroke(true);
 			title2.setNoFill(true);
 			docent1.setNoStroke(true);
@@ -481,8 +481,9 @@ public class Design extends AbstractScene {
 			subtitle3.setText("LANGUAGES");
 			content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
 			title2.setText("DOCENTS");
-			docent1.setText("docent1name");
-			docent2.setText("docent2name");
+			docent1.setText("Filip Vandeputte");
+			docent2.setText("Stefan Tilburgs");
+			
 			
 			//addTextAreas
 			this.clearAllGestures(title);
@@ -513,9 +514,9 @@ public class Design extends AbstractScene {
 			RectangleImage1.setNoStroke(true);
 			
 			PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+			final MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
+			RectangleImage2.setPositionGlobal(new Vector3D(1600,290,0));
 			RectangleImage2.setNoStroke(true);
 			
 			//arrowLTapGesture
@@ -542,6 +543,14 @@ public class Design extends AbstractScene {
 								arrowRTxt.setText("DESIGN AND VISUAL");
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255));
+								docent1.setText("David Molenberghs");
+								PImage Image1 = app.loadImage("3d1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1250,290,0));
+								RectangleImage1.setNoStroke(true);
+								getCanvas().removeChild(RectangleImage2);
+								docent2.setText("");
 							}
 							else if (pageCounter == -1)
 							{
@@ -554,6 +563,20 @@ public class Design extends AbstractScene {
 								arrowRTxt.setText("3D DEVELOPMENT");
 								smallCircle2.setFillColor(new MTColor(255,255,255));
 								smallCircle3.setFillColor(new MTColor(255,255,255,125));
+								docent1.setText("Filip Vandeputte");
+								docent2.setText("Stefan Tilburgs");
+								PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1250,290,0));
+								RectangleImage1.setNoStroke(true);
+								
+								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(RectangleImage2);
+								RectangleImage2.setPositionGlobal(new Vector3D(1600,290,0));
+								RectangleImage2.setNoStroke(true);
+								
 							}
 							
 							break;
