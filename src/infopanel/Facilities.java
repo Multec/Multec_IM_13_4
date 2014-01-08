@@ -117,6 +117,13 @@ public class Facilities extends AbstractScene {
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(facTxt);
 			
+			//pageCircle
+			MTEllipse pCircle = new MTEllipse(app, new Vector3D(230, 192), 30, 30);
+			pCircle.setFillColor(white);
+			pCircle.setNoStroke(true);
+			this.clearAllGestures(pCircle);
+			getCanvas().addChild(pCircle);
+			
 			//SUB MENU ITEM BUTTONS
 			//specialization page
 			specTxt.registerInputProcessor(new TapProcessor(app));
@@ -380,24 +387,24 @@ public class Facilities extends AbstractScene {
 			
 			//initFonts
 			IFont fontTitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
-					30, 	//Font size
+					40, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
 			IFont fontSubtitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
-					20, 	//Font size
+					24, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
-			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTf", 
-					12, 	//Font size
+			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTF", 
+					14, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
 			
 			//textAreas
-			final MTTextArea title = new MTTextArea(300, 150, 700, 300, fontTitle, app); 
-			final MTTextArea subtitle1 = new MTTextArea(300, 200, 700, 300, fontSubtitle, app); 
-			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
-			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
-			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
+			final MTTextArea title = new MTTextArea(200, 170, 700, 300, fontTitle, app); 
+			final MTTextArea subtitle1 = new MTTextArea(200, 300, 400, 500, fontSubtitle, app); 
+			final MTTextArea content1 = new MTTextArea(200, 340, 400, 500, fontContent, app); 
+			final MTTextArea subtitle2 = new MTTextArea(800, 300, 400, 480, fontSubtitle, app); 
+			final MTTextArea content2 = new MTTextArea(800, 340, 400, 430, fontContent, app); 
 			final MTTextArea subtitle3 = new MTTextArea(app, fontSubtitle); 
 			final MTTextArea content3 = new MTTextArea(app, fontContent);
 			title.setNoStroke(true);
@@ -417,11 +424,11 @@ public class Facilities extends AbstractScene {
 			
 			//AddTextToTextAreas
 			title.setText("STUDENT FACILITIES");
-			/*subtitle1.setText("DESCRIPTION");
-			subtitle2.setText("COURSES");
-			content1.setText("Bussiness & Communication is divided into 2 main topics. The first is 'communication skills' where students will learn how to communicate in different languages on different media. 'Management' is the second main topic. In management, students will learn how to manage your own project properly, and you'll also learn how to start your own business.");
-			content2.appendText("Bussiness & Communication: \nFrench, English, Bussiness communication skills, copyright & mediarights");
-			content2.appendText("\nManagement: \nProject management, Online Marketing");
+			subtitle1.setText("FABLABXL");
+			subtitle2.setText("MEDIALAB");
+			content1.setText("Our students get the abillity to work at our fablab (fabrication laboratory). \n Our fablab provides a home base for the Art and Technology students and has a wide range of advanced equipment used in different courses, including its software.\n Aside from the advanced equipment, there are hundreds of tools and material available, so the students can make basically anything they want.");
+			content2.appendText("In the nearby future, students will have their own place to test their project, going from robots to applications. \n \n our mobile app and web students will have the ability to test their apps on dozens of mobile devices made possible through a mobile device wall. \n There is enough space for our art and technology students to test their robots and other ");
+			/*content2.appendText("\nManagement: \nProject management, Online Marketing");
 			*/
 			
 			//addTextAreas

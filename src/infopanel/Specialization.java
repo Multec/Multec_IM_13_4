@@ -117,6 +117,13 @@ public class Specialization extends AbstractScene {
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(facTxt);
 			
+			//pageCircle
+			MTEllipse pCircle = new MTEllipse(app, new Vector3D(230, 192), 30, 30);
+			pCircle.setFillColor(white);
+			pCircle.setNoStroke(true);
+			this.clearAllGestures(pCircle);
+			getCanvas().addChild(pCircle);
+			
 			//SUB MENU ITEM BUTTONS
 			//specialization page
 			specTxt.registerInputProcessor(new TapProcessor(app));
@@ -380,24 +387,24 @@ public class Specialization extends AbstractScene {
 			
 			//initFonts
 			IFont fontTitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
-					30, 	//Font size
+					40, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
 			IFont fontSubtitle = FontManager.getInstance().createFont(mtApplication, "HYPE.ttf", 
-					20, 	//Font size
+					24, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
 			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTF", 
-					12, 	//Font size
+					14, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
 			
 			//textAreas
-			final MTTextArea title = new MTTextArea(300, 150, 700, 300, fontTitle, app); 
-			final MTTextArea subtitle1 = new MTTextArea(300, 200, 700, 300, fontSubtitle, app); 
-			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
-			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
-			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
+			final MTTextArea title = new MTTextArea(200, 170, 700, 300, fontTitle, app); 
+			final MTTextArea subtitle1 = new MTTextArea(200, 300, 400, 500, fontSubtitle, app); 
+			final MTTextArea content1 = new MTTextArea(200, 340, 400, 500, fontContent, app); 
+			final MTTextArea subtitle2 = new MTTextArea(800, 300, 400, 480, fontSubtitle, app); 
+			final MTTextArea content2 = new MTTextArea(800, 340, 400, 430, fontContent, app); 
 			final MTTextArea subtitle3 = new MTTextArea(app, fontSubtitle); 
 			final MTTextArea content3 = new MTTextArea(app, fontContent);
 			title.setNoStroke(true);
@@ -417,11 +424,11 @@ public class Specialization extends AbstractScene {
 			
 			//AddTextToTextAreas
 			title.setText("SPECIALIZATIONS");
-			/*subtitle1.setText("DESCRIPTION");
-			subtitle2.setText("COURSES");
-			content1.setText("Bussiness & Communication is divided into 2 main topics. The first is 'communication skills' where students will learn how to communicate in different languages on different media. 'Management' is the second main topic. In management, students will learn how to manage your own project properly, and you'll also learn how to start your own business.");
-			content2.appendText("Bussiness & Communication: \nFrench, English, Bussiness communication skills, copyright & mediarights");
-			content2.appendText("\nManagement: \nProject management, Online Marketing");*/
+			subtitle1.setText("APP AND WEB");
+			subtitle2.setText("ART AND TECHNOLOGY");
+			content1.setText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. \n Mobile App and Web students will learn how to develope multimedial applications for a variety of mobile devices. \n Not only iOS and Android Development and its design will be central in this specialisation, also argumented reality and serious gaming technology will be the topic.");
+			content2.appendText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. Art and Technology students will focus on integration of multimedial technology in a fysical environment. \n Multec will teach them how to program and use different kinds of electronics and devices so they can make full working multimedial installations.");
+		//	content2.appendText("\nManagement: \nProject management, Online Marketing");
 			
 			
 			//addTextAreas
