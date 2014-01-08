@@ -84,6 +84,35 @@ public class Facilities extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			
+<<<<<<< HEAD
+=======
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.getCanvas().addChild(multecHolder);
+			
+			//downNavigation menu
+			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
+			specBtn.setFillColor(white);
+			specBtn.setNoStroke(true);
+			this.clearAllGestures(specBtn);
+			getCanvas().addChild(specBtn);
+			
+			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
+			specTxt.setFillColor(textAreaColor);
+			specTxt.setStrokeColor(textAreaColor);
+			specTxt.setText("SPECIALISATIONS");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(specTxt);
+			
+			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
+			facBtn.setFillColor(white);
+			facBtn.setNoStroke(true);
+			this.clearAllGestures(facBtn);
+			getCanvas().addChild(facBtn);
+>>>>>>> 3607f1e0e589f569957c624972ec59d389564b59
 			
 			//MENU ITEMS Design
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
@@ -176,7 +205,7 @@ public class Facilities extends AbstractScene {
 			final MTTextArea tap3 = new MTTextArea(mtApplication, font);
 			tap3.setFillColor(textAreaColor);
 			tap3.setStrokeColor(textAreaColor);
-			tap3.setText("BUSSINESS");
+			tap3.setText("BUSINESS");
 			this.clearAllGestures(tap3);
 			tap3.registerInputProcessor(new TapProcessor(app));
 			tap3.addGestureListener(TapProcessor.class, new IGestureEventListener() {

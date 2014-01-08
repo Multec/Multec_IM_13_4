@@ -85,6 +85,43 @@ public class Specialization extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			
+<<<<<<< HEAD
+=======
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.getCanvas().addChild(multecHolder);
+			
+			//downNavigation menu
+			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
+			specBtn.setFillColor(white);
+			specBtn.setNoStroke(true);
+			this.clearAllGestures(specBtn);
+			getCanvas().addChild(specBtn);
+			
+			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
+			specTxt.setFillColor(textAreaColor);
+			specTxt.setStrokeColor(textAreaColor);
+			specTxt.setText("SPECIALISATIONS");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(specTxt);
+			
+			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
+			facBtn.setFillColor(white);
+			facBtn.setNoStroke(true);
+			this.clearAllGestures(facBtn);
+			getCanvas().addChild(facBtn);
+			
+			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
+			facTxt.setFillColor(textAreaColor);
+			facTxt.setStrokeColor(textAreaColor);
+			facTxt.setText("STUDENT FACILITIES");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(facTxt);
+			
+>>>>>>> 3607f1e0e589f569957c624972ec59d389564b59
 			//pageCircle
 			MTEllipse pCircle = new MTEllipse(app, new Vector3D(230, 192), 30, 30);
 			pCircle.setFillColor(white);
@@ -185,7 +222,7 @@ public class Specialization extends AbstractScene {
 			final MTTextArea tap3 = new MTTextArea(mtApplication, font);
 			tap3.setFillColor(textAreaColor);
 			tap3.setStrokeColor(textAreaColor);
-			tap3.setText("BUSSINESS");
+			tap3.setText("BUSINESS");
 			this.clearAllGestures(tap3);
 			tap3.registerInputProcessor(new TapProcessor(app));
 			tap3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -338,7 +375,7 @@ public class Specialization extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("SPECIALIZATIONS");
+			title.setText("SPECIALISATIONS");
 			subtitle1.setText("APP AND WEB");
 			subtitle2.setText("ART AND TECHNOLOGY");
 			content1.setText("Our students will have the ability to choose between 2 unique specialisations in their second year at Erasmushogeschool Brussel. \n Mobile App and Web students will learn how to develope multimedial applications for a variety of mobile devices. \n Not only iOS and Android Development and its design will be central in this specialisation, also argumented reality and serious gaming technology will be the topic.");
