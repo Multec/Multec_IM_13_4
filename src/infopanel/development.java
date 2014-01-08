@@ -66,8 +66,9 @@ public class development extends AbstractScene {
 		private Iscene technology;
 		private Iscene integration;
 		private Iscene bussiness;
-		private Iscene development2;
 		private Iscene development;
+		private Iscene Specialization;
+		private Iscene Facilities;
 		private int pageCounter = 0;
 		private MTEllipse smallCircle1;
 		private MTEllipse smallCircle2;
@@ -177,6 +178,67 @@ public class development extends AbstractScene {
 			getCanvas().addChild(smallCircle3);
 			this.clearAllGestures(smallCircle3);
 			
+			//SUB MENU ITEM BUTTONS
+			//specialization page
+			specTxt.registerInputProcessor(new TapProcessor(app));
+			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Specialization == null){
+								Specialization = new Specialization(app, "specialization_page");
+								//Add the scene to the mt application
+								app.addScene(Specialization);
+							}
+							//Do the scene change
+							app.changeScene(Specialization);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//facilities page
+			facTxt.registerInputProcessor(new TapProcessor(app));
+			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Facilities == null){
+								Facilities = new Facilities(app, "facilities_page");
+								//Add the scene to the mt application
+								app.addScene(Facilities);
+							}
+							//Do the scene change
+							app.changeScene(Facilities);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//pageCircle
+			MTEllipse pCircle = new MTEllipse(app, new Vector3D(330, 167), 30, 30);
+			pCircle.setFillColor(kleurbol1);
+			pCircle.setNoStroke(true);
+			this.clearAllGestures(pCircle);
+			getCanvas().addChild(pCircle);
 			//MENU ITEM DESIGN
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
@@ -408,6 +470,15 @@ public class development extends AbstractScene {
 			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
 			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
 			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
+			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
+			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1400, 380, 700 ,300, fontContent, app);
+			title2.setNoStroke(true);
+			title2.setNoFill(true);
+			docent1.setNoStroke(true);
+			docent1.setNoFill(true);
+			docent2.setNoStroke(true);
+			docent2.setNoFill(true);
 			title.setNoStroke(true);
 			title.setNoFill(true);
 			subtitle1.setNoStroke(true);
@@ -431,6 +502,7 @@ public class development extends AbstractScene {
 			content2.appendText("Static web, Dynamic web, Advanced web");
 			subtitle3.setText("LANGUAGES");
 			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+			
 			
 			
 			//addTextAreas

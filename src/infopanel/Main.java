@@ -12,7 +12,7 @@ public class Main extends MTApplication {
 	@Override
 	public void startUp() {
 
-		addScene(new Hoofdmenu(this, "bussiness"));
+		addScene(new design(this, "bussiness"));
 		}
 
 }

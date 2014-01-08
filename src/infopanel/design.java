@@ -57,8 +57,9 @@ public class design extends AbstractScene {
 		private Iscene technology;
 		private Iscene integration;
 		private Iscene bussiness;
-		private Iscene design2;
 		private Iscene design;
+		private Iscene Specialization;
+		private Iscene Facilities;
 		private int pageCounter = 0;
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3; 
@@ -159,7 +160,68 @@ public class design extends AbstractScene {
 			multecHolder.setNoStroke(true);
 			this.getCanvas().addChild(multecHolder);
 			
-			//Tap gesture
+			//SUB MENU ITEM BUTTONS
+			//specialization page
+			specTxt.registerInputProcessor(new TapProcessor(app));
+			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Specialization == null){
+								Specialization = new Specialization(app, "specialization_page");
+								//Add the scene to the mt application
+								app.addScene(Specialization);
+							}
+							//Do the scene change
+							app.changeScene(Specialization);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//facilities page
+			facTxt.registerInputProcessor(new TapProcessor(app));
+			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Facilities == null){
+								Facilities = new Facilities(app, "facilities_page");
+								//Add the scene to the mt application
+								app.addScene(Facilities);
+							}
+							//Do the scene change
+							app.changeScene(Facilities);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//pageCircle
+			MTEllipse pCircle = new MTEllipse(app, new Vector3D(330, 167), 30, 30);
+			pCircle.setFillColor(kleurbol2);
+			pCircle.setNoStroke(true);
+			this.clearAllGestures(pCircle);
+			getCanvas().addChild(pCircle);
+			//MENU ITEM DESIGN
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
 			circle.setNoStroke(true);
@@ -386,6 +448,15 @@ public class design extends AbstractScene {
 			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
 			final MTTextArea subtitle3 = new MTTextArea(300, 340, 700, 300, fontSubtitle, app); 
 			final MTTextArea content3 = new MTTextArea(300, 360, 700, 300, fontContent, app); 
+			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
+			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1400, 380, 700 ,300, fontContent, app);
+			title2.setNoStroke(true);
+			title2.setNoFill(true);
+			docent1.setNoStroke(true);
+			docent1.setNoFill(true);
+			docent2.setNoStroke(true);
+			docent2.setNoFill(true);
 			title.setNoStroke(true);
 			title.setNoFill(true);
 			subtitle1.setNoStroke(true);
@@ -409,7 +480,9 @@ public class design extends AbstractScene {
 			content2.appendText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
 			subtitle3.setText("LANGUAGES");
 			content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
-			
+			title2.setText("DOCENTS");
+			docent1.setText("docent1name");
+			docent2.setText("docent2name");
 			
 			//addTextAreas
 			this.clearAllGestures(title);
@@ -426,11 +499,17 @@ public class design extends AbstractScene {
 			this.getCanvas().addChild(content2);
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
+			this.clearAllGestures(title2);
+			this.getCanvas().addChild(title2);
+			this.clearAllGestures(docent1);
+			this.getCanvas().addChild(docent1);
+			this.clearAllGestures(docent2);
+			this.getCanvas().addChild(docent2);
 			
 			PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
+			RectangleImage1.setPositionGlobal(new Vector3D(1250,290,0));
 			RectangleImage1.setNoStroke(true);
 			
 			PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------

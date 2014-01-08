@@ -1,7 +1,13 @@
 package infopanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JEditorPane;
+
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
+import org.mt4j.components.TransformSpace;
 import org.mt4j.components.visibleComponents.font.FontManager;
 import org.mt4j.components.visibleComponents.font.IFont;
 import org.mt4j.components.visibleComponents.shapes.MTEllipse;
@@ -47,22 +53,22 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class integration extends AbstractScene {
+public class Specialization extends AbstractScene {
 		private MTApplication app;
-		private Iscene design;
 		private Iscene development;
+		private Iscene design;
 		private Iscene technology;
-		private Iscene bussiness;
 		private Iscene integration;
+		private Iscene bussiness;	
 		private Iscene Specialization;
 		private Iscene Facilities;
-		private int pageCounter = 0;
 		
-		public integration(final MTApplication mtApplication, String name) {
+		
+		public Specialization(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("project.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("special.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -73,14 +79,16 @@ public class integration extends AbstractScene {
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			MTColor grey = new MTColor(184,184,184);
-			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
-			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
-			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
-	
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.getCanvas().addChild(multecHolder);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -109,13 +117,6 @@ public class integration extends AbstractScene {
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(facTxt);
 			
-			//multecLogo
-			PImage multec = mtApplication.loadImage("multec_logo.png");
-			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
-			multecHolder.setNoStroke(true);
-			this.getCanvas().addChild(multecHolder);
-
 			//SUB MENU ITEM BUTTONS
 			//specialization page
 			specTxt.registerInputProcessor(new TapProcessor(app));
@@ -171,12 +172,6 @@ public class integration extends AbstractScene {
 					return false;			
 			}
 			});
-			//pageCircle
-			MTEllipse pCircle = new MTEllipse(app, new Vector3D(330, 167), 30, 30);
-			pCircle.setFillColor(kleurbol4);
-			pCircle.setNoStroke(true);
-			this.clearAllGestures(pCircle);
-			getCanvas().addChild(pCircle);
 			//MENU ITEM DESIGN
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
@@ -219,8 +214,7 @@ public class integration extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-			
-			
+		
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
 			circle2.setNoStroke(true);
@@ -393,7 +387,7 @@ public class integration extends AbstractScene {
 					20, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
-			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTf", 
+			IFont fontContent = FontManager.getInstance().createFont(mtApplication, "century.TTF", 
 					12, 	//Font size
 					new MTColor(0,0,0),  //Font fill color
 					new MTColor(0,0,0));	//Font outline color
@@ -404,17 +398,8 @@ public class integration extends AbstractScene {
 			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
 			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
 			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
-			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
-			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
-			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
-			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
-			final MTTextArea docent2 = new MTTextArea(1400, 380, 700 ,300, fontContent, app);
-			title2.setNoStroke(true);
-			title2.setNoFill(true);
-			docent1.setNoStroke(true);
-			docent1.setNoFill(true);
-			docent2.setNoStroke(true);
-			docent2.setNoFill(true);
+			final MTTextArea subtitle3 = new MTTextArea(app, fontSubtitle); 
+			final MTTextArea content3 = new MTTextArea(app, fontContent);
 			title.setNoStroke(true);
 			title.setNoFill(true);
 			subtitle1.setNoStroke(true);
@@ -431,13 +416,12 @@ public class integration extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("INTEGRATION PROJECTS");
-			subtitle1.setText("DESCRIPTION");
-			subtitle2.setText("PROJECTS");
-			content1.setText("During the first two years of their studies, our students will work on different projects. This way, our students get a lot of practice before they will work on projects in a business environment."); 
-			content2.appendText("Integration Web: Development of a static website in team. \n Integration Mobile: Development of a mobile site in team. \n Integration Multiscreen: Development of an application for touchscreen in team. \n Integration Mobile App and Web: \n Integratiob Art and Technology:");
-			subtitle3.setText("");
-			content3.setText("");
+			title.setText("SPECIALIZATIONS");
+			/*subtitle1.setText("DESCRIPTION");
+			subtitle2.setText("COURSES");
+			content1.setText("Bussiness & Communication is divided into 2 main topics. The first is 'communication skills' where students will learn how to communicate in different languages on different media. 'Management' is the second main topic. In management, students will learn how to manage your own project properly, and you'll also learn how to start your own business.");
+			content2.appendText("Bussiness & Communication: \nFrench, English, Bussiness communication skills, copyright & mediarights");
+			content2.appendText("\nManagement: \nProject management, Online Marketing");*/
 			
 			
 			//addTextAreas
@@ -456,8 +440,8 @@ public class integration extends AbstractScene {
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
 			
-			
-			
+		
+	
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
 				this.setTransition(new FadeTransition(app, 700));
