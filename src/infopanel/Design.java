@@ -1,7 +1,11 @@
 package infopanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
+import org.mt4j.components.TransformSpace;
 import org.mt4j.components.visibleComponents.font.FontManager;
 import org.mt4j.components.visibleComponents.font.IFont;
 import org.mt4j.components.visibleComponents.shapes.MTEllipse;
@@ -47,22 +51,24 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class integration extends AbstractScene {
+public class Design extends AbstractScene {
 		private MTApplication app;
-		private Iscene design;
 		private Iscene development;
 		private Iscene technology;
-		private Iscene bussiness;
 		private Iscene integration;
+		private Iscene bussiness;
+		private Iscene design;
 		private Iscene Specialization;
 		private Iscene Facilities;
 		private int pageCounter = 0;
+		private MTEllipse smallCircle2;
+		private MTEllipse smallCircle3; 
 		
-		public integration(final MTApplication mtApplication, String name) {
+		public Design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("project.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("design.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -73,14 +79,52 @@ public class integration extends AbstractScene {
 			MTColor kleurbol4 = new MTColor(134, 62, 62, 125);
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			MTColor grey = new MTColor(184,184,184);
+			MTColor whiteTrans = new MTColor(255,255,255, 125);
 			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
-			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
+			final IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
+			//arrows+arrowText
+			PImage arrowL = mtApplication.loadImage("arrowL.png");
+			PImage arrowR = mtApplication.loadImage("arrowR.png");
+			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
+			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
+			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
+			arrowLHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowLHolder);
+			clearAllGestures(arrowLHolder);
+			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
+			arrowRHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowRHolder);
+			clearAllGestures(arrowRHolder);
+			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
+			arrowLTxt.setNoStroke(true);
+			arrowLTxt.setNoFill(true);
+			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
+			arrowRTxt.setNoStroke(true);
+			arrowRTxt.setNoFill(true);
+			arrowLTxt.setText("3D DEVELOPMENT");
+			arrowRTxt.setText("3D DEVELOPMENT");
+			this.getCanvas().addChild(arrowLTxt);
+			this.getCanvas().addChild(arrowRTxt);
+			clearAllGestures(arrowRHolder);
+			this.clearAllGestures(arrowLTxt);
+			this.clearAllGestures(arrowRTxt);
 	
+			//contentCircleViewers
+			smallCircle2 = new MTEllipse (app, new Vector3D((app.width/2 - 8), app.height - 30), 5, 5);
+			smallCircle2.setFillColor(white);
+			smallCircle2.setNoStroke(true);
+			getCanvas().addChild(smallCircle2);
+			this.clearAllGestures(smallCircle2);
+			smallCircle3 = new MTEllipse (app, new Vector3D((app.width/2 + 8), app.height - 30), 5, 5);
+			smallCircle3.setFillColor(whiteTrans);
+			smallCircle3.setNoStroke(true);
+			getCanvas().addChild(smallCircle3);
+			this.clearAllGestures(smallCircle3);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -92,7 +136,7 @@ public class integration extends AbstractScene {
 			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
 			specTxt.setFillColor(textAreaColor);
 			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALIZATIONS");
+			specTxt.setText("SPECIALISATIONS");
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(specTxt);
 			
@@ -115,7 +159,7 @@ public class integration extends AbstractScene {
 			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
 			multecHolder.setNoStroke(true);
 			this.getCanvas().addChild(multecHolder);
-
+			
 			//SUB MENU ITEM BUTTONS
 			//specialization page
 			specTxt.registerInputProcessor(new TapProcessor(app));
@@ -173,7 +217,7 @@ public class integration extends AbstractScene {
 			});
 			//pageCircle
 			MTEllipse pCircle = new MTEllipse(app, new Vector3D(330, 167), 30, 30);
-			pCircle.setFillColor(kleurbol4);
+			pCircle.setFillColor(kleurbol2);
 			pCircle.setNoStroke(true);
 			this.clearAllGestures(pCircle);
 			getCanvas().addChild(pCircle);
@@ -202,7 +246,7 @@ public class integration extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (design == null){
-								design = new design(app, "design2");
+								design = new Design(app, "design");
 								//Add the scene to the mt application
 								app.addScene(design);
 							}
@@ -218,8 +262,6 @@ public class integration extends AbstractScene {
 			getCanvas().addChild(tap1);
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
-			
-			
 			
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
@@ -244,7 +286,7 @@ public class integration extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (technology == null){
-								technology = new technology(app, "technology");
+								technology = new Technology(app, "technology");
 								//Add the scene to the mt application
 								app.addScene(technology);
 							}
@@ -269,7 +311,7 @@ public class integration extends AbstractScene {
 			final MTTextArea tap3 = new MTTextArea(mtApplication, font);
 			tap3.setFillColor(textAreaColor);
 			tap3.setStrokeColor(textAreaColor);
-			tap3.setText("BUSSINESS");
+			tap3.setText("BUSINESS");
 			this.clearAllGestures(tap3);
 			tap3.registerInputProcessor(new TapProcessor(app));
 			tap3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -285,7 +327,7 @@ public class integration extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (bussiness == null){
-								bussiness = new bussiness(app, "bussiness");
+								bussiness = new Bussiness(app, "bussiness");
 								//Add the scene to the mt application
 								app.addScene(bussiness);
 							}
@@ -326,7 +368,7 @@ public class integration extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (development == null){
-								development = new development(app, "development");
+								development = new Development(app, "development");
 								//Add the scene to the mt application
 								app.addScene(development);
 							}
@@ -367,7 +409,7 @@ public class integration extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (integration == null){
-								integration = new integration(app, "integration");
+								integration = new Integration(app, "integration");
 								//Add the scene to the mt application
 								app.addScene(integration);
 							}
@@ -404,11 +446,13 @@ public class integration extends AbstractScene {
 			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
 			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
 			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
-			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
-			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
+			final MTTextArea subtitle3 = new MTTextArea(300, 340, 700, 300, fontSubtitle, app); 
+			final MTTextArea content3 = new MTTextArea(300, 360, 700, 300, fontContent, app); 
+
 			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
 			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
-			final MTTextArea docent2 = new MTTextArea(1400, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1450, 380, 700 ,300, fontContent, app);
+			
 			title2.setNoStroke(true);
 			title2.setNoFill(true);
 			docent1.setNoStroke(true);
@@ -431,14 +475,17 @@ public class integration extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("INTEGRATION PROJECTS");
+			title.setText("DESIGN AND VISUAL");
 			subtitle1.setText("DESCRIPTION");
-			subtitle2.setText("PROJECTS");
-			content1.setText("During the first two years of their studies, our students will work on different projects. This way, our students get a lot of practice before they will work on projects in a business environment."); 
-			content2.appendText("Integration Web: Development of a static website in team. \n Integration Mobile: Development of a mobile site in team. \n Integration Multiscreen: Development of an application for touchscreen in team. \n Integration Mobile App and Web: \n Integratiob Art and Technology:");
-			subtitle3.setText("");
-			content3.setText("");
-			
+			subtitle2.setText("COURSES");
+			content1.setText("In these courses, the students will learn how to design for web as well as audio visual design."); 
+			content2.appendText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+			subtitle3.setText("LANGUAGES");
+			content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
+			title2.setText("DOCENTS");
+			docent1.setText("Filip Vandeputte");
+			docent2.setText("Stefan Tilburgs");
+
 			
 			//addTextAreas
 			this.clearAllGestures(title);
@@ -455,8 +502,162 @@ public class integration extends AbstractScene {
 			this.getCanvas().addChild(content2);
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
+			this.clearAllGestures(title2);
+			this.getCanvas().addChild(title2);
+			this.clearAllGestures(docent1);
+			this.getCanvas().addChild(docent1);
+			this.clearAllGestures(docent2);
+			this.getCanvas().addChild(docent2);
 			
+			PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(RectangleImage1);
+			RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+			RectangleImage1.setNoStroke(true);
 			
+			PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+			final MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+			getCanvas().addChild(RectangleImage2);
+
+			RectangleImage2.setPositionGlobal(new Vector3D(1600,290,0));
+
+			RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+
+			RectangleImage2.setNoStroke(true);
+			
+			PImage Voorbeeld1 = app.loadImage("schetsenmini.jpg"); 
+			MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
+			getCanvas().addChild(RectangleImage3);
+			RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
+			RectangleImage3.setNoStroke(true);	
+			
+			PImage Voorbeeld2 = app.loadImage("typeradiomini.jpg"); 
+			MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
+			getCanvas().addChild(RectangleImage4);
+			RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
+			RectangleImage4.setNoStroke(true);	
+			
+			PImage Voorbeeld3 = app.loadImage("monomini.jpg"); 
+			MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
+			getCanvas().addChild(RectangleImage5);
+			RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
+			RectangleImage5.setNoStroke(true);	
+
+			//arrowLTapGesture
+			arrowLHolder.registerInputProcessor(new TapProcessor(app));
+			arrowLHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (pageCounter==0){
+								title.setText("3D DEVELOPMENT");
+								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
+								content2.setText("3D Design, Real-Time 3D");
+								content3.setText("Maya Autodesk");
+								pageCounter = -1;
+								arrowLTxt.setText("DESIGN AND VISUAL");
+								arrowRTxt.setText("DESIGN AND VISUAL");
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
+								docent1.setText("David Molenberghs");
+								PImage Image1 = app.loadImage("3d1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1250,290,0));
+								RectangleImage1.setNoStroke(true);
+								getCanvas().removeChild(RectangleImage2);
+								docent2.setText("");
+							}
+							else if (pageCounter == -1)
+							{
+								title.setText("DESIGN AND VISUAL");
+								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
+								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
+								pageCounter = 0;
+								arrowLTxt.setText("3D DEVELOPMENT");
+								arrowRTxt.setText("3D DEVELOPMENT");
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+
+								smallCircle3.setFillColor(new MTColor(255,255,255,125));
+								docent1.setText("Filip Vandeputte");
+								docent2.setText("Stefan Tilburgs");
+								PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1250,290,0));
+								RectangleImage1.setNoStroke(true);
+								
+								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(RectangleImage2);
+								RectangleImage2.setPositionGlobal(new Vector3D(1600,290,0));
+								RectangleImage2.setNoStroke(true);
+								
+
+								smallCircle3.setFillColor(new MTColor(255,255,255,125));	
+
+							}
+							
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//arrowRTabGesture
+			arrowRHolder.registerInputProcessor(new TapProcessor(app));
+			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (pageCounter==0){
+								title.setText("3D DEVELOPMENT");
+								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
+								content2.setText("3D Design, Real-Time 3D");
+								content3.setText("Maya Autodesk");
+								pageCounter = -1;
+								arrowLTxt.setText("DESIGN AND VISUAL");
+								arrowRTxt.setText("DESIGN AND VISUAL");
+								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
+							}
+							else if (pageCounter == -1)
+							{
+								title.setText("DESIGN AND VISUAL");
+								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
+								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
+								pageCounter = 0;
+								arrowLTxt.setText("3D DEVELOPMENT");
+								arrowRTxt.setText("3D DEVELOPMENT");
+								smallCircle2.setFillColor(new MTColor(255,255,255));
+								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
+							}
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
@@ -484,4 +685,3 @@ public class integration extends AbstractScene {
 	}
 
 }
-
