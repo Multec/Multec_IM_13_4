@@ -50,6 +50,7 @@ import org.mt4j.util.MTColor;
 import org.mt4j.util.math.Vector3D;
 import org.mt4j.util.opengl.GLFBO;
 
+import infopanel.Screensaver;
 import processing.core.PImage;
 		
 	
@@ -62,6 +63,7 @@ public class Specialization extends AbstractScene {
 		private Iscene Bussiness;	
 		private Iscene Specialization;
 		private Iscene Facilities;
+		private Screensaver Screensaver;
 		
 		
 		public Specialization(final MTApplication mtApplication, String name) {
@@ -83,40 +85,6 @@ public class Specialization extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			
-			//multecLogo
-			PImage multec = mtApplication.loadImage("multec_logo.png");
-			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
-			multecHolder.setNoStroke(true);
-			this.getCanvas().addChild(multecHolder);
-			
-			//downNavigation menu
-			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
-			specBtn.setFillColor(white);
-			specBtn.setNoStroke(true);
-			this.clearAllGestures(specBtn);
-			getCanvas().addChild(specBtn);
-			
-			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
-			specTxt.setFillColor(textAreaColor);
-			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALIZATIONS");
-			this.clearAllGestures(specTxt);
-			this.getCanvas().addChild(specTxt);
-			
-			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
-			facBtn.setFillColor(white);
-			facBtn.setNoStroke(true);
-			this.clearAllGestures(facBtn);
-			getCanvas().addChild(facBtn);
-			
-			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
-			facTxt.setFillColor(textAreaColor);
-			facTxt.setStrokeColor(textAreaColor);
-			facTxt.setText("STUDENT FACILITIES");
-			this.clearAllGestures(specTxt);
-			this.getCanvas().addChild(facTxt);
-			
 			//pageCircle
 			MTEllipse pCircle = new MTEllipse(app, new Vector3D(230, 192), 30, 30);
 			pCircle.setFillColor(white);
@@ -124,61 +92,8 @@ public class Specialization extends AbstractScene {
 			this.clearAllGestures(pCircle);
 			getCanvas().addChild(pCircle);
 			
-			//SUB MENU ITEM BUTTONS
-			//specialization page
-			specTxt.registerInputProcessor(new TapProcessor(app));
-			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (Specialization == null){
-								Specialization = new Specialization(app, "specialization_page");
-								//Add the scene to the mt application
-								app.addScene(Specialization);
-							}
-							//Do the scene change
-							app.changeScene(Specialization);
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
-			//facilities page
-			facTxt.registerInputProcessor(new TapProcessor(app));
-			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (Facilities == null){
-								Facilities = new Facilities(app, "facilities_page");
-								//Add the scene to the mt application
-								app.addScene(Facilities);
-							}
-							//Do the scene change
-							app.changeScene(Facilities);
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
+			
+			
 			//MENU ITEM Design
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
@@ -447,7 +362,122 @@ public class Specialization extends AbstractScene {
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
 			
-		
+			//downNavigation menu
+			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
+			specBtn.setFillColor(white);
+			specBtn.setNoStroke(true);
+			this.clearAllGestures(specBtn);
+			getCanvas().addChild(specBtn);
+			
+			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
+			specTxt.setFillColor(textAreaColor);
+			specTxt.setStrokeColor(textAreaColor);
+			specTxt.setText("SPECIALIZATIONS");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(specTxt);
+			
+			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
+			facBtn.setFillColor(white);
+			facBtn.setNoStroke(true);
+			this.clearAllGestures(facBtn);
+			getCanvas().addChild(facBtn);
+			
+			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
+			facTxt.setFillColor(textAreaColor);
+			facTxt.setStrokeColor(textAreaColor);
+			facTxt.setText("STUDENT FACILITIES");
+			this.clearAllGestures(facTxt);
+			this.getCanvas().addChild(facTxt);
+			
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
+			this.getCanvas().addChild(multecHolder);
+			multecHolder.registerInputProcessor(new TapProcessor(app));
+			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Screensaver == null){
+								Screensaver = new Screensaver(app, "Screensaver");
+								//Add the scene to the mt application
+								app.addScene(Screensaver);
+							}
+							//Do the scene change
+							app.changeScene(Screensaver);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			
+			//SUB MENU ITEM BUTTONS
+			//specialization page
+			specTxt.registerInputProcessor(new TapProcessor(app));
+			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Specialization == null){
+								Specialization = new Specialization(app, "specialization_page");
+								//Add the scene to the mt application
+								app.addScene(Specialization);
+							}
+							//Do the scene change
+							app.changeScene(Specialization);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//facilities page
+			facTxt.registerInputProcessor(new TapProcessor(app));
+			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Facilities == null){
+								Facilities = new Facilities(app, "facilities_page");
+								//Add the scene to the mt application
+								app.addScene(Facilities);
+							}
+							//Do the scene change
+							app.changeScene(Facilities);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 	
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))

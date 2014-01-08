@@ -63,6 +63,7 @@ public class Technology extends AbstractScene {
 		private int pageCounter = 0;
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3;
+		private Iscene Screensaver;
 		
 		public Technology(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -136,7 +137,7 @@ public class Technology extends AbstractScene {
 			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
 			specTxt.setFillColor(textAreaColor);
 			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALISATIONS");
+			specTxt.setText("SPECIALIZATIONS");
 			this.clearAllGestures(specTxt);
 			this.getCanvas().addChild(specTxt);
 			
@@ -160,6 +161,32 @@ public class Technology extends AbstractScene {
 			multecHolder.setNoStroke(true);
 			this.clearAllGestures(multecHolder);
 			this.getCanvas().addChild(multecHolder);
+			multecHolder.registerInputProcessor(new TapProcessor(app));
+			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Screensaver == null){
+								Screensaver = new Screensaver(app, "Screensaver");
+								//Add the scene to the mt application
+								app.addScene(Screensaver);
+							}
+							//Do the scene change
+							app.changeScene(Screensaver);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 
 			//SUB MENU ITEM BUTTONS
 			//specialization page

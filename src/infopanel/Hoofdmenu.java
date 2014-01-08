@@ -35,6 +35,7 @@ public class Hoofdmenu extends AbstractScene {
 	private Iscene technology;
 	private Iscene integration;
 	private Iscene bussiness;
+	private Iscene Screensaver;
 
 	public Hoofdmenu(MTApplication mtApplication, String name) {
 		
@@ -48,11 +49,6 @@ public class Hoofdmenu extends AbstractScene {
 		MTRectangle contentRect = new MTRectangle(0,mtApp.height/2-mtApp.height/3/2,mtApp.width,mtApp.height/3, mtApp);
 		contentRect.setFillColor(new MTColor(209,209,209));
 		contentRect.setNoStroke(true);
-		//multecLogo
-		PImage multec = mtApplication.loadImage("multec_logo.png");
-		MTRectangle multecHolder = new MTRectangle(multec, mtApp);
-		multecHolder.setPositionGlobal(new Vector3D(mtApp.width-100,mtApp.height-30,0));
-		
 		
 		//circles
 		MTEllipse btnDes = new MTEllipse(mtApp,new Vector3D(170,mtApp.height/2,1),35,35);
@@ -115,7 +111,6 @@ public class Hoofdmenu extends AbstractScene {
 				this.clearAllGestures(btnBus);
 				this.clearAllGestures(btnInt);
 				this.clearAllGestures(btnDes);
-				this.clearAllGestures(multecHolder);
 				this.clearAllGestures(contentRect);
 
 		//addGestures
@@ -257,6 +252,39 @@ public class Hoofdmenu extends AbstractScene {
 				return false;
 			}
 				return false;
+		}
+		});
+		//multecLogo
+		PImage multec = mtApplication.loadImage("multec_logo.png");
+		MTRectangle multecHolder = new MTRectangle(multec, mtApp);
+		multecHolder.setPositionGlobal(new Vector3D(mtApp.width-80,mtApp.height-30,0));
+		multecHolder.setNoStroke(true);
+		this.clearAllGestures(multecHolder);
+		this.getCanvas().addChild(multecHolder);
+		multecHolder.registerInputProcessor(new TapProcessor(mtApp));
+		multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+			public boolean processGestureEvent(MTGestureEvent ge) {					
+				TapEvent te = (TapEvent)ge;
+				switch (te.getId()) {
+				case MTGestureEvent.GESTURE_DETECTED:
+					break;
+				case MTGestureEvent.GESTURE_UPDATED:
+					break;
+				case MTGestureEvent.GESTURE_ENDED:
+					if (te.isTapped()){
+						mtApp.pushScene();
+						if (Screensaver == null){
+							Screensaver = new Screensaver(mtApp, "Screensaver");
+							//Add the scene to the mt application
+							mtApp.addScene(Screensaver);
+						}
+						//Do the scene change
+						mtApp.changeScene(Screensaver);
+						break;
+						}
+				default: break;
+			}
+				return false;			
 		}
 		});
 		

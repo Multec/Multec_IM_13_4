@@ -55,14 +55,7 @@ import processing.core.PImage;
 	
 public class Bussiness extends AbstractScene {
 		private MTApplication app;
-		private Iscene development;
-		private Iscene design;
-		private Iscene technology;
-		private Iscene integration;
-		private Iscene bussiness;	
-		private Iscene bussiness2;
-		
-
+		private Iscene Screensaver;
 		private Iscene Development;
 		private Iscene Design;
 		private Iscene Technology;
@@ -103,6 +96,32 @@ public class Bussiness extends AbstractScene {
 			multecHolder.setNoStroke(true);
 			this.clearAllGestures(multecHolder);
 			this.getCanvas().addChild(multecHolder);
+			multecHolder.registerInputProcessor(new TapProcessor(app));
+			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Screensaver == null){
+								Screensaver = new Screensaver(app, "Screensaver");
+								//Add the scene to the mt application
+								app.addScene(Screensaver);
+							}
+							//Do the scene change
+							app.changeScene(Screensaver);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -138,7 +157,61 @@ public class Bussiness extends AbstractScene {
 			this.clearAllGestures(pCircle);
 			getCanvas().addChild(pCircle);
 			
-			//MENU ITEMS W GESTURES
+			//SUB MENU ITEM BUTTONS
+			//specialization page
+			specTxt.registerInputProcessor(new TapProcessor(app));
+			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Specialization == null){
+								Specialization = new Specialization(app, "specialization_page");
+								//Add the scene to the mt application
+								app.addScene(Specialization);
+							}
+							//Do the scene change
+							app.changeScene(Specialization);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//facilities page
+			facTxt.registerInputProcessor(new TapProcessor(app));
+			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Facilities == null){
+								Facilities = new Facilities(app, "facilities_page");
+								//Add the scene to the mt application
+								app.addScene(Facilities);
+							}
+							//Do the scene change
+							app.changeScene(Facilities);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			//MENU ITEMS Design
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);

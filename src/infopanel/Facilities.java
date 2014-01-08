@@ -62,6 +62,7 @@ public class Facilities extends AbstractScene {
 		private Iscene Bussiness;
 		private Iscene Specialization;
 		private Iscene Facilities;
+		private Iscene Screensaver;
 		
 		
 		public Facilities(final MTApplication mtApplication, String name) {
@@ -83,102 +84,7 @@ public class Facilities extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			
-			//multecLogo
-			PImage multec = mtApplication.loadImage("multec_logo.png");
-			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
-			multecHolder.setNoStroke(true);
-			this.getCanvas().addChild(multecHolder);
 			
-			//downNavigation menu
-			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
-			specBtn.setFillColor(white);
-			specBtn.setNoStroke(true);
-			this.clearAllGestures(specBtn);
-			getCanvas().addChild(specBtn);
-			
-			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
-			specTxt.setFillColor(textAreaColor);
-			specTxt.setStrokeColor(textAreaColor);
-			specTxt.setText("SPECIALIZATIONS");
-			this.clearAllGestures(specTxt);
-			this.getCanvas().addChild(specTxt);
-			
-			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
-			facBtn.setFillColor(white);
-			facBtn.setNoStroke(true);
-			this.clearAllGestures(facBtn);
-			getCanvas().addChild(facBtn);
-			
-			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
-			facTxt.setFillColor(textAreaColor);
-			facTxt.setStrokeColor(textAreaColor);
-			facTxt.setText("STUDENT FACILITIES");
-			this.clearAllGestures(specTxt);
-			this.getCanvas().addChild(facTxt);
-			
-			//pageCircle
-			MTEllipse pCircle = new MTEllipse(app, new Vector3D(230, 192), 30, 30);
-			pCircle.setFillColor(white);
-			pCircle.setNoStroke(true);
-			this.clearAllGestures(pCircle);
-			getCanvas().addChild(pCircle);
-			
-			//SUB MENU ITEM BUTTONS
-			//specialization page
-			specTxt.registerInputProcessor(new TapProcessor(app));
-			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (Specialization == null){
-								Specialization = new Specialization(app, "specialization_page");
-								//Add the scene to the mt application
-								app.addScene(Specialization);
-							}
-							//Do the scene change
-							app.changeScene(Specialization);
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
-			//facilities page
-			facTxt.registerInputProcessor(new TapProcessor(app));
-			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.pushScene();
-							if (Facilities == null){
-								Facilities = new Facilities(app, "facilities_page");
-								//Add the scene to the mt application
-								app.addScene(Facilities);
-							}
-							//Do the scene change
-							app.changeScene(Facilities);
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
 			//MENU ITEMS Design
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
@@ -402,9 +308,9 @@ public class Facilities extends AbstractScene {
 			//textAreas
 			final MTTextArea title = new MTTextArea(200, 170, 700, 300, fontTitle, app); 
 			final MTTextArea subtitle1 = new MTTextArea(200, 300, 400, 500, fontSubtitle, app); 
-			final MTTextArea content1 = new MTTextArea(200, 340, 400, 500, fontContent, app); 
+			final MTTextArea content1 = new MTTextArea(200, 340, 400, 300, fontContent, app); 
 			final MTTextArea subtitle2 = new MTTextArea(800, 300, 400, 480, fontSubtitle, app); 
-			final MTTextArea content2 = new MTTextArea(800, 340, 400, 430, fontContent, app); 
+			final MTTextArea content2 = new MTTextArea(800, 340, 400, 300, fontContent, app); 
 			final MTTextArea subtitle3 = new MTTextArea(app, fontSubtitle); 
 			final MTTextArea content3 = new MTTextArea(app, fontContent);
 			title.setNoStroke(true);
@@ -447,6 +353,124 @@ public class Facilities extends AbstractScene {
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
 		
+			//downNavigation menu
+			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
+			specBtn.setFillColor(white);
+			specBtn.setNoStroke(true);
+			this.clearAllGestures(specBtn);
+			getCanvas().addChild(specBtn);
+			
+			final MTTextArea specTxt = new MTTextArea(10, app.height-55, 200, 50, inhoudfont, app);
+			specTxt.setFillColor(textAreaColor);
+			specTxt.setStrokeColor(textAreaColor);
+			specTxt.setText("SPECIALIZATIONS");
+			this.clearAllGestures(specTxt);
+			this.getCanvas().addChild(specTxt);
+			
+			MTEllipse facBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 210, app.height-40), 25, 25);
+			facBtn.setFillColor(white);
+			facBtn.setNoStroke(true);
+			this.clearAllGestures(facBtn);
+			getCanvas().addChild(facBtn);
+			
+			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
+			facTxt.setFillColor(textAreaColor);
+			facTxt.setStrokeColor(textAreaColor);
+			facTxt.setText("STUDENT FACILITIES");
+			this.clearAllGestures(facTxt);
+			this.getCanvas().addChild(facTxt);
+			
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
+			this.getCanvas().addChild(multecHolder);
+			multecHolder.registerInputProcessor(new TapProcessor(app));
+			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Screensaver == null){
+								Screensaver = new Screensaver(app, "Screensaver");
+								//Add the scene to the mt application
+								app.addScene(Screensaver);
+							}
+							//Do the scene change
+							app.changeScene(Screensaver);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			
+			//SUB MENU ITEM BUTTONS
+			//specialization page
+			specTxt.registerInputProcessor(new TapProcessor(app));
+			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Specialization == null){
+								Specialization = new Specialization(app, "specialization_page");
+								//Add the scene to the mt application
+								app.addScene(Specialization);
+							}
+							//Do the scene change
+							app.changeScene(Specialization);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//facilities page
+			facTxt.registerInputProcessor(new TapProcessor(app));
+			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Facilities == null){
+								Facilities = new Facilities(app, "facilities_page");
+								//Add the scene to the mt application
+								app.addScene(Facilities);
+							}
+							//Do the scene change
+							app.changeScene(Facilities);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			
+			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
 				this.setTransition(new FadeTransition(app, 700));

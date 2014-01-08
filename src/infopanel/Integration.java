@@ -57,6 +57,7 @@ public class Integration extends AbstractScene {
 		private Iscene Specialization;
 		private Iscene Facilities;
 		private int pageCounter = 0;
+		private Iscene Screensaver;
 		
 		public Integration(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -114,7 +115,34 @@ public class Integration extends AbstractScene {
 			MTRectangle multecHolder = new MTRectangle(multec, app);
 			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
 			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
 			this.getCanvas().addChild(multecHolder);
+			multecHolder.registerInputProcessor(new TapProcessor(app));
+			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Screensaver == null){
+								Screensaver = new Screensaver(app, "Screensaver");
+								//Add the scene to the mt application
+								app.addScene(Screensaver);
+							}
+							//Do the scene change
+							app.changeScene(Screensaver);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 
 			//SUB MENU ITEM BUTTONS
 			//specialization page

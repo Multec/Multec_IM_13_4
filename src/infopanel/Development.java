@@ -76,6 +76,7 @@ public class Development extends AbstractScene {
 		private MTEllipse smallCircle1;
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3;
+		private Iscene Screensaver;
 		
 		public Development(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -99,7 +100,39 @@ public class Development extends AbstractScene {
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
-			
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
+			this.getCanvas().addChild(multecHolder);
+			multecHolder.registerInputProcessor(new TapProcessor(app));
+			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Screensaver == null){
+								Screensaver = new Screensaver(app, "Screensaver");
+								//Add the scene to the mt application
+								app.addScene(Screensaver);
+							}
+							//Do the scene change
+							app.changeScene(Screensaver);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -121,13 +154,68 @@ public class Development extends AbstractScene {
 			this.clearAllGestures(facBtn);
 			getCanvas().addChild(facBtn);
 			
-			
 			final MTTextArea facTxt = new MTTextArea(185, app.height-55, 200, 50, inhoudfont, app);
 			facTxt.setFillColor(textAreaColor);
 			facTxt.setStrokeColor(textAreaColor);
 			facTxt.setText("STUDENT FACILITIES");
 			this.clearAllGestures(facTxt);
 			this.getCanvas().addChild(facTxt);
+			
+			//SUB MENU ITEM BUTTONS
+			//specialization page
+			specTxt.registerInputProcessor(new TapProcessor(app));
+			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Specialization == null){
+								Specialization = new Specialization(app, "specialization_page");
+								//Add the scene to the mt application
+								app.addScene(Specialization);
+							}
+							//Do the scene change
+							app.changeScene(Specialization);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
+			//facilities page
+			facTxt.registerInputProcessor(new TapProcessor(app));
+			facTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.pushScene();
+							if (Facilities == null){
+								Facilities = new Facilities(app, "facilities_page");
+								//Add the scene to the mt application
+								app.addScene(Facilities);
+							}
+							//Do the scene change
+							app.changeScene(Facilities);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			
 			//Buttons down nav Menu
 			facBtn.registerInputProcessor(new TapProcessor(app));
@@ -215,15 +303,6 @@ public class Development extends AbstractScene {
 			clearAllGestures(arrowRHolder);
 			this.clearAllGestures(arrowLTxt);
 			this.clearAllGestures(arrowRTxt);
-			
-			
-			
-			//multecLogo
-			PImage multec = mtApplication.loadImage("multec_logo.png");
-			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
-			multecHolder.setNoStroke(true);
-			this.getCanvas().addChild(multecHolder);
 			
 			//contentCircleViewers
 			smallCircle1 = new MTEllipse (app, new Vector3D((app.width/2 - 15), app.height - 30), 5, 5);
