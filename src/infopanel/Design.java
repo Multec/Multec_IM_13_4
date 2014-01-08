@@ -575,6 +575,7 @@ public class Design extends AbstractScene {
 								docent1.setText("David Molenberghs");
 								PImage Image1 = app.loadImage("3d1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								this.clearAllGestures(RectangleImage1);
 								getCanvas().addChild(RectangleImage1);
 								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 								RectangleImage1.setNoStroke(true);
@@ -597,6 +598,7 @@ public class Design extends AbstractScene {
 								docent2.setText("Stefan Tilburgs");
 								PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								this.clearAllGestures(RectangleImage1);
 								getCanvas().addChild(RectangleImage1);
 								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 								RectangleImage1.setNoStroke(true);
@@ -617,6 +619,11 @@ public class Design extends AbstractScene {
 				}
 					return false;			
 			}
+
+				private void clearAllGestures(MTRectangle comp) {
+					comp.unregisterAllInputProcessors();
+					comp.removeAllGestureEventListeners();	
+				}
 			});
 			//arrowRTabGesture
 			arrowRHolder.registerInputProcessor(new TapProcessor(app));

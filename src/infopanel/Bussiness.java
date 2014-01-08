@@ -101,6 +101,7 @@ public class Bussiness extends AbstractScene {
 			MTRectangle multecHolder = new MTRectangle(multec, app);
 			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
 			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
 			this.getCanvas().addChild(multecHolder);
 			
 			//downNavigation menu
