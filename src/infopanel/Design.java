@@ -616,9 +616,18 @@ public class Design extends AbstractScene {
 								RectangleImage1.setNoStroke(true);
 								getCanvas().removeChild(RectangleImage2);
 								docent2.setText("");
-								
+																
 								PImage Voorbeeld1 = app.loadImage("3D1mini.jpg"); 
 								MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
+								
+								final MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);
+								PImage Voorbeeld11 = app.loadImage("3D1.jpg"); 
+								final MTRectangle RectangleImage33 = new MTRectangle(Voorbeeld11, app);
+								
+								final MTRectangle kruisje = new MTRectangle(0, 0, 1920, 1080, app);
+								kruisje.setFillColor(new MTColor(0,0,0,0));
+								this.clearAllGestures(kruisje);
+								
 								getCanvas().addChild(RectangleImage3);
 								RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
 								RectangleImage3.setNoStroke(true);	
@@ -627,24 +636,36 @@ public class Design extends AbstractScene {
 								RectangleImage3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 									public boolean processGestureEvent(MTGestureEvent ge) {
 										TapEvent te = (TapEvent)ge;
-										if (te.isDoubleTap()){
-											MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);
+										if (te.isTapped()){
+											
 											transparantkader.setFillColor(new MTColor(0,0,0,150));
-											getCanvas().addChild(transparantkader);
-											PImage Voorbeeld11 = app.loadImage("3D1.jpg"); 
-											MTRectangle RectangleImage33 = new MTRectangle(Voorbeeld11, app);
+											getCanvas().addChild(transparantkader);			
 											this.clearAllGestures(transparantkader);
+											
 											this.clearAllGestures(RectangleImage33);
 											getCanvas().addChild(RectangleImage33);
 											RectangleImage33.setPositionGlobal(new Vector3D(950,500,0));
-										}
+											
+											getCanvas().addChild(kruisje);
+											}	
 										return false;
 									}
-
 									private void clearAllGestures(MTRectangle comp) {
 										comp.unregisterAllInputProcessors();
 										comp.removeAllGestureEventListeners();
-										
+									}
+								});
+								
+								kruisje.registerInputProcessor(new TapProcessor(app));
+								kruisje.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {					
+									TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											getCanvas().removeChild(RectangleImage33);
+											getCanvas().removeChild(transparantkader);
+											getCanvas().removeChild(kruisje);
+										}
+										return false;
 									}
 								});
 								getCanvas().addChild(RectangleImage3);
@@ -703,7 +724,7 @@ public class Design extends AbstractScene {
 											this.clearAllGestures(RectangleImage33);
 											getCanvas().addChild(RectangleImage33);
 											RectangleImage33.setPositionGlobal(new Vector3D(950,500,0));
-											
+																
 										}
 										return false;
 										//getCanvas().removeChild(RectangleImage4);
