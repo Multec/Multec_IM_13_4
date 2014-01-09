@@ -117,7 +117,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Design == null){
 								Design = new Design(app, "Design2");
@@ -125,8 +124,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Design);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Design);
 							break;
 							}
@@ -161,7 +158,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Technology == null){
 								Technology = new Technology(app, "Technology");
@@ -169,8 +165,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Technology);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Technology);
 							break;
 							}
@@ -205,7 +199,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Bussiness == null){
 								Bussiness = new Bussiness(app, "Bussiness");
@@ -213,8 +206,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Bussiness);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Bussiness);
 							break;
 							}
@@ -249,7 +240,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Development == null){
 								Development = new Development(app, "Development");
@@ -257,8 +247,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Development);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Development);
 							break;
 							}
@@ -293,7 +281,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Integration == null){
 								Integration = new Integration(app, "Integration");
@@ -301,8 +288,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Integration);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Integration);
 							break;
 							}
@@ -422,7 +407,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Screensaver == null){
 								Screensaver = new Screensaver(app, "Screensaver");
@@ -430,8 +414,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Screensaver);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Screensaver);
 							break;
 							}
@@ -454,7 +436,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Specialization == null){
 								Specialization = new Specialization(app, "specialization_page");
@@ -462,8 +443,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Specialization);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Specialization);
 							break;
 							}
@@ -484,7 +463,6 @@ public class Specialization extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Facilities == null){
 								Facilities = new Facilities(app, "facilities_page");
@@ -492,8 +470,6 @@ public class Specialization extends AbstractScene {
 								app.addScene(Facilities);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Specialization);
-							System.gc();
 							app.changeScene(Facilities);
 							break;
 							}

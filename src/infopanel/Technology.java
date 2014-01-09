@@ -172,8 +172,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
 							if (Screensaver == null){
 								Screensaver = new Screensaver(app, "Screensaver");
 								//Add the scene to the mt application
@@ -204,8 +202,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
 							if (Specialization == null){
 								Specialization = new Specialization(app, "specialization_page");
 								//Add the scene to the mt application
@@ -235,7 +231,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Facilities == null){
 								Facilities = new Facilities(app, "facilities_page");
@@ -243,8 +238,6 @@ public class Technology extends AbstractScene {
 								app.addScene(Facilities);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Technology);
-							System.gc();
 							app.changeScene(Facilities);
 							break;
 							}
@@ -282,7 +275,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Design == null){
 								Design = new Design(app, "Design2");
@@ -290,8 +282,6 @@ public class Technology extends AbstractScene {
 								app.addScene(Design);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Technology);
-							System.gc();
 							app.changeScene(Design);
 							break;
 							}
@@ -326,7 +316,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Technology == null){
 								Technology = new Technology(app, "Technology");
@@ -334,8 +323,6 @@ public class Technology extends AbstractScene {
 								app.addScene(Technology);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Technology);
-							System.gc();
 							app.changeScene(Technology);
 							break;
 							}
@@ -370,7 +357,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Bussiness == null){
 								Bussiness = new Bussiness(app, "Bussiness");
@@ -378,8 +364,8 @@ public class Technology extends AbstractScene {
 								app.addScene(Bussiness);
 							}
 							//Do the scene change
+
 							app.changeScene(Bussiness);
-							//app.destroySceneAfterTransition(Technology);
 							System.gc();
 							break;
 							}
@@ -414,7 +400,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Development == null){
 								Development = new Development(app, "Development");
@@ -422,8 +407,6 @@ public class Technology extends AbstractScene {
 								app.addScene(Development);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Technology);
-							System.gc();
 							app.changeScene(Development);
 							break;
 							}
@@ -458,7 +441,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Integration == null){
 								Integration = new Integration(app, "Integration");
@@ -466,8 +448,6 @@ public class Technology extends AbstractScene {
 								app.addScene(Integration);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Technology);
-							System.gc();
 							app.changeScene(Integration);
 							break;
 							}
@@ -578,7 +558,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (pageCounter==0){
 								title.setText("DATA AND MEDIA");
@@ -654,8 +633,6 @@ public class Technology extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
 							if (pageCounter==0){
 								title.setText("DATA AND MEDIA");
 								content1.setText("In these courses, students will learn how to generate and manage data and media.");

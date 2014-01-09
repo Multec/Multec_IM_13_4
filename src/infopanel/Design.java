@@ -172,7 +172,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Screensaver == null){
 								Screensaver = new Screensaver(app, "Screensaver");
@@ -180,8 +179,6 @@ public class Design extends AbstractScene {
 								app.addScene(Screensaver);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(Screensaver);
 							break;
 							}
@@ -204,7 +201,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Specialization == null){
 								Specialization = new Specialization(app, "specialization_page");
@@ -212,8 +208,6 @@ public class Design extends AbstractScene {
 								app.addScene(Specialization);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(Specialization);
 							break;
 							}
@@ -234,7 +228,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (Facilities == null){
 								Facilities = new Facilities(app, "facilities_page");
@@ -242,8 +235,6 @@ public class Design extends AbstractScene {
 								app.addScene(Facilities);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(Facilities);
 							break;
 							}
@@ -281,7 +272,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (design == null){
 								design = new Design(app, "design");
@@ -289,8 +279,6 @@ public class Design extends AbstractScene {
 								app.addScene(design);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(design);
 							break;
 							}
@@ -324,7 +312,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (technology == null){
 								technology = new Technology(app, "technology");
@@ -332,8 +319,6 @@ public class Design extends AbstractScene {
 								app.addScene(technology);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(technology);
 							break;
 							}
@@ -368,7 +353,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (bussiness == null){
 								bussiness = new Bussiness(app, "bussiness");
@@ -376,8 +360,6 @@ public class Design extends AbstractScene {
 								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(bussiness);
 							break;
 							}
@@ -412,7 +394,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (development == null){
 								development = new Development(app, "development");
@@ -420,8 +401,6 @@ public class Design extends AbstractScene {
 								app.addScene(development);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(development);
 							break;
 							}
@@ -456,7 +435,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
 							app.pushScene();
 							if (integration == null){
 								integration = new Integration(app, "integration");
@@ -464,8 +442,6 @@ public class Design extends AbstractScene {
 								app.addScene(integration);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(design);
-							System.gc();
 							app.changeScene(integration);
 							break;
 							}
@@ -565,14 +541,14 @@ public class Design extends AbstractScene {
 			PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 			rectangleImage1 = new MTRectangle(Image1, app);
 			getCanvas().addChild(rectangleImage1);
-			rectangleImage1.setPositionGlobal(new Vector3D(900,290,0));
+			rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 			rectangleImage1.setNoStroke(true);
 			this.clearAllGestures(rectangleImage1);
 			
 			PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
 			rectangleImage2 = new MTRectangle(Image2, app);
 			getCanvas().addChild(rectangleImage2);
-			rectangleImage2.setPositionGlobal(new Vector3D(1200,290,0));
+			rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 			rectangleImage2.setNoStroke(true);
 			this.clearAllGestures(rectangleImage2);
 			
