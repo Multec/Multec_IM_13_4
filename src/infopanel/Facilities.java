@@ -84,12 +84,7 @@ public class Facilities extends AbstractScene {
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
 			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			
-			//pageCircle
-			MTEllipse pCircle = new MTEllipse(app, new Vector3D(230, 192), 30, 30);
-			pCircle.setFillColor(white);
-			pCircle.setNoStroke(true);
-			this.clearAllGestures(pCircle);
-			getCanvas().addChild(pCircle);
+			
 		
 			//MENU ITEMS Design
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);

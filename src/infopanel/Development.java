@@ -590,8 +590,8 @@ public class Development extends AbstractScene {
 			subtitle3.setText("LANGUAGES");
 			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
 			
-			docent1.setText("Jan Claes");
-			docent2.setText("Dirly De Schrijven");
+			docent1.setText("Rudy");
+			docent2.setText("Dirly");
 			
 			
 			
@@ -627,27 +627,6 @@ public class Development extends AbstractScene {
 			getCanvas().addChild(RectangleImage2);
 			RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 			RectangleImage2.setNoStroke(true);
-			
-			PImage Voorbeeld1 = app.loadImage("swd2mini.jpg"); 
-			final MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
-			getCanvas().addChild(RectangleImage3);
-			RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
-			RectangleImage3.setNoStroke(true);	
-			this.clearAllGestures(RectangleImage3);
-			
-			PImage Voorbeeld2 = app.loadImage("swd1mini.jpg"); 
-			final MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
-			getCanvas().addChild(RectangleImage4);
-			RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
-			RectangleImage4.setNoStroke(true);
-			this.clearAllGestures(RectangleImage4);
-			
-			PImage Voorbeeld3 = app.loadImage("dwd1mini.jpg"); 
-			final MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
-			getCanvas().addChild(RectangleImage5);
-			RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
-			RectangleImage5.setNoStroke(true);
-			this.clearAllGestures(RectangleImage5);
 			
 			//arrowLTapGesture
 			arrowLHolder.registerInputProcessor(new TapProcessor(app));
@@ -690,27 +669,6 @@ public class Development extends AbstractScene {
 								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 								RectangleImage2.setNoStroke(true);
 								this.clearAllGestures(RectangleImage2);
-								
-								PImage Voorbeeld1 = app.loadImage("CPmini.jpg"); 
-								final MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
-								getCanvas().addChild(RectangleImage3);
-								RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
-								RectangleImage3.setNoStroke(true);	
-								this.clearAllGestures(RectangleImage3);
-								
-								PImage Voorbeeld2 = app.loadImage("CP2mini.jpg"); 
-								final MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
-								getCanvas().addChild(RectangleImage4);
-								RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
-								RectangleImage4.setNoStroke(true);
-								this.clearAllGestures(RectangleImage4);
-								
-								PImage Voorbeeld3 = app.loadImage("CPmini(2).jpg"); 
-								final MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
-								getCanvas().addChild(RectangleImage5);
-								RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
-								RectangleImage5.setNoStroke(true);
-								this.clearAllGestures(RectangleImage5);
 							}
 							else if (pageCounter == -1)
 							{
@@ -728,26 +686,6 @@ public class Development extends AbstractScene {
 								docent1.setText("");
 								docent2.setText("");
 								
-								PImage Voorbeeld1 = app.loadImage("ios1mini.jpg"); 
-								final MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
-								getCanvas().addChild(RectangleImage3);
-								RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
-								RectangleImage3.setNoStroke(true);	
-								this.clearAllGestures(RectangleImage3);
-								
-								PImage Voorbeeld2 = app.loadImage("ios2mini.jpg"); 
-								final MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
-								getCanvas().addChild(RectangleImage4);
-								RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
-								RectangleImage4.setNoStroke(true);
-								this.clearAllGestures(RectangleImage4);
-								
-								PImage Voorbeeld3 = app.loadImage("ios3mini.jpg"); 
-								final MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
-								getCanvas().addChild(RectangleImage5);
-								RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
-								RectangleImage5.setNoStroke(true);
-								this.clearAllGestures(RectangleImage5);
 								
 								
 							}
@@ -780,27 +718,6 @@ public class Development extends AbstractScene {
 								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 								RectangleImage2.setNoStroke(true);
 								this.clearAllGestures(RectangleImage2);
-								
-								PImage Voorbeeld1 = app.loadImage("swd1mini.jpg"); 
-								final MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
-								getCanvas().addChild(RectangleImage3);
-								RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
-								RectangleImage3.setNoStroke(true);	
-								this.clearAllGestures(RectangleImage3);
-								
-								PImage Voorbeeld2 = app.loadImage("swd1mini.jpg"); 
-								final MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
-								getCanvas().addChild(RectangleImage4);
-								RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
-								RectangleImage4.setNoStroke(true);
-								this.clearAllGestures(RectangleImage4);
-								
-								PImage Voorbeeld3 = app.loadImage("swd2mini.jpg"); 
-								final MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
-								getCanvas().addChild(RectangleImage5);
-								RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
-								RectangleImage5.setNoStroke(true);
-								this.clearAllGestures(RectangleImage5);
 							}
 							break;
 							}
@@ -837,8 +754,6 @@ public class Development extends AbstractScene {
 								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255));
-								
-								
 							}
 							else if (pageCounter == -1)
 							{
