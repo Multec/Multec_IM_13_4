@@ -112,7 +112,7 @@ public class Facilities extends AbstractScene {
 							app.popScene();
 							app.pushScene();
 							if (Design == null){
-								Design = new Design(app, "Design2");
+								Design = new Design2(app, "Design2");
 								//Add the scene to the mt application
 								app.addScene(Design);
 							}

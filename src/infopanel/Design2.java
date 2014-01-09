@@ -2,15 +2,6 @@ package infopanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-
-import java.awt.event.AdjustmentListener;
-import java.awt.event.AdjustmentEvent;
-import java.applet.Applet;
-import java.awt.Label;
 
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
@@ -60,29 +51,28 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class Development extends AbstractScene {
+public class Design2 extends AbstractScene {
 		private MTApplication app;
-		private Iscene design;
-		private Iscene Technology;
-		private Iscene Integration;
-		private Iscene bussiness;
-		private Iscene development2;
 		private Iscene development;
-		private Iscene facilities;
-		private Iscene Development;
+		private Iscene technology;
+		private Iscene integration;
+		private Iscene bussiness;
+		private Iscene design;
 		private Iscene Specialization;
 		private Iscene Facilities;
 		private int pageCounter = 0;
-		private MTEllipse smallCircle1;
 		private MTEllipse smallCircle2;
-		private MTEllipse smallCircle3;
+		private MTEllipse smallCircle3; 
 		private Iscene Screensaver;
+		private MTRectangle rectangleImage1;
+		private MTRectangle rectangleImage2;
 		
-		public Development(final MTApplication mtApplication, String name) {
+		
+		public Design2(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
-			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("Development.jpg") , true);
+			MTBackgroundImage background = new MTBackgroundImage(mtApplication, mtApplication.loadImage("design.jpg") , true);
 			this.getCanvas().addChild(background);
 			
 			MTColor white = new MTColor(255,255,255);
@@ -94,48 +84,47 @@ public class Development extends AbstractScene {
 			MTColor kleurbol5 = new MTColor(206, 181, 104, 125);
 			MTColor grey = new MTColor(184,184,184);
 			MTColor whiteTrans = new MTColor(255,255,255, 125);
+			
 			MTColor textAreaColor = new MTColor(50,100,150,0);
 			
 			IFont font = FontManager.getInstance().createFont(app, "HYPE.ttf", 40, white, white);
-			IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
+			final IFont inhoudfont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, black, black);
 			IFont arrowFont = FontManager.getInstance().createFont(app, "HYPE.ttf", 28, grey, grey);
 			
-			//multecLogo
-			PImage multec = mtApplication.loadImage("multec_logo.png");
-			MTRectangle multecHolder = new MTRectangle(multec, app);
-			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
-			multecHolder.setNoStroke(true);
-			this.clearAllGestures(multecHolder);
-			this.getCanvas().addChild(multecHolder);
-			multecHolder.registerInputProcessor(new TapProcessor(app));
-			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
-							if (Screensaver == null){
-								Screensaver = new Screensaver(app, "Screensaver");
-								//Add the scene to the mt application
-								app.addScene(Screensaver);
-							}
-							//Do the scene change
-							app.destroySceneAfterTransition(Development);
-							System.gc();
-							app.changeScene(Screensaver);
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
+			//arrows+arrowText
+			PImage arrowL = mtApplication.loadImage("arrowL.png");
+			PImage arrowR = mtApplication.loadImage("arrowR.png");
+			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
+			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
+			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
+			arrowLHolder.setNoStroke(true);
+			
+			clearAllGestures(arrowRHolder);
+			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
+			arrowLTxt.setNoStroke(true);
+			arrowLTxt.setNoFill(true);
+			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
+			arrowRTxt.setNoStroke(true);
+			arrowRTxt.setNoFill(true);
+			arrowLTxt.setText("3D DEVELOPMENT");
+			arrowRTxt.setText("3D DEVELOPMENT");
+			this.getCanvas().addChild(arrowLTxt);
+			this.getCanvas().addChild(arrowRTxt);
+			clearAllGestures(arrowRHolder);
+			this.clearAllGestures(arrowLTxt);
+			this.clearAllGestures(arrowRTxt);
+	
+			//contentCircleViewers
+			smallCircle2 = new MTEllipse (app, new Vector3D((app.width/2 - 8), app.height - 30), 5, 5);
+			smallCircle2.setFillColor(white);
+			smallCircle2.setNoStroke(true);
+			getCanvas().addChild(smallCircle2);
+			this.clearAllGestures(smallCircle2);
+			smallCircle3 = new MTEllipse (app, new Vector3D((app.width/2 + 8), app.height - 30), 5, 5);
+			smallCircle3.setFillColor(whiteTrans);
+			smallCircle3.setNoStroke(true);
+			getCanvas().addChild(smallCircle3);
+			this.clearAllGestures(smallCircle3);
 			
 			//downNavigation menu
 			MTEllipse specBtn = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, app.height - 40), 25, 25);
@@ -163,6 +152,44 @@ public class Development extends AbstractScene {
 			facTxt.setText("STUDENT FACILITIES");
 			this.clearAllGestures(facTxt);
 			this.getCanvas().addChild(facTxt);
+			this.clearAllGestures(facTxt);
+			//update
+			//multecLogo
+			PImage multec = mtApplication.loadImage("multec_logo.png");
+			MTRectangle multecHolder = new MTRectangle(multec, app);
+			multecHolder.setPositionGlobal(new Vector3D(app.width-80,app.height-30,0));
+			multecHolder.setNoStroke(true);
+			this.clearAllGestures(multecHolder);
+			this.getCanvas().addChild(multecHolder);
+			multecHolder.registerInputProcessor(new TapProcessor(app));
+			multecHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+				public boolean processGestureEvent(MTGestureEvent ge) {					
+					TapEvent te = (TapEvent)ge;
+					switch (te.getId()) {
+					case MTGestureEvent.GESTURE_DETECTED:
+						break;
+					case MTGestureEvent.GESTURE_UPDATED:
+						break;
+					case MTGestureEvent.GESTURE_ENDED:
+						if (te.isTapped()){
+							app.popScene();
+							app.pushScene();
+							if (Screensaver == null){
+								Screensaver = new Screensaver(app, "Screensaver");
+								//Add the scene to the mt application
+								app.addScene(Screensaver);
+							}
+							//Do the scene change
+							app.destroySceneAfterTransition(design);
+							System.gc();
+							app.changeScene(Screensaver);
+							break;
+							}
+					default: break;
+				}
+					return false;			
+			}
+			});
 			
 			//SUB MENU ITEM BUTTONS
 			//specialization page
@@ -185,7 +212,7 @@ public class Development extends AbstractScene {
 								app.addScene(Specialization);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Development);
+							app.destroySceneAfterTransition(design);
 							System.gc();
 							app.changeScene(Specialization);
 							break;
@@ -215,7 +242,7 @@ public class Development extends AbstractScene {
 								app.addScene(Facilities);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Development);
+							app.destroySceneAfterTransition(design);
 							System.gc();
 							app.changeScene(Facilities);
 							break;
@@ -225,126 +252,12 @@ public class Development extends AbstractScene {
 					return false;			
 			}
 			});
-			
-			//Buttons down nav Menu
-			facBtn.registerInputProcessor(new TapProcessor(app));
-			facBtn.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
-							if (facilities == null){
-								facilities = new Facilities(app, "facilities");
-								//Add the scene to the mt application
-								app.addScene(facilities);
-							}
-							//Do the scene change
-							app.destroySceneAfterTransition(Development);
-
-							System.gc();
-							app.changeScene(facilities);
-							break;
-							}
-					default: break;
-				}
-					return false;
-					
-			}
-			});
-			
-			specTxt.registerInputProcessor(new TapProcessor(app));
-			specTxt.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
-							if (Specialization == null){
-								Specialization = new Specialization(app, "Specialization");
-								//Add the scene to the mt application
-								app.addScene(Specialization);
-							}
-							//Do the scene change
-							app.destroySceneAfterTransition(Development);
-
-							System.gc();
-							app.changeScene(Specialization);
-							break;
-							}
-					default: break;
-				}
-					return false;
-					
-			}
-			});
-
-			
-			//arrows+arrowText
-			PImage arrowL = mtApplication.loadImage("arrowL.png");
-			PImage arrowR = mtApplication.loadImage("arrowR.png");
-			MTRectangle arrowLHolder = new MTRectangle (arrowL, app);
-			MTRectangle arrowRHolder = new MTRectangle (arrowR, app);
-			arrowLHolder.setPositionGlobal(new Vector3D(40, app.height/2 - 8));
-			arrowLHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowLHolder);
-			clearAllGestures(arrowLHolder);
-			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
-			arrowRHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowRHolder);
-			clearAllGestures(arrowRHolder);
-			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
-			arrowLTxt.setNoStroke(true);
-			arrowLTxt.setNoFill(true);
-			final MTTextArea arrowRTxt = new MTTextArea(app.width-277, app.height/2-25, 220, 300, arrowFont, app);
-			arrowRTxt.setNoStroke(true);
-			arrowRTxt.setNoFill(true);
-			arrowLTxt.setText("PROGRAMMING");
-			arrowRTxt.setText("MOBILE Development");
-			this.getCanvas().addChild(arrowLTxt);
-			this.getCanvas().addChild(arrowRTxt);
-			clearAllGestures(arrowRHolder);
-			this.clearAllGestures(arrowLTxt);
-			this.clearAllGestures(arrowRTxt);
-			
 			//pageCircle
 			MTEllipse pCircle = new MTEllipse(app, new Vector3D(330, 167), 30, 30);
-			pCircle.setFillColor(kleurbol1);
+			pCircle.setFillColor(kleurbol2);
 			pCircle.setNoStroke(true);
 			this.clearAllGestures(pCircle);
 			getCanvas().addChild(pCircle);
-			
-			//contentCircleViewers
-			smallCircle1 = new MTEllipse (app, new Vector3D((app.width/2 - 15), app.height - 30), 5, 5);
-			smallCircle1.setFillColor(whiteTrans);
-			smallCircle1.setNoStroke(true);
-			getCanvas().addChild(smallCircle1);
-			this.clearAllGestures(smallCircle1);
-			smallCircle2 = new MTEllipse (app, new Vector3D((app.width/2), app.height - 30), 5, 5);
-			smallCircle2.setFillColor(white);
-			smallCircle2.setNoStroke(true);
-			getCanvas().addChild(smallCircle2);
-			this.clearAllGestures(smallCircle2);
-			smallCircle3 = new MTEllipse (app, new Vector3D((app.width/2 + 15), app.height - 30), 5, 5);
-			smallCircle3.setFillColor(whiteTrans);
-			smallCircle3.setNoStroke(true);
-			getCanvas().addChild(smallCircle3);
-			this.clearAllGestures(smallCircle3);
-			
 			//MENU ITEM DESIGN
 			MTEllipse circle = new MTEllipse(app, new Vector3D((mtApplication.width/5)*0 + 35, 50), 30, 30);
 			circle.setFillColor(kleurbol2);
@@ -371,13 +284,12 @@ public class Development extends AbstractScene {
 							app.popScene();
 							app.pushScene();
 							if (design == null){
-								design = new Design2(app, "design2");
+								design = new Design2(app, "design");
 								//Add the scene to the mt application
 								app.addScene(design);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Development);
-
+							app.destroySceneAfterTransition(design);
 							System.gc();
 							app.changeScene(design);
 							break;
@@ -391,7 +303,6 @@ public class Development extends AbstractScene {
 			tap1.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap1.setPositionGlobal(new Vector3D((mtApplication.width/5)*0,30,0));
 			
-			//MENU ITEM Technology
 			MTEllipse circle2 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*1 + 35, 50), 30, 30);
 			circle2.setFillColor(kleurbol3);
 			circle2.setNoStroke(true);
@@ -415,15 +326,15 @@ public class Development extends AbstractScene {
 						if (te.isTapped()){
 							app.popScene();
 							app.pushScene();
-							if (Technology == null){
-								Technology = new Technology(app, "Technology");
+							if (technology == null){
+								technology = new Technology(app, "technology");
 								//Add the scene to the mt application
-								app.addScene(Technology);
+								app.addScene(technology);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Development);
+							app.destroySceneAfterTransition(design);
 							System.gc();
-							app.changeScene(Technology);
+							app.changeScene(technology);
 							break;
 							}
 					default: break;
@@ -436,7 +347,6 @@ public class Development extends AbstractScene {
 			tap2.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap2.setPositionGlobal(new Vector3D((mtApplication.width/5)*1,30,0));
 			
-			//MENU ITEM BUSSINESS
 			MTEllipse circle3 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*2 + 35, 50), 30, 30);
 			circle3.setFillColor(kleurbol5);
 			circle3.setNoStroke(true);
@@ -466,7 +376,7 @@ public class Development extends AbstractScene {
 								app.addScene(bussiness);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Development);
+							app.destroySceneAfterTransition(design);
 							System.gc();
 							app.changeScene(bussiness);
 							break;
@@ -481,7 +391,6 @@ public class Development extends AbstractScene {
 			tap3.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap3.setPositionGlobal(new Vector3D((mtApplication.width/5)*2,30,0));
 			
-			//MENU ITEM Development
 			MTEllipse circle4 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*3 + 35, 50), 30, 30);
 			circle4.setFillColor(kleurbol1);
 			circle4.setNoStroke(true);
@@ -505,15 +414,15 @@ public class Development extends AbstractScene {
 						if (te.isTapped()){
 							app.popScene();
 							app.pushScene();
-							if (Development == null){
-								Development = new Development(app, "Development");
+							if (development == null){
+								development = new Development(app, "development");
 								//Add the scene to the mt application
-								app.addScene(Development);
+								app.addScene(development);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Development);
+							app.destroySceneAfterTransition(design);
 							System.gc();
-							app.changeScene(Development);
+							app.changeScene(development);
 							break;
 							}
 					default: break;
@@ -525,7 +434,6 @@ public class Development extends AbstractScene {
 			tap4.setAnchor(PositionAnchor.UPPER_LEFT);
 			tap4.setPositionGlobal(new Vector3D((mtApplication.width/5)*3,30,0));
 			
-			//MENU ITEM Integration
 			MTEllipse circle5 = new MTEllipse(app, new Vector3D((mtApplication.width/5)*4 + 35, 50), 30, 30);
 			circle5.setFillColor(kleurbol4);
 			circle5.setNoStroke(true);
@@ -534,8 +442,8 @@ public class Development extends AbstractScene {
 			tap5.setFillColor(textAreaColor);
 			tap5.setStrokeColor(textAreaColor);
 			tap5.setText("INTEGRATION");
-			this.clearAllGestures(circle5);
 			this.clearAllGestures(tap5);
+			this.clearAllGestures(circle5);
 			tap5.registerInputProcessor(new TapProcessor(app));
 			tap5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {					
@@ -550,15 +458,15 @@ public class Development extends AbstractScene {
 						if (te.isTapped()){
 							app.popScene();
 							app.pushScene();
-							if (Integration == null){
-								Integration = new Integration(app, "Integration");
+							if (integration == null){
+								integration = new Integration(app, "integration");
 								//Add the scene to the mt application
-								app.addScene(Integration);
+								app.addScene(integration);
 							}
 							//Do the scene change
-							app.destroySceneAfterTransition(Development);
+							app.destroySceneAfterTransition(design);
 							System.gc();
-							app.changeScene(Integration);
+							app.changeScene(integration);
 							break;
 							}
 					default: break;
@@ -590,8 +498,19 @@ public class Development extends AbstractScene {
 			final MTTextArea content1 = new MTTextArea(300, 220, 700, 300, fontContent, app); 
 			final MTTextArea subtitle2 = new MTTextArea(300, 280, 700, 300, fontSubtitle, app); 
 			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
-			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
-			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
+			final MTTextArea subtitle3 = new MTTextArea(300, 340, 700, 300, fontSubtitle, app); 
+			final MTTextArea content3 = new MTTextArea(300, 360, 700, 300, fontContent, app); 
+
+			final MTTextArea title2 = new MTTextArea(1050, 150, 700, 300, fontSubtitle, app);
+			final MTTextArea docent1 = new MTTextArea(1050, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1350, 380, 700 ,300, fontContent, app);
+			
+			title2.setNoStroke(true);
+			title2.setNoFill(true);
+			docent1.setNoStroke(true);
+			docent1.setNoFill(true);
+			docent2.setNoStroke(true);
+			docent2.setNoFill(true);
 			title.setNoStroke(true);
 			title.setNoFill(true);
 			subtitle1.setNoStroke(true);
@@ -608,14 +527,17 @@ public class Development extends AbstractScene {
 			content3.setNoFill(true);
 			
 			//AddTextToTextAreas
-			title.setText("WEB DEVELOPMENT");
+			title.setText("DESIGN AND VISUAL");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
-			content1.setText("Web Development dummy text writing down here just something."); 
-			content2.appendText("Static web, Dynamic web, Advanced web");
+			content1.setText("In these courses, the students will learn how to design for web as well as audio visual design."); 
+			content2.appendText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
 			subtitle3.setText("LANGUAGES");
-			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
-			
+			content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
+			title2.setText("DOCENTS");
+			docent1.setText("Filip Vandeputte");
+			docent2.setText("Stefan Tilburgs");
+
 			
 			//addTextAreas
 			this.clearAllGestures(title);
@@ -632,19 +554,64 @@ public class Development extends AbstractScene {
 			this.getCanvas().addChild(content2);
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
+			this.clearAllGestures(title2);
+			this.getCanvas().addChild(title2);
+			this.clearAllGestures(docent1);
+			this.getCanvas().addChild(docent1);
+			this.clearAllGestures(docent2);
+			this.getCanvas().addChild(docent2);
+
 			
-			PImage Image1 = app.loadImage("webdev1.png");
-			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
-			RectangleImage1.setNoStroke(true);
+			PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+			rectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(rectangleImage1);
+			rectangleImage1.setPositionGlobal(new Vector3D(900,290,0));
+			rectangleImage1.setNoStroke(true);
+			this.clearAllGestures(rectangleImage1);
 			
-			PImage Image2 = app.loadImage("webdev2.png");
-			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
-			RectangleImage2.setNoStroke(true);
+			PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+			rectangleImage2 = new MTRectangle(Image2, app);
+			getCanvas().addChild(rectangleImage2);
+			rectangleImage2.setPositionGlobal(new Vector3D(1200,290,0));
+			rectangleImage2.setNoStroke(true);
+			this.clearAllGestures(rectangleImage2);
 			
+			PImage Voorbeeld1 = app.loadImage("schetsenmini.jpg"); 
+			final MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
+			getCanvas().addChild(RectangleImage3);
+			RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
+			RectangleImage3.setNoStroke(true);	
+			this.clearAllGestures(RectangleImage3);
+			
+			PImage Voorbeeld2 = app.loadImage("typeradiomini.jpg"); 
+			final MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
+			getCanvas().addChild(RectangleImage4);
+			RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
+			RectangleImage4.setNoStroke(true);
+			this.clearAllGestures(RectangleImage4);
+			
+			PImage Voorbeeld3 = app.loadImage("monomini.jpg"); 
+			final MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
+			getCanvas().addChild(RectangleImage5);
+			RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
+			RectangleImage5.setNoStroke(true);
+			this.clearAllGestures(RectangleImage5);
+			
+			PImage Voorbeeld11 = app.loadImage("3D1.jpg"); //VOORBEELD 3D NR1
+			final MTRectangle RectangleImage33 = new MTRectangle(Voorbeeld11, app);
+			
+			PImage Voorbeeld21 = app.loadImage("3D2.jpg"); //VOORBEELD 3D NR2
+			final MTRectangle RectangleImage34 = new MTRectangle(Voorbeeld21, app);
+			
+			PImage Voorbeeld31 = app.loadImage("3D3.jpg"); //VOORBEELD 3D NR3
+			final MTRectangle RectangleImage35 = new MTRectangle(Voorbeeld31, app);
+			
+			this.getCanvas().addChild(arrowLHolder);
+			clearAllGestures(arrowLHolder);
+			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
+			arrowRHolder.setNoStroke(true);
+			this.getCanvas().addChild(arrowRHolder);
+
 			//arrowLTapGesture
 			arrowLHolder.registerInputProcessor(new TapProcessor(app));
 			arrowLHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -659,98 +626,262 @@ public class Development extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							if (pageCounter==0){
-								title.setText("PROGRAMMING");
-								content1.setText("This is programming dude..");
-								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
-								content3.setText("Java");
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(rectangleImage2);
+								title.setText("3D DEVELOPMENT");
+								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
+								content2.setText("3D Design, Real-Time 3D");
+								content3.setText("Maya Autodesk");
 								pageCounter = -1;
-								arrowLTxt.setText("MOBILE DEVELOPMENT");
-								arrowRTxt.setText("WEB DEVELOPMENT");
-								smallCircle1.setFillColor(new MTColor(255,255,255));
+								arrowLTxt.setText("DESIGN AND VISUAL");
+								arrowRTxt.setText("DESIGN AND VISUAL");
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
-								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255));
+								docent1.setText("David Molenberghs");
+								PImage Image1 = app.loadImage("3d1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+
+								rectangleImage1 = new MTRectangle(Image1, app);
+								this.clearAllGestures(rectangleImage1);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								
+
+								docent2.setText("");
+								
+								final MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);		
+								
+								final MTRectangle kruisje = new MTRectangle(0, 0, 1920, 1080, app);
+								kruisje.setFillColor(new MTColor(0,0,0,0));
+								this.clearAllGestures(kruisje);
+															
+								PImage Voorbeeld1 = app.loadImage("3D1mini.jpg"); 
+								MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
+								getCanvas().addChild(RectangleImage3);
+								RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
+								RectangleImage3.setNoStroke(true);	
+								this.clearAllGestures(RectangleImage3);
+								RectangleImage3.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);			
+											this.clearAllGestures(transparantkader);
+											
+											this.clearAllGestures(RectangleImage33);
+											getCanvas().addChild(RectangleImage33);
+											RectangleImage33.setPositionGlobal(new Vector3D(950,500,0));
+											
+											getCanvas().addChild(kruisje);
+											}	
+										return false;
+									}
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+									}
+								});
+								
+								kruisje.registerInputProcessor(new TapProcessor(app));
+								kruisje.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {					
+									TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											getCanvas().removeChild(RectangleImage33);
+											getCanvas().removeChild(transparantkader);
+											getCanvas().removeChild(kruisje);
+										}
+										return false;
+									}
+								});
+								getCanvas().addChild(RectangleImage3);
+								RectangleImage3.setAnchor(PositionAnchor.UPPER_LEFT);
+								
+								
+								PImage Voorbeeld2 = app.loadImage("3D2mini.jpg"); 
+								MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
+								getCanvas().addChild(RectangleImage4);
+								RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
+								RectangleImage4.setNoStroke(true);	
+								this.clearAllGestures(RectangleImage4);
+								RectangleImage4.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage4.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);			
+											this.clearAllGestures(transparantkader);
+											
+											this.clearAllGestures(RectangleImage34);
+											getCanvas().addChild(RectangleImage34);
+											RectangleImage34.setPositionGlobal(new Vector3D(950,500,0));
+											
+											getCanvas().addChild(kruisje);
+											}	
+										return false;
+									}
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+									}
+								});
+								
+								kruisje.registerInputProcessor(new TapProcessor(app));
+								kruisje.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {					
+									TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											getCanvas().removeChild(RectangleImage34);
+											getCanvas().removeChild(transparantkader);
+											getCanvas().removeChild(kruisje);
+										}
+										return false;
+									}
+								});
+								getCanvas().addChild(RectangleImage4);
+								RectangleImage4.setAnchor(PositionAnchor.UPPER_LEFT);
+								
+								
+								
+								PImage Voorbeeld3 = app.loadImage("3D3mini.jpg"); 
+								MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
+								getCanvas().addChild(RectangleImage5);
+								RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
+								RectangleImage5.setNoStroke(true);	
+								this.clearAllGestures(RectangleImage5);
+								RectangleImage5.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);			
+											this.clearAllGestures(transparantkader);
+											
+											this.clearAllGestures(RectangleImage35);
+											getCanvas().addChild(RectangleImage35);
+											RectangleImage35.setPositionGlobal(new Vector3D(950,500,0));
+											
+											getCanvas().addChild(kruisje);
+											}	
+										return false;
+									}
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+									}
+								});
+								
+								kruisje.registerInputProcessor(new TapProcessor(app));
+								kruisje.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {					
+									TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											getCanvas().removeChild(RectangleImage35);
+											getCanvas().removeChild(transparantkader);
+											getCanvas().removeChild(kruisje);
+										}
+										return false;
+									}
+								});
+								getCanvas().addChild(RectangleImage5);
+								RectangleImage5.setAnchor(PositionAnchor.UPPER_LEFT);
 							}
 							else if (pageCounter == -1)
 							{
-								title.setText("MOBILE DEVELOPMENT");
-								content1.setText("This is mobile Development dude..");
-								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
-								content3.setText("Objective C");
-								pageCounter = 1;
-								arrowLTxt.setText("WEB DEVELOPMENT");
-								arrowRTxt.setText("PROGRAMMING");
-								smallCircle1.setFillColor(new MTColor(255,255, 255, 125));
-								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
-								smallCircle3.setFillColor(new MTColor(255,255,255));
-							}
-							else if(pageCounter == 1)
-							{
-								title.setText("WEB DEVELOPMENT");
-								content1.setText("Web Development dummy text writing down here just something."); 
-								content2.appendText("Static web, Dynamic web, Advanced web");
-								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(RectangleImage3);
+								getCanvas().removeChild(RectangleImage4);
+								getCanvas().removeChild(RectangleImage5);
+								
+
+								title.setText("DESIGN AND VISUAL");
+								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
+								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
 								pageCounter = 0;
-								arrowLTxt.setText("PROGRAMMING");
-								arrowRTxt.setText("MOBILE DEVELOPMENT");
-								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
+								arrowLTxt.setText("3D DEVELOPMENT");
+								arrowRTxt.setText("3D DEVELOPMENT");
 								smallCircle2.setFillColor(new MTColor(255,255,255));
-								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
+								smallCircle3.setFillColor(new MTColor(255,255,255,125));
+								docent1.setText("Filip Vandeputte");
+								docent2.setText("Stefan Tilburgs");
+								
+								PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
+
+								rectangleImage1 = new MTRectangle(Image1, app);
+								this.clearAllGestures(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+														
+								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------			
+								rectangleImage2 = new MTRectangle(Image2, app);
+								this.clearAllGestures(rectangleImage2);
+								rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								rectangleImage2.setNoStroke(true);
+								getCanvas().addChild(rectangleImage1);
+								getCanvas().addChild(rectangleImage2);
+														
+								smallCircle3.setFillColor(new MTColor(255,255,255,125));	
+								
+								getCanvas().addChild(RectangleImage3);
+								
+								getCanvas().addChild(RectangleImage4);
+						
+								getCanvas().addChild(RectangleImage5);
 							}
 							break;
-							}
-					default: break;
-				}
+						}
+						default: break;
+					}
 					return false;			
 			}
+
+				private void clearAllGestures(MTRectangle comp) {
+					comp.unregisterAllInputProcessors();
+					comp.removeAllGestureEventListeners();	
+				}
 			});
+
 			//arrowRTabGesture
 			arrowRHolder.registerInputProcessor(new TapProcessor(app));
 			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {					
 					TapEvent te = (TapEvent)ge;
 					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED: 
+					case MTGestureEvent.GESTURE_DETECTED:
+						MTColor white = new MTColor(10,100,50);
 						break;
 					case MTGestureEvent.GESTURE_UPDATED:
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							if (pageCounter==0){
-								title.setText("MOBILE DEVELOPMENT");
-								content1.setText("This is mobile Development dude..");
-								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
-								content3.setText("Objective C");
-								pageCounter = 1;
-								arrowRTxt.setText("PROGRAMMING");
-								arrowLTxt.setText("WEB DEVELOPMENT");
-								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
+								title.setText("3D DEVELOPMENT");
+								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
+								content2.setText("3D Design, Real-Time 3D");
+								content3.setText("Maya Autodesk");
+								pageCounter = -1;
+								arrowLTxt.setText("DESIGN AND VISUAL");
+								arrowRTxt.setText("DESIGN AND VISUAL");
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255));
 							}
 							else if (pageCounter == -1)
 							{
-								title.setText("WEB DEVELOPMENT");
-								content1.setText("Web Development dummy text writing down here just something."); 
-								content2.appendText("Static web, Dynamic web, Advanced web");
-								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+								title.setText("DESIGN AND VISUAL");
+								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
+								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
+								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
 								pageCounter = 0;
-								arrowRTxt.setText("MOBILE DEVELOPMENT");
-								arrowLTxt.setText("PROGRAMMING");
-								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
+								arrowLTxt.setText("3D DEVELOPMENT");
+								arrowRTxt.setText("3D DEVELOPMENT");
 								smallCircle2.setFillColor(new MTColor(255,255,255));
-								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
-							}
-							else if (pageCounter == 1)
-							{
-								title.setText("PROGRAMMING");
-								content1.setText("This is programming dude..");
-								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
-								content3.setText("Java");
-								pageCounter = -1;			
-								arrowRTxt.setText("WEB DEVELOPMENT");
-								arrowLTxt.setText("MOBILE DEVELOPMENT");
-								smallCircle1.setFillColor(new MTColor(255,255,255));
-								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 							}
 							break;
@@ -760,12 +891,15 @@ public class Development extends AbstractScene {
 					return false;			
 			}
 			});
+
+			//ARROW R 
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
-				this.setTransition(new FadeTransition(app, 700)); 
+				this.setTransition(new FadeTransition(app, 700));
 			else{
 				this.setTransition(new FadeTransition(app, 700));
-			}							
+			}
+								
 		}
 
 		
@@ -773,6 +907,8 @@ public class Development extends AbstractScene {
 			comp.unregisterAllInputProcessors();
 			comp.removeAllGestureEventListeners();
 		}
+		
+		
 	
 	@Override
 	public void init() {

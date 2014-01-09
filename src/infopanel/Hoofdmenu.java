@@ -129,7 +129,7 @@ public class Hoofdmenu extends AbstractScene {
 						//Save the current scene on the scene stack before changing
 						mtApp.popScene();
 						if (design == null){
-							design = new Design(mtApp, "design");
+							design = new Design2(mtApp, "design");
 							mtApp.addScene(design);
 						}
 						//Do the scene change
