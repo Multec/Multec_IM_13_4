@@ -64,6 +64,8 @@ public class Technology extends AbstractScene {
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3;
 		private Iscene Screensaver;
+		private MTRectangle rectangleImage1;
+		private MTRectangle rectangleImage2;
 		
 		public Technology(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -99,7 +101,7 @@ public class Technology extends AbstractScene {
 			clearAllGestures(arrowLHolder);
 			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
 			arrowRHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowRHolder);
+			
 			clearAllGestures(arrowRHolder);
 			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
 			arrowLTxt.setNoStroke(true);
@@ -539,11 +541,11 @@ public class Technology extends AbstractScene {
 			
 			
 			PImage Image1 = app.loadImage("Technology1.png"); 
-			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-			RectangleImage1.setNoStroke(true);
-			this.clearAllGestures(RectangleImage1);
+			rectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(rectangleImage1);
+			rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+			rectangleImage1.setNoStroke(true);
+			this.clearAllGestures(rectangleImage1);
 			
 			//arrowLTapGesture
 			arrowLHolder.registerInputProcessor(new TapProcessor(app));
@@ -560,6 +562,7 @@ public class Technology extends AbstractScene {
 						if (te.isTapped()){
 							app.pushScene();
 							if (pageCounter==0){
+								getCanvas().removeChild(rectangleImage1);
 								title.setText("DATA AND MEDIA");
 								content1.setText("In these courses, students will learn how to generate and manage data and media.");
 								content2.setText("Data management, Networked Media, New Trends, Media in Performance, New Media Devices.");
@@ -573,21 +576,23 @@ public class Technology extends AbstractScene {
 								docent2.setText("Robbie Delaere");
 								
 								PImage Image1 = app.loadImage("Technology3.png"); 
-								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-								RectangleImage1.setNoStroke(true);
-								this.clearAllGestures(RectangleImage1);
+								rectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								this.clearAllGestures(rectangleImage1);
 								
 								PImage Image2 = app.loadImage("Technology2.png"); 
-								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-								getCanvas().addChild(RectangleImage2);
-								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
-								RectangleImage2.setNoStroke(true);
-								this.clearAllGestures(RectangleImage2);
+								rectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(rectangleImage2);
+								rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								rectangleImage2.setNoStroke(true);
+								this.clearAllGestures(rectangleImage2);
 							}
 							else if (pageCounter == 1)
 							{
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(rectangleImage2);
 								title.setText("ELECTRONICS");
 								content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice.  These courses are a large part of the specialisation Art and Technology.");
 								content2.setText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling.");
@@ -600,14 +605,11 @@ public class Technology extends AbstractScene {
 								docent1.setText("Jan de Coster");
 								docent2.setText("");
 								PImage Image1 = app.loadImage("Technology1.png"); 
-								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-								RectangleImage1.setNoStroke(true);
-								this.clearAllGestures(RectangleImage1);
-								
-								
-								
+								rectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								this.clearAllGestures(rectangleImage1);	
 							}
 							break;
 							}
@@ -620,6 +622,7 @@ public class Technology extends AbstractScene {
 				comp.removeAllGestureEventListeners();	
 			}
 			});
+			this.getCanvas().addChild(arrowRHolder);
 			//arrowRTabGesture
 			arrowRHolder.registerInputProcessor(new TapProcessor(app));
 			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -634,6 +637,7 @@ public class Technology extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							if (pageCounter==0){
+								getCanvas().removeChild(rectangleImage1);
 								title.setText("DATA AND MEDIA");
 								content1.setText("In these courses, students will learn how to generate and manage data and media.");
 								content2.setText("Data management, Networked Media, New Trends, Media in Performance, New Media Devices.");
@@ -643,9 +647,27 @@ public class Technology extends AbstractScene {
 								arrowRTxt.setText("ELECTRONICS");
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255));
+								docent1.setText("Bert Van Rillaer");
+								docent2.setText("Robbie Delaere");
+								
+								PImage Image1 = app.loadImage("Technology3.png"); 
+								rectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								this.clearAllGestures(rectangleImage1);
+								
+								PImage Image2 = app.loadImage("Technology2.png"); 
+								rectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(rectangleImage2);
+								rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								rectangleImage2.setNoStroke(true);
+								this.clearAllGestures(rectangleImage2);
 							}
 							else if (pageCounter == 1)
 							{
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(rectangleImage2);
 								title.setText("ELECTRONICS");
 								content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice.  These courses are a large part of the specialisation Art and Technology.");
 								content2.setText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling.");
@@ -655,6 +677,14 @@ public class Technology extends AbstractScene {
 								arrowRTxt.setText("DATA AND MEDIA");
 								smallCircle2.setFillColor(new MTColor(255,255,255));
 								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
+								docent1.setText("Jan de Coster");
+								docent2.setText("");
+								PImage Image1 = app.loadImage("Technology1.png"); 
+								rectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								this.clearAllGestures(rectangleImage1);
 							}
 							break;
 							}
@@ -662,6 +692,12 @@ public class Technology extends AbstractScene {
 				}
 					return false;			
 			}
+
+				private void clearAllGestures(MTRectangle rectangleImage1) {
+					rectangleImage1.unregisterAllInputProcessors();
+					rectangleImage1.removeAllGestureEventListeners();
+					
+				}
 			});
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
