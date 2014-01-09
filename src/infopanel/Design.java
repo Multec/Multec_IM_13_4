@@ -64,6 +64,9 @@ public class Design extends AbstractScene {
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3; 
 		private Iscene Screensaver;
+		private MTRectangle rectangleImage1;
+		private MTRectangle rectangleImage2;
+		
 		
 		public Design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -559,18 +562,18 @@ public class Design extends AbstractScene {
 
 			
 			PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-			RectangleImage1.setNoStroke(true);
-			this.clearAllGestures(RectangleImage1);
+			rectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(rectangleImage1);
+			rectangleImage1.setPositionGlobal(new Vector3D(900,290,0));
+			rectangleImage1.setNoStroke(true);
+			this.clearAllGestures(rectangleImage1);
 			
 			PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-			final MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
-			RectangleImage2.setNoStroke(true);
-			this.clearAllGestures(RectangleImage2);
+			rectangleImage2 = new MTRectangle(Image2, app);
+			getCanvas().addChild(rectangleImage2);
+			rectangleImage2.setPositionGlobal(new Vector3D(1200,290,0));
+			rectangleImage2.setNoStroke(true);
+			this.clearAllGestures(rectangleImage2);
 			
 			PImage Voorbeeld1 = app.loadImage("schetsenmini.jpg"); 
 			MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
@@ -612,9 +615,9 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
 							if (pageCounter==0){
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(rectangleImage2);
 								title.setText("3D DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
 								content2.setText("3D Design, Real-Time 3D");
@@ -626,12 +629,12 @@ public class Design extends AbstractScene {
 								smallCircle3.setFillColor(new MTColor(255,255,255));
 								docent1.setText("David Molenberghs");
 								PImage Image1 = app.loadImage("3d1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-								this.clearAllGestures(RectangleImage1);
-								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-								RectangleImage1.setNoStroke(true);
-								getCanvas().removeChild(RectangleImage2);
+								rectangleImage1 = new MTRectangle(Image1, app);
+								this.clearAllGestures(rectangleImage1);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								
 								docent2.setText("");
 								
 								PImage Voorbeeld1 = app.loadImage("3D1mini.jpg"); 
@@ -737,6 +740,7 @@ public class Design extends AbstractScene {
 							}
 							else if (pageCounter == -1)
 							{
+								getCanvas().removeChild(rectangleImage1);
 								title.setText("DESIGN AND VISUAL");
 								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
 								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
@@ -749,19 +753,18 @@ public class Design extends AbstractScene {
 								docent1.setText("Filip Vandeputte");
 								docent2.setText("Stefan Tilburgs");
 								PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-								this.clearAllGestures(RectangleImage1);
-								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-								RectangleImage1.setNoStroke(true);
+								rectangleImage1 = new MTRectangle(Image1, app);
+								this.clearAllGestures(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
 														
-								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-								getCanvas().addChild(RectangleImage2);
-								this.clearAllGestures(RectangleImage2);
-								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
-								RectangleImage2.setNoStroke(true);
-								
+								PImage Image2 = app.loadImage("design2.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------			
+								rectangleImage2 = new MTRectangle(Image2, app);
+								this.clearAllGestures(rectangleImage2);
+								rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								rectangleImage2.setNoStroke(true);
+								getCanvas().addChild(rectangleImage1);
+								getCanvas().addChild(rectangleImage2);
 								smallCircle3.setFillColor(new MTColor(255,255,255,125));	
 
 							}
@@ -791,8 +794,6 @@ public class Design extends AbstractScene {
 						break;
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
-							app.popScene();
-							app.pushScene();
 							if (pageCounter==0){
 								title.setText("3D DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
