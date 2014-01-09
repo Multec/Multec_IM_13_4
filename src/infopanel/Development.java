@@ -77,6 +77,8 @@ public class Development extends AbstractScene {
 		private MTEllipse smallCircle2;
 		private MTEllipse smallCircle3;
 		private Iscene Screensaver;
+		private MTRectangle rectangleImage1;
+		private MTRectangle rectangleImage2;
 		
 		public Development(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
@@ -288,7 +290,7 @@ public class Development extends AbstractScene {
 			clearAllGestures(arrowLHolder);
 			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
 			arrowRHolder.setNoStroke(true);
-			this.getCanvas().addChild(arrowRHolder);
+			
 			clearAllGestures(arrowRHolder);
 			final MTTextArea arrowLTxt = new MTTextArea(55, app.height/2-25, 220, 300, arrowFont, app); 
 			arrowLTxt.setNoStroke(true);
@@ -297,7 +299,7 @@ public class Development extends AbstractScene {
 			arrowRTxt.setNoStroke(true);
 			arrowRTxt.setNoFill(true);
 			arrowLTxt.setText("PROGRAMMING");
-			arrowRTxt.setText("MOBILE Development");
+			arrowRTxt.setText("MOBILE DEVELOPMENT");
 			this.getCanvas().addChild(arrowLTxt);
 			this.getCanvas().addChild(arrowRTxt);
 			clearAllGestures(arrowRHolder);
@@ -590,8 +592,8 @@ public class Development extends AbstractScene {
 			subtitle3.setText("LANGUAGES");
 			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
 			
-			docent1.setText("Rudy");
-			docent2.setText("Dirly");
+			docent1.setText("Jan Klaas Van Den Meersche");
+			docent2.setText("Dirly De Schrijver");
 			
 			//add projects to content
 			PImage Voorbeeld1 = app.loadImage("swd1mini.jpg"); 
@@ -639,16 +641,18 @@ public class Development extends AbstractScene {
 			
 			
 			PImage Image1 = app.loadImage("webdev1.png");
-			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-			RectangleImage1.setNoStroke(true);
+			rectangleImage1 = new MTRectangle(Image1, app);
+			getCanvas().addChild(rectangleImage1);
+			rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+			rectangleImage1.setNoStroke(true);
+			this.clearAllGestures(rectangleImage1);
 			
 			PImage Image2 = app.loadImage("webdev2.png");
-			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
-			RectangleImage2.setNoStroke(true);
+			 rectangleImage2 = new MTRectangle(Image2, app);
+			getCanvas().addChild(rectangleImage2);
+			rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+			rectangleImage2.setNoStroke(true);
+			this.clearAllGestures(rectangleImage2);
 			
 			//arrowLTapGesture
 			arrowLHolder.registerInputProcessor(new TapProcessor(app));
@@ -664,6 +668,8 @@ public class Development extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							if (pageCounter==0){
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(rectangleImage2);
 								title.setText("PROGRAMMING");
 								content1.setText("In these courses, students will learn how to program, using a variety of software and skills. These courses are mainly focused on creativity, programming and developing applications.");
 								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
@@ -679,18 +685,18 @@ public class Development extends AbstractScene {
 								docent2.setText("Maarten Heylen");
 								
 								PImage Image1 = app.loadImage("program1.png"); 
-								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-								RectangleImage1.setNoStroke(true);
-								this.clearAllGestures(RectangleImage1);
+								rectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								this.clearAllGestures(rectangleImage1);
 								
 								PImage Image2 = app.loadImage("program2.png"); 
-								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-								getCanvas().addChild(RectangleImage2);
-								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
-								RectangleImage2.setNoStroke(true);
-								this.clearAllGestures(RectangleImage2);
+								rectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(rectangleImage2);
+								rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								rectangleImage2.setNoStroke(true);
+								this.clearAllGestures(rectangleImage2);
 								
 								//add projects to content
 								PImage Voorbeeld1 = app.loadImage("CPmini.jpg"); 
@@ -716,6 +722,8 @@ public class Development extends AbstractScene {
 							}
 							else if (pageCounter == -1)
 							{
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(rectangleImage2);
 								title.setText("MOBILE DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to develop for mobile devices. These courses are mainly focused on creativity.");
 								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
@@ -757,6 +765,8 @@ public class Development extends AbstractScene {
 							}
 							else if(pageCounter == 1)
 							{
+								getCanvas().removeChild(rectangleImage1);
+								getCanvas().removeChild(rectangleImage2);
 								title.setText("WEB DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to develop websites using a variety of software and languages. These courses are mainly focused on creativity and developing websites."); 
 								content2.appendText("Static web, Dynamic web, Advanced web");
@@ -768,22 +778,22 @@ public class Development extends AbstractScene {
 								smallCircle2.setFillColor(new MTColor(255,255,255));
 								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
 								
-								docent1.setText("Jan Claes");
+								docent1.setText("Jan Klaas Van Den Meersche");
 								docent2.setText("Dirly De Schrijver");
 								
 								PImage Image1 = app.loadImage("webdev1.png"); 
-								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
-								getCanvas().addChild(RectangleImage1);
-								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
-								RectangleImage1.setNoStroke(true);
-								this.clearAllGestures(RectangleImage1);
+								rectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(rectangleImage1);
+								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								rectangleImage1.setNoStroke(true);
+								this.clearAllGestures(rectangleImage1);
 								
 								PImage Image2 = app.loadImage("webdev2.png"); 
-								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-								getCanvas().addChild(RectangleImage2);
-								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
-								RectangleImage2.setNoStroke(true);
-								this.clearAllGestures(RectangleImage2);
+								rectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(rectangleImage2);
+								rectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								rectangleImage2.setNoStroke(true);
+								this.clearAllGestures(rectangleImage2);
 								
 								//add projects to content
 								PImage Voorbeeld1 = app.loadImage("swd1mini.jpg"); 
@@ -815,10 +825,12 @@ public class Development extends AbstractScene {
 			}
 
 				private void clearAllGestures(MTRectangle rectangleImage1) {
-					// TODO Auto-generated method stub
+					rectangleImage1.unregisterAllInputProcessors();
+					rectangleImage1.removeAllGestureEventListeners();
 					
 				}
 			});
+			this.getCanvas().addChild(arrowRHolder);
 			//arrowRTabGesture
 			arrowRHolder.registerInputProcessor(new TapProcessor(app));
 			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
@@ -832,6 +844,7 @@ public class Development extends AbstractScene {
 					case MTGestureEvent.GESTURE_ENDED:
 						if (te.isTapped()){
 							if (pageCounter==0){
+								
 								title.setText("MOBILE DEVELOPMENT");
 								content1.setText("In these courses, students will learn how to develop for mobile devices. These courses are mainly focused on creativity.");
 								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
