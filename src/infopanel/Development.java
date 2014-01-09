@@ -592,6 +592,9 @@ public class Development extends AbstractScene {
 			final MTTextArea content2 = new MTTextArea(300, 300, 700, 300, fontContent, app); 
 			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
 			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
+			final MTTextArea docent1 = new MTTextArea(1050, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1350, 380, 700 ,300, fontContent, app);
+			
 			title.setNoStroke(true);
 			title.setNoFill(true);
 			subtitle1.setNoStroke(true);
@@ -606,6 +609,10 @@ public class Development extends AbstractScene {
 			content2.setNoFill(true);
 			content3.setNoStroke(true);
 			content3.setNoFill(true);
+			docent1.setNoStroke(true);
+			docent1.setNoFill(true);
+			docent2.setNoStroke(true);
+			docent2.setNoFill(true);
 			
 			//AddTextToTextAreas
 			title.setText("WEB DEVELOPMENT");
@@ -615,6 +622,10 @@ public class Development extends AbstractScene {
 			content2.appendText("Static web, Dynamic web, Advanced web");
 			subtitle3.setText("LANGUAGES");
 			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
+			
+			docent1.setText("Rudy");
+			docent2.setText("Dirly");
+			
 			
 			
 			//addTextAreas
@@ -632,17 +643,22 @@ public class Development extends AbstractScene {
 			this.getCanvas().addChild(content2);
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
+			this.clearAllGestures(docent1);
+			this.getCanvas().addChild(docent1);
+			this.clearAllGestures(docent2);
+			this.getCanvas().addChild(docent2);
+			
 			
 			PImage Image1 = app.loadImage("webdev1.png");
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
+			RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 			RectangleImage1.setNoStroke(true);
 			
 			PImage Image2 = app.loadImage("webdev2.png");
 			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
 			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
+			RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
 			RectangleImage2.setNoStroke(true);
 			
 			//arrowLTapGesture
@@ -669,6 +685,23 @@ public class Development extends AbstractScene {
 								smallCircle1.setFillColor(new MTColor(255,255,255));
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
+								
+								docent1.setText("Wauter Van Den Broek");
+								docent2.setText("Maarten Heylen");
+								
+								PImage Image1 = app.loadImage("program1.png"); 
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								RectangleImage1.setNoStroke(true);
+								this.clearAllGestures(RectangleImage1);
+								
+								PImage Image2 = app.loadImage("program2.png"); 
+								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(RectangleImage2);
+								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								RectangleImage2.setNoStroke(true);
+								this.clearAllGestures(RectangleImage2);
 							}
 							else if (pageCounter == -1)
 							{
@@ -682,6 +715,12 @@ public class Development extends AbstractScene {
 								smallCircle1.setFillColor(new MTColor(255,255, 255, 125));
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255));
+								
+								docent1.setText("");
+								docent2.setText("");
+								
+								
+								
 							}
 							else if(pageCounter == 1)
 							{
@@ -695,6 +734,23 @@ public class Development extends AbstractScene {
 								smallCircle1.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle2.setFillColor(new MTColor(255,255,255));
 								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
+								
+								docent1.setText("Jan Claes");
+								docent2.setText("Dirly De Schrijver");
+								
+								PImage Image1 = app.loadImage("webdev1.png"); 
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								RectangleImage1.setNoStroke(true);
+								this.clearAllGestures(RectangleImage1);
+								
+								PImage Image2 = app.loadImage("webdev2.png"); 
+								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(RectangleImage2);
+								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								RectangleImage2.setNoStroke(true);
+								this.clearAllGestures(RectangleImage2);
 							}
 							break;
 							}
@@ -702,6 +758,11 @@ public class Development extends AbstractScene {
 				}
 					return false;			
 			}
+
+				private void clearAllGestures(MTRectangle rectangleImage1) {
+					// TODO Auto-generated method stub
+					
+				}
 			});
 			//arrowRTabGesture
 			arrowRHolder.registerInputProcessor(new TapProcessor(app));
