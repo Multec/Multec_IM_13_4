@@ -503,8 +503,8 @@ public class Technology extends AbstractScene {
 			final MTTextArea subtitle3 = new MTTextArea(300, 330, 700, 300, fontSubtitle, app); 
 			final MTTextArea content3 = new MTTextArea(300, 350, 700, 300, fontContent, app); 
 			final MTTextArea title2 = new MTTextArea(1100, 150, 700, 300, fontSubtitle, app);
-			final MTTextArea docent1 = new MTTextArea(1100, 380, 700 ,300, fontContent, app);
-			final MTTextArea docent2 = new MTTextArea(1400, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent1 = new MTTextArea(1050, 380, 700 ,300, fontContent, app);
+			final MTTextArea docent2 = new MTTextArea(1350, 380, 700 ,300, fontContent, app);
 			title2.setNoStroke(true);
 			title2.setNoFill(true);
 			docent1.setNoStroke(true);
@@ -534,6 +534,7 @@ public class Technology extends AbstractScene {
 			content2.appendText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling");
 			subtitle3.setText("LANGUAGES");
 			content3.setText("Arduino(Processing)");
+			docent1.setText("Jan de Coster");
 			
 			
 			//addTextAreas
@@ -551,18 +552,18 @@ public class Technology extends AbstractScene {
 			this.getCanvas().addChild(content2);
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
+			this.clearAllGestures(docent1);
+			this.getCanvas().addChild(docent1);
+			this.clearAllGestures(docent2);
+			this.getCanvas().addChild(docent2);
 			
-			PImage Image1 = app.loadImage("Technology3.png"); 
+			
+			PImage Image1 = app.loadImage("Technology1.png"); 
 			MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
 			getCanvas().addChild(RectangleImage1);
-			RectangleImage1.setPositionGlobal(new Vector3D(1200,300,0));
+			RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 			RectangleImage1.setNoStroke(true);
-			
-			PImage Image2 = app.loadImage("Technology2.png"); 
-			MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
-			getCanvas().addChild(RectangleImage2);
-			RectangleImage2.setPositionGlobal(new Vector3D(1600,300,0));
-			RectangleImage2.setNoStroke(true);
+			this.clearAllGestures(RectangleImage1);
 			
 			//arrowLTapGesture
 			arrowLHolder.registerInputProcessor(new TapProcessor(app));
@@ -590,6 +591,21 @@ public class Technology extends AbstractScene {
 								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
 								smallCircle3.setFillColor(new MTColor(255,255,255));
 								docent1.setText("Bert Van Rillaer");
+								docent2.setText("Robbie Delaere");
+								
+								PImage Image1 = app.loadImage("Technology3.png"); 
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								RectangleImage1.setNoStroke(true);
+								this.clearAllGestures(RectangleImage1);
+								
+								PImage Image2 = app.loadImage("Technology2.png"); 
+								MTRectangle RectangleImage2 = new MTRectangle(Image2, app);
+								getCanvas().addChild(RectangleImage2);
+								RectangleImage2.setPositionGlobal(new Vector3D(1500,290,0));
+								RectangleImage2.setNoStroke(true);
+								this.clearAllGestures(RectangleImage2);
 							}
 							else if (pageCounter == 1)
 							{
@@ -602,6 +618,17 @@ public class Technology extends AbstractScene {
 								arrowRTxt.setText("DATA AND MEDIA");
 								smallCircle2.setFillColor(new MTColor(255,255,255));
 								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
+								docent1.setText("Jan de Coster");
+								docent2.setText("");
+								PImage Image1 = app.loadImage("Technology1.png"); 
+								MTRectangle RectangleImage1 = new MTRectangle(Image1, app);
+								getCanvas().addChild(RectangleImage1);
+								RectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
+								RectangleImage1.setNoStroke(true);
+								this.clearAllGestures(RectangleImage1);
+								
+								
+								
 							}
 							break;
 							}
