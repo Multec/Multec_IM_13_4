@@ -484,6 +484,27 @@ public class Integration extends AbstractScene {
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
 			
+			//Add images of projects to content
+			PImage Voorbeeld1 = app.loadImage("INT1mini.jpg"); 
+			final MTRectangle RectangleImage3 = new MTRectangle(Voorbeeld1, app);
+			getCanvas().addChild(RectangleImage3);
+			RectangleImage3.setPositionGlobal(new Vector3D(535,685,0));
+			RectangleImage3.setNoStroke(true);	
+			this.clearAllGestures(RectangleImage3);
+			
+			PImage Voorbeeld2 = app.loadImage("INT2mini.jpg"); 
+			final MTRectangle RectangleImage4 = new MTRectangle(Voorbeeld2, app);
+			getCanvas().addChild(RectangleImage4);
+			RectangleImage4.setPositionGlobal(new Vector3D(970,685,0));
+			RectangleImage4.setNoStroke(true);
+			this.clearAllGestures(RectangleImage4);
+			
+			PImage Voorbeeld3 = app.loadImage("INT3mini.jpg"); 
+			final MTRectangle RectangleImage5 = new MTRectangle(Voorbeeld3, app);
+			getCanvas().addChild(RectangleImage5);
+			RectangleImage5.setPositionGlobal(new Vector3D(1405,685,0));
+			RectangleImage5.setNoStroke(true);
+			this.clearAllGestures(RectangleImage5);
 			
 			
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
