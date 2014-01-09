@@ -371,7 +371,7 @@ public class Development extends AbstractScene {
 							app.popScene();
 							app.pushScene();
 							if (design == null){
-								design = new Design2(app, "design2");
+								design = new Design(app, "design2");
 								//Add the scene to the mt application
 								app.addScene(design);
 							}

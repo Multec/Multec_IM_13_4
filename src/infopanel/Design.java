@@ -51,7 +51,7 @@ import org.mt4j.util.opengl.GLFBO;
 import processing.core.PImage;
 		
 	
-public class Design2 extends AbstractScene {
+public class Design extends AbstractScene {
 		private MTApplication app;
 		private Iscene development;
 		private Iscene technology;
@@ -68,7 +68,7 @@ public class Design2 extends AbstractScene {
 		private MTRectangle rectangleImage2;
 		
 		
-		public Design2(final MTApplication mtApplication, String name) {
+		public Design(final MTApplication mtApplication, String name) {
 			super(mtApplication, name);
 			this.app = mtApplication;
 			this.registerGlobalInputProcessor(new CursorTracer(app, this));
@@ -284,7 +284,7 @@ public class Design2 extends AbstractScene {
 							app.popScene();
 							app.pushScene();
 							if (design == null){
-								design = new Design2(app, "design");
+								design = new Design(app, "design");
 								//Add the scene to the mt application
 								app.addScene(design);
 							}
