@@ -606,6 +606,15 @@ public class Design extends AbstractScene {
 			PImage Voorbeeld31 = app.loadImage("3D3.jpg"); //VOORBEELD 3D NR3
 			final MTRectangle RectangleImage35 = new MTRectangle(Voorbeeld31, app);
 			
+			PImage Voorbeeld12 = app.loadImage("schetsen.jpg"); //VOORBEELD DESIGN NR1
+			final MTRectangle RectangleImage36 = new MTRectangle(Voorbeeld12, app);
+			
+			PImage Voorbeeld22 = app.loadImage("typeradio.jpg"); //VOORBEELD DESIGN NR2
+			final MTRectangle RectangleImage37 = new MTRectangle(Voorbeeld22, app);
+			
+			PImage Voorbeeld32 = app.loadImage("mono.jpg"); //VOORBEELD DESIGN NR3
+			final MTRectangle RectangleImage38 = new MTRectangle(Voorbeeld32, app);
+			
 			this.getCanvas().addChild(arrowLHolder);
 			clearAllGestures(arrowLHolder);
 			arrowRHolder.setPositionGlobal(new Vector3D(app.width-40,app.height/2 - 8));
@@ -645,8 +654,6 @@ public class Design extends AbstractScene {
 								getCanvas().addChild(rectangleImage1);
 								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
 								rectangleImage1.setNoStroke(true);
-								
-
 								docent2.setText("");
 								
 								final MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);		
@@ -794,7 +801,6 @@ public class Design extends AbstractScene {
 							else if (pageCounter == -1)
 							{
 
-								getCanvas().removeChild(rectangleImage1);
 								getCanvas().removeChild(RectangleImage3);
 								getCanvas().removeChild(RectangleImage4);
 								getCanvas().removeChild(RectangleImage5);
@@ -811,9 +817,13 @@ public class Design extends AbstractScene {
 								smallCircle3.setFillColor(new MTColor(255,255,255,125));
 								docent1.setText("Filip Vandeputte");
 								docent2.setText("Stefan Tilburgs");
+								final MTRectangle transparantkader = new MTRectangle(0, 0, 1920, 1080, app);		
+								
+								final MTRectangle kruisje = new MTRectangle(0, 0, 1920, 1080, app);
+								kruisje.setFillColor(new MTColor(0,0,0,0));
+								this.clearAllGestures(kruisje);
 								
 								PImage Image1 = app.loadImage("design1.png"); //PLAATS HIER DE NAAM VAN UW FOTO'S-------------------------------------
-
 								rectangleImage1 = new MTRectangle(Image1, app);
 								this.clearAllGestures(rectangleImage1);
 								rectangleImage1.setPositionGlobal(new Vector3D(1200,290,0));
@@ -830,10 +840,115 @@ public class Design extends AbstractScene {
 								smallCircle3.setFillColor(new MTColor(255,255,255,125));	
 								
 								getCanvas().addChild(RectangleImage3);
+								RectangleImage3.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage3.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);			
+											this.clearAllGestures(transparantkader);
+											
+											this.clearAllGestures(RectangleImage36);
+											getCanvas().addChild(RectangleImage36);
+											RectangleImage36.setPositionGlobal(new Vector3D(950,500,0));
+											
+											getCanvas().addChild(kruisje);
+											}	
+										return false;
+									}
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+									}
+								});
 								
+								kruisje.registerInputProcessor(new TapProcessor(app));
+								kruisje.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {					
+									TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											getCanvas().removeChild(RectangleImage36);
+											getCanvas().removeChild(transparantkader);
+											getCanvas().removeChild(kruisje);
+										}
+										return false;
+									}
+								});
+
 								getCanvas().addChild(RectangleImage4);
+								RectangleImage4.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage4.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);			
+											this.clearAllGestures(transparantkader);
+											
+											this.clearAllGestures(RectangleImage37);
+											getCanvas().addChild(RectangleImage37);
+											RectangleImage37.setPositionGlobal(new Vector3D(950,500,0));
+											
+											getCanvas().addChild(kruisje);
+											}	
+										return false;
+									}
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+									}
+								});
+								
+								kruisje.registerInputProcessor(new TapProcessor(app));
+								kruisje.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {					
+									TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											getCanvas().removeChild(RectangleImage37);
+											getCanvas().removeChild(transparantkader);
+											getCanvas().removeChild(kruisje);
+										}
+										return false;
+									}
+								});
 						
 								getCanvas().addChild(RectangleImage5);
+								RectangleImage5.registerInputProcessor(new TapProcessor(app, 25, true, 350));
+								RectangleImage5.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {
+										TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											transparantkader.setFillColor(new MTColor(0,0,0,150));
+											getCanvas().addChild(transparantkader);			
+											this.clearAllGestures(transparantkader);
+											
+											this.clearAllGestures(RectangleImage38);
+											getCanvas().addChild(RectangleImage38);
+											RectangleImage38.setPositionGlobal(new Vector3D(950,500,0));
+											
+											getCanvas().addChild(kruisje);
+											}	
+										return false;
+									}
+									private void clearAllGestures(MTRectangle comp) {
+										comp.unregisterAllInputProcessors();
+										comp.removeAllGestureEventListeners();
+									}
+								});
+								
+								kruisje.registerInputProcessor(new TapProcessor(app));
+								kruisje.addGestureListener(TapProcessor.class, new IGestureEventListener() {
+									public boolean processGestureEvent(MTGestureEvent ge) {					
+									TapEvent te = (TapEvent)ge;
+										if (te.isTapped()){
+											getCanvas().removeChild(RectangleImage38);
+											getCanvas().removeChild(transparantkader);
+											getCanvas().removeChild(kruisje);
+										}
+										return false;
+									}
+								});
 							}
 							break;
 						}
@@ -847,52 +962,8 @@ public class Design extends AbstractScene {
 					comp.removeAllGestureEventListeners();	
 				}
 			});
+			
 
-			//arrowRTabGesture
-			arrowRHolder.registerInputProcessor(new TapProcessor(app));
-			arrowRHolder.addGestureListener(TapProcessor.class, new IGestureEventListener() {
-				public boolean processGestureEvent(MTGestureEvent ge) {					
-					TapEvent te = (TapEvent)ge;
-					switch (te.getId()) {
-					case MTGestureEvent.GESTURE_DETECTED:
-						MTColor white = new MTColor(10,100,50);
-						break;
-					case MTGestureEvent.GESTURE_UPDATED:
-						break;
-					case MTGestureEvent.GESTURE_ENDED:
-						if (te.isTapped()){
-							if (pageCounter==0){
-								title.setText("3D DEVELOPMENT");
-								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
-								content2.setText("3D Design, Real-Time 3D");
-								content3.setText("Maya Autodesk");
-								pageCounter = -1;
-								arrowLTxt.setText("DESIGN AND VISUAL");
-								arrowRTxt.setText("DESIGN AND VISUAL");
-								smallCircle2.setFillColor(new MTColor(255,255,255, 125));
-								smallCircle3.setFillColor(new MTColor(255,255,255));
-							}
-							else if (pageCounter == -1)
-							{
-								title.setText("DESIGN AND VISUAL");
-								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
-								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
-								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
-								pageCounter = 0;
-								arrowLTxt.setText("3D DEVELOPMENT");
-								arrowRTxt.setText("3D DEVELOPMENT");
-								smallCircle2.setFillColor(new MTColor(255,255,255));
-								smallCircle3.setFillColor(new MTColor(255,255,255, 125));
-							}
-							break;
-							}
-					default: break;
-				}
-					return false;			
-			}
-			});
-
-			//ARROW R 
 			//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
 			if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(app))
 				this.setTransition(new FadeTransition(app, 700));
