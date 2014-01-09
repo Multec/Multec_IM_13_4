@@ -686,7 +686,7 @@ public class Technology extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-
+		this.destroy();
 	}
 
 }

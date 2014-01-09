@@ -123,7 +123,7 @@ public class Screensaver extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-		// TODO Auto-generated method stub
+		this.destroy();
 		
 	}
 

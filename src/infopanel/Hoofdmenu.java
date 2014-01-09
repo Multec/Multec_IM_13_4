@@ -322,6 +322,7 @@ public class Hoofdmenu extends AbstractScene {
 
 	@Override
 	public void shutDown() {
+		this.destroy();
 	}
 
 }

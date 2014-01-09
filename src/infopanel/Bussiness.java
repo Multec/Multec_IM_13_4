@@ -513,7 +513,7 @@ public class Bussiness extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-
+		this.destroy();
 	}
 
 }

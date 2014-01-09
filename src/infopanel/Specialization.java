@@ -501,7 +501,7 @@ public class Specialization extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-
+		this.destroy();
 	}
 
 }

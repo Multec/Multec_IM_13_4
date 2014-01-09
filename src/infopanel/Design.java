@@ -1305,7 +1305,7 @@ public class Design extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-
+		this.destroy();
 	}
 
 }

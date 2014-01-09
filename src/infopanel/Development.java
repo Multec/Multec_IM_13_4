@@ -809,7 +809,7 @@ public class Development extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-
+		this.destroy();
 	}
 
 }

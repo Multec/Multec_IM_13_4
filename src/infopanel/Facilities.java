@@ -493,7 +493,7 @@ public class Facilities extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-
+		this.destroy();
 	}
 
 }

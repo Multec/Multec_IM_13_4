@@ -508,7 +508,7 @@ public class Integration extends AbstractScene {
 
 	@Override
 	public void shutDown() {
-
+		this.destroy();
 	}
 
 }
