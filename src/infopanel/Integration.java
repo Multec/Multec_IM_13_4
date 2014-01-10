@@ -483,6 +483,7 @@ public class Integration extends AbstractScene {
 			this.getCanvas().addChild(content2);
 			this.clearAllGestures(content3);
 			this.getCanvas().addChild(content3);
+			this.clearAllGestures(facTxt);
 			
 			//projects to content
 			PImage Voorbeeld1 = app.loadImage("INT1mini.jpg"); 
