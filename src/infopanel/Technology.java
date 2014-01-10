@@ -512,7 +512,7 @@ public class Technology extends AbstractScene {
 			title.setText("ELECTRONICS");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
-			content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice. These courses are a large part of the specialisation Art and Technology."); 
+			content1.setText("In these courses, students will learn about IT and electronics, not only from a book, but also trough practice. These courses are mainly based on creativity, practice and electronics. These courses are a large part of the specialisation Art and Technology."); 
 			content2.appendText("AV and IT Principles, Physical Interaction Design, Visual Performance and Installation Technology, Interactive Storytelling");
 			subtitle3.setText("LANGUAGES");
 			content3.setText("Arduino(Processing)");
@@ -585,7 +585,7 @@ public class Technology extends AbstractScene {
 							if (pageCounter==0){
 								getCanvas().removeChild(rectangleImage1);
 								title.setText("DATA AND MEDIA");
-								content1.setText("In these courses, students will learn how to generate and manage data and media.");
+								content1.setText("In these courses, students will learn how to generate and manage data and media. These courses are mainly focused on data management and media development.");
 								content2.setText("Data management, Networked Media, New Trends, Media in Performance, New Media Devices.");
 								content3.setText("MySQL");
 								pageCounter = 1;

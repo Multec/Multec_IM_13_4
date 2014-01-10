@@ -461,7 +461,7 @@ public class Bussiness extends AbstractScene {
 			title.setText("BUSINESS COMMUNICATIONS");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
-			content1.setText("Bussiness & Communication is divided into 2 main topics. The first is 'communication skills' where students will learn how to communicate in different languages on different media. 'Management' is the second main topic. In management, students will learn how to manage your own project properly, and you'll also learn how to start your own business.");
+			content1.setText("In these courses, the students will learn how to communicate professionally, in multiple languages. These courses are mainly focused on multidisciplinary teamwork and communication, preparing our students for their careers.  ");
 			content2.appendText("Bussiness & Communication: \nFrench, English, Bussiness communication skills, copyright & mediarights");
 			content2.appendText("\nManagement: \nProject management, Online Marketing");
 			

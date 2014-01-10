@@ -585,7 +585,7 @@ public class Development extends AbstractScene {
 			title.setText("WEB DEVELOPMENT");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
-			content1.setText("Web Development dummy text writing down here just something."); 
+			content1.setText("In these courses, students will learn how to develop websites using a variety of software and languages. These courses are mainly focused on creativity and developing websites."); 
 			content2.appendText("Static web, Dynamic web, Advanced web");
 			subtitle3.setText("LANGUAGES");
 			content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
@@ -665,9 +665,9 @@ public class Development extends AbstractScene {
 						if (te.isTapped()){
 							if (pageCounter==0){
 								title.setText("PROGRAMMING");
-								content1.setText("This is programming dude..");
+								content1.setText("In these courses, students will learn how to program, using a variety of software and skills. These courses are mainly focused on creativity, programming and developing applications.");
 								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
-								content3.setText("Java");
+								content3.setText("Java, Processing");
 								pageCounter = -1;
 								arrowLTxt.setText("MOBILE DEVELOPMENT");
 								arrowRTxt.setText("WEB DEVELOPMENT");
@@ -717,7 +717,7 @@ public class Development extends AbstractScene {
 							else if (pageCounter == -1)
 							{
 								title.setText("MOBILE DEVELOPMENT");
-								content1.setText("This is mobile Development dude..");
+								content1.setText("In these courses, students will learn how to develop for mobile devices. These courses are mainly focused on creativity.");
 								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
 								content3.setText("Objective C");
 								pageCounter = 1;
@@ -758,7 +758,7 @@ public class Development extends AbstractScene {
 							else if(pageCounter == 1)
 							{
 								title.setText("WEB DEVELOPMENT");
-								content1.setText("Web Development dummy text writing down here just something."); 
+								content1.setText("In these courses, students will learn how to develop websites using a variety of software and languages. These courses are mainly focused on creativity and developing websites."); 
 								content2.appendText("Static web, Dynamic web, Advanced web");
 								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
 								pageCounter = 0;
@@ -833,7 +833,7 @@ public class Development extends AbstractScene {
 						if (te.isTapped()){
 							if (pageCounter==0){
 								title.setText("MOBILE DEVELOPMENT");
-								content1.setText("This is mobile Development dude..");
+								content1.setText("In these courses, students will learn how to develop for mobile devices. These courses are mainly focused on creativity.");
 								content2.setText("IOS, Windows App, Inovation App&Webb, Mobile Game Development");
 								content3.setText("Objective C");
 								pageCounter = 1;
@@ -848,7 +848,7 @@ public class Development extends AbstractScene {
 							else if (pageCounter == -1)
 							{
 								title.setText("WEB DEVELOPMENT");
-								content1.setText("Web Development dummy text writing down here just something."); 
+								content1.setText("In these courses, students will learn how to develop websites using a variety of software and languages. These courses are mainly focused on creativity and developing websites."); 
 								content2.appendText("Static web, Dynamic web, Advanced web");
 								content3.setText("HTML5, CSS3, JQuery, Javascript, PhP, XML, JSON");
 								pageCounter = 0;
@@ -861,7 +861,7 @@ public class Development extends AbstractScene {
 							else if (pageCounter == 1)
 							{
 								title.setText("PROGRAMMING");
-								content1.setText("This is programming dude..");
+								content1.setText("In these courses, students will learn how to program, using a variety of software and skills. These courses are mainly focused on creativity, programming and developing applications.");
 								content2.setText("Creative Programming, Rich Media Development, Real-Time3D");
 								content3.setText("Java");
 								pageCounter = -1;			

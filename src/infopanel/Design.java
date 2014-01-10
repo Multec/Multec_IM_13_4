@@ -506,7 +506,7 @@ public class Design extends AbstractScene {
 			title.setText("DESIGN AND VISUAL");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("COURSES");
-			content1.setText("In these courses, the students will learn how to design for web as well as audio visual design."); 
+			content1.setText("In these courses, the students will learn all about design and how to work with various software and digital material.                    These courses are mainly focused on creativity and design on multiple levels."); 
 			content2.appendText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
 			subtitle3.setText("LANGUAGES");
 			content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
@@ -614,7 +614,8 @@ public class Design extends AbstractScene {
 								getCanvas().removeChild(rectangleImage1);
 								getCanvas().removeChild(rectangleImage2);
 								title.setText("3D DEVELOPMENT");
-								content1.setText("In these courses, students will learn how to design for 3D modelling as well as model in 3D.");
+								content1.setText("In these courses, students will learn how to design for 3D modeling as well as 3D modeling using software itself."
++ "                          These courses are mainly focused on creativity, 3D modeling and -animation.");
 								content2.setText("3D Design, Real-Time 3D");
 								content3.setText("Maya Autodesk");
 								pageCounter = -1;
@@ -782,7 +783,7 @@ public class Design extends AbstractScene {
 								getCanvas().removeChild(RectangleImage5);
 
 								title.setText("DESIGN AND VISUAL");
-								content1.setText("In these courses, the students will learn how to design for web as well as audio visual design.");
+								content1.setText("In these courses, the students will learn all about design and how to work with various software and digital material.                    These courses are mainly focused on creativity and design on multiple levels.");
 								content2.setText("Design Principles, AudioVisual Design, User Experience Design, Concept Design, Motion Design, Cross Media Design, Data Visualisation");
 								content3.setText("Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe Flash");
 								pageCounter = 0;

@@ -462,7 +462,7 @@ public class Integration extends AbstractScene {
 			title.setText("INTEGRATION PROJECTS");
 			subtitle1.setText("DESCRIPTION");
 			subtitle2.setText("PROJECTS");
-			content1.setText("During the first two years of their studies, our students will work on different projects. This way, our students get a lot of practice before they will work on projects in a business environment."); 
+			content1.setText("During the first two years of their studies, our students will work on different projects. This way, our students get a lot of practice before they will work on projects in a business environment and develop a portfolio as well, giving them a good chance at finding a job."); 
 			content2.appendText("Integration Web: Development of a static website in team. \n Integration Mobile: Development of a mobile site in team. \n Integration Multiscreen: Development of an application for touchscreen in team. \n Integration Mobile App and Web: \n Integratiob Art and Technology:");
 			subtitle3.setText("");
 			content3.setText("");
